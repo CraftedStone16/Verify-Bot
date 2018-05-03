@@ -46,18 +46,24 @@ client.on('message', async message => {
     if (message.channel.type === "dm") return;
     if (!message.channel === '437757021953982485') return;
     if (!message.content.startsWith(prefix)) return;
+  
+    if (message.content === '--verify open source is not responsible for your loss') {
+      message.delete(5000); 
+      message.channel.send('it hpned');
+      return message.member.addRole('437738324183089154');
+    }
+});
+client.on('message', async message => {
+    if (message.author.bot) return;
+    if (message.channel.type === "dm") return;
+    if (!message.channel === '437757021953982485') return;
+    if (!message.content.startsWith(prefix)) return;
     if (message.content.length === prefix.length) return;
     message.content = message.content.substr(prefix.length);
     let args = message.content.split(' ').filter(a => a !== '');
     let cmd = args.shift().toLowerCase();
     
     // if (message.content != '--') return;
-    if (message.content === '--verify open source is not responsible for your loss') {
-      message.delete(5000);
-      message.channel.send('Damn!');
-      message.member.addRole('437738324183089154');
-    } else
-  
     if (cmd != 'verify open source is not responsible for your loss') {
       message.delete(5000)
       return message.channel.send(`Sorry ${message.author}, You have provided an incorrect/invalid phrase! The correct phrase is found in the rules.`).then(message => message.delete(30000));
