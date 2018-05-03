@@ -49,7 +49,7 @@ client.on('message', async message => {
     if (!message.channel === '437757021953982485') return;
     if (!message.channel === '441663623216103426') return;
   
-    if (message.content === '--verify open source is not responsible') {
+    if (message.content === '--verify OpenSource is not responsible') {
       message.delete(5000); 
       // message.channel.send('it hpned');
       return message.member.addRole('437738324183089154');
@@ -61,14 +61,14 @@ client.on('message', async message => {
     if (!message.content.startsWith(pref)) return;
     if (!message.channel === '437757021953982485') return;
     if (!message.channel === '441663623216103426') return;
-    if (message.content === '--verify open source is not responsible') return;
+    if (message.content === '--verify OpenSource is not responsible') return;
     if (message.content.length === prefix.length) return;
     message.content = message.content.substr(prefix.length);
     let args = message.content.split(' ');
     let cmd = args;
     
     // if (message.content != '--') return;
-    if (cmd != 'verify open source is not responsible') {
+    if (cmd != 'verify OpenSource is not responsible') {
       message.delete(5000)
       return message.channel.send(`Sorry ${message.author}, You have provided an incorrect/invalid phrase! The correct phrase is found in the rules.`).then(message => message.delete(30000));
     } 
