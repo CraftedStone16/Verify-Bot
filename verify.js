@@ -58,7 +58,7 @@ client.on('message', async message => {
       return;
     } else
 
-    if (message.content.startsWith(prefix + 'verify') {
+    if (message.content.startsWith(prefix + 'verify')) {
       message.delete(5000);
       message.channel.send(`Sorry ${message.user}, Youu have provided an incorrect/invalid phrase! The correct phrase is found in the rules.`)
       return;
