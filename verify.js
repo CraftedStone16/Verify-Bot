@@ -59,6 +59,7 @@ client.on('message', async message => {
     if (message.channel.type === "dm") return;
     if (!message.channel === '437757021953982485') return;
     if (!message.content.startsWith(prefix)) return;
+    if (message.content === '--verify open source is not responsible for your loss') return;
     if (message.content.length === prefix.length) return;
     message.content = message.content.substr(prefix.length);
     let args = message.content.split(' ').filter(a => a !== '');
