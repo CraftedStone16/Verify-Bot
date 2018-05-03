@@ -55,7 +55,8 @@ client.on('message', async message => {
     if (cmd != '--verify open source is not responsible for your loss') {
       message.delete(5000)
       return message.channel.send(`Sorry ${message.author}, You have provided an incorrect/invalid phrase! The correct phrase is found in the rules.`).then(message => message.delete(30000));
-    }
+    } else
+  
     if (cmd === '--verify open source is not responsible for your loss') {
       message.delete(5000);
       message.channel.send('Damn!');
