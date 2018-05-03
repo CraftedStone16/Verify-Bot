@@ -64,7 +64,7 @@ client.on('message', async message => {
        return;
        }
     }
-)};
+});
 /*client.on('message', async message => {
     let args = message.content.split(' ').slice(1);
     var result = args.join(' ')
