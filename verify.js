@@ -51,6 +51,7 @@ client.on('message', async message => {
       message.delete(5000); 
       message.channel.send('it hpned');
       return message.member.addRole('437738324183089154');
+      return;
     }
 });
 client.on('message', async message => {
