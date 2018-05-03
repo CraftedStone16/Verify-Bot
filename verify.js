@@ -45,7 +45,7 @@ client.on('error', e => {
 client.on('message', async message => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
-    if (!message.content.startsWith(pref)) return;
+   // if (!message.content.startsWith(pref)) return;
     if (!message.channel === '437757021953982485') return;
     if (!message.channel === '441663623216103426') return;
   
@@ -58,7 +58,7 @@ client.on('message', async message => {
 client.on('message', async message => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
-    if (!message.content.startsWith(pref)) return;
+  //  if (!message.content.startsWith(pref)) return;
     if (!message.channel === '437757021953982485') return;
     if (!message.channel === '441663623216103426') return;
     if (message.content === '--verify open source is not responsible') return;
