@@ -1,51 +1,28 @@
 const Discord = require('discord.js');
 const { version } = require('discord.js');
 const Util = require('discord.js');
-const ytdl = require('ytdl-core');
-const YouTube = require('simple-youtube-api');
 const client = new Discord.Client();
 const chalk = require('chalk');
-const ms = require('ms');
-const weather = require('weather-js');
-const superagent = require('superagent');
-const moment = require('moment');
 client.login(process.env.BOT_TOKEN);
-const youtube = new YouTube('AIzaSyB2ezaRFUbMxFKmnYK6_F_AWwzSTBi30x4');
-const queue = new Map();
 
-// var reload = (message, cmd) => {
-//   delete require.cache[require.resolve('./commands/' + cmd)];
-//   try {
-//     let cmdFile = require('./commands/' + cmd);
-//   } catch (err) {
-//     message.channel.send(`Problem loading ${cmd}: ${err}`).then(
-//       response => response.delete(1000).catch(error => console.log(error.stack))
-//     ).catch(error => console.log(error.stack));
-//   }
-//   message.channel.send(`${cmd} reload was a success!`).then(
-//     response => response.delete(1000).catch(error => console.log(error.stack))
-//   ).catch(error => console.log(error.stack));
-// };
-// exports.reload = reload;
-
-var prefix = "f!"
-var botversion = '3.0.0'
+var prefix = "--"
+var botversion = '0.0.1'
 
 // Channels
-var rs1 = '413096711423131648' // WierdBot Discord  Channel: greets
-var greetings = '413096711423131648' // greetings channel
-var punishments = '420977452534202369' // punishments channel
-var bc = '419040706955444224' // Bot-Commands channel
-var pbotlogs = '415280410495287316' // bot logs/cmds channel
-var logs = '404759831950655498' // logging channel
+//var rs1 = '413096711423131648' // WierdBot Discord  Channel: greets
+var greetings = '441663494216220682' // greetings channel
+//var punishments = '420977452534202369' // punishments channel
+var bc = '441663623216103426' // Bot-Commands channel
+//var pbotlogs = '415280410495287316' // bot logs/cmds channel
+var logs = '437757021953982485' // logging channel
 
 // Bot Code 
 client.on('ready', () => {
   console.log(`Bot version: ${botversion}`);
   console.log(`Bot Prefix: "${prefix}"`);
   console.log('All commands Loaded!');
-  console.log(chalk.bgWhite.black('Your bot is now online (Firespread Bot)'));
-  client.channels.get('421362442191241236').send('Im here after restarting');
+  console.log(chalk.bgWhite.black('Your bot is now online (Verify Bot)'));
+  // client.channels.get('421362442191241236').send('Im here after restarting');
 //   client.channels.get('419040375961812992').send('Hello Firespread Members :wave:')
 //   client.channels.get('419040375961812992').send('[I was turned on or I was restarted]')
 });
@@ -63,414 +40,16 @@ client.on('error', e => {
   console.log(chalk.red(e.replace(regToken, 'that was redacted')));
 });
 
-// client.elevation = function(msg) {
-//   let permlvl = 0;
-//   let mod_role = msg.guild.roles.find('name', 'FS Moderators');
-//   if (mod_role && msg.member.roles.has(mod_role.id)) permlvl = 2;
-//   let admin_role = msg.guild.roles.find('name', 'FS Admins');
-//   if (admin_role && msg.member.roles.has(admin_role.id)) permlvl = 3;
-//   if (msg.author.id === require('./config.json').ownerid) permlvl = 4;
-//   return permlvl;
-// };
-
-var mention = '<@373913434158530571>'
+// var mention = '<@373913434158530571>'
 client.on('message', async message => {
     let args = message.content.split(' ').slice(1);
     var result = args.join(' ')
-    let botsonly = message.guild.roles.find('name', '0')
     let botowner = message.guild.roles.find('name', 'Bot Owner - DO NOT TOUCH!');
-    let ownerRole = message.guild.roles.find('name', 'FS Owners');
-    let fsbmRole = message.guild.roles.find('name', 'FS Bot Manager');
-    let fsbpRole = message.guild.roles.find('name', 'FS Purge');
-    let fswRole = message.guild.roles.find('name', 'FS Warn');
-    let fskRole = message.guild.roles.find('name', 'FS Kick');
-    let fsmRole = message.guild.roles.find('name', 'FS Mute');
-    let fsbRole = message.guild.roles.find('name', 'FS Ban');
     let memberRole = message.guild.roles.find('name', 'Members')
-    let mutedRole = message.guild.roles.find('name', 'Muted')
     
     if (!message.content.startsWith(prefix)) return;
-    if(!message.member.roles.has(botowner.id)) return; // message.channel.send('I\'m Sorry, but I am in Maintenance Mode so my commands have been disabled!');
-    // if (!message.content.startsWith(prefix)) return;
 
-    if (message.content.startsWith(prefix +'help help')) {
-      message.channel.send(`\`\`\`Displays the commands list\n\nUsage: ${prefix}help     Alias; ${prefix}h\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h help')) {
-      message.channel.send(`\`\`\`Displays the commands list\n\nUsage: ${prefix}help     Alias; ${prefix}h\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'help h')) {
-      message.channel.send(`\`\`\`Displays the commands list\n\nUsage: ${prefix}h     Alias; ${prefix}help\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h h')) {
-      message.channel.send(`\`\`\`Displays the commands list\n\nUsage: ${prefix}h     Alias; ${prefix}help\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'help website')) {
-      message.channel.send(`\`\`\`Tells you the link to the website\n\nUsage: ${prefix}website\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h website')) {
-      message.channel.send(`\`\`\`Tells you the link to the website\n\nUsage: ${prefix}website\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'help store')) {
-      message.channel.send(`\`\`\`Tells you the link to the store to donate to us\n\nUsage: ${prefix}store\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h store')) {
-      message.channel.send(`\`\`\`Tells you the link to the store to donate to us\n\nUsage: ${prefix}store\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'help ip')) {
-      message.channel.send(`\`\`\`Stuck on trying to figure out the server ip? Doing this command tells you the ip to the server\n\nUsage: ${prefix}ip\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h ip')) {
-      message.channel.send(`\`\`\`Stuck on trying to figure out the server ip? Doing this command tells you the ip to the server\n\nUsage: ${prefix}ip\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'help staff')) {
-      message.channel.send(`\`\`\`Provides you a full list of all of our staff members\n\nUsage: ${prefix}staff\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h staff')) {
-      message.channel.send(`\`\`\`Provides you a full list of all of our staff members\n\nUsage: ${prefix}staff\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'help ping')) {
-      message.channel.send(`\`\`\`Pong! :joy:\n\nUsage: ${prefix}ping\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h ping')) {
-      message.channel.send(`\`\`\`Pong! :joy:\n\nUsage: ${prefix}ping\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'help fy')) {
-      message.channel.send(`\`\`\`A command that you trigger the bot to tell someone "Fuck You"\n\nUsage: ${prefix}fy <user>     Alias; ${prefix}fuckyou\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h fy')) {
-      message.channel.send(`\`\`\`A command that you trigger the bot to tell someone "Fuck You"\n\nUsage: ${prefix}fy <user>     Alias; ${prefix}fuckyou\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'help fuckyou')) {
-      message.channel.send(`\`\`\`A command that you trigger the bot to tell someone "Fuck You"\n\nUsage: ${prefix}fuckyou <user>     Alias; ${prefix}fy\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h fuckyou')) {
-      message.channel.send(`\`\`\`A command that you trigger the bot to tell someone "Fuck You"\n\nUsage: ${prefix}fuckyou <user>     Alias; ${prefix}fy\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'help info')) {
-      message.channel.send(`\`\`\`Displays a list of my info including my version and my current language\n\nUsage: ${prefix}info\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h info')) {
-      message.channel.send(`\`\`\`Displays a list of my info including my version and my current language\n\nUsage: ${prefix}info\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'help setgame')) {
-      message.channel.send(`\`\`\`Sets my game status to the specified name\n\nUsage: ${prefix}setgame <game name>     Alias; ${prefix}sg\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h setgame')) {
-      message.channel.send(`\`\`\`Sets my game status to the specified name\n\nUsage: ${prefix}setgame <game name>     Alias; ${prefix}sg\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'help sg')) {
-      message.channel.send(`\`\`\`Sets my game status to the specified name\n\nUsage: ${prefix}sg <game name>     Alias; ${prefix}setgame\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h sg')) {
-      message.channel.send(`\`\`\`Sets my game status to the specified name\n\nUsage: ${prefix}sg <game name>     Alias; ${prefix}setgame\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'help purge')) {
-      message.channel.send(`\`\`\`Deletes the specified amount of messages - Limit: 100 (Changing Soon)\n\nUsage: ${prefix}purge <number>     Alias; ${prefix}prune\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h purge')) {
-      message.channel.send(`\`\`\`Deletes the specified amount of messages - Limit: 100 (Changing Soon)\n\nUsage: ${prefix}purge <number>     Alias; ${prefix}prune\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'help prune')) {
-      message.channel.send(`\`\`\`Deletes the specified amount of messages - Limit: 100 (Changing Soon)\n\nUsage: ${prefix}prune <number>     Alias; ${prefix}purge\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h prune')) {
-      message.channel.send(`\`\`\`Deletes the specified amount of messages - Limit: 100 (Changing Soon)\n\nUsage: ${prefix}prune <number>     Alias; ${prefix}purge\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'help warn')) {
-      message.channel.send(`\`\`\`Warns the user that you mention\n\nUsage: ${prefix}warn <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h warn')) {
-      message.channel.send(`\`\`\`Warns the user that you mention\n\nUsage: ${prefix}warn <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'help kick')) {
-      message.channel.send(`\`\`\`Kicks the user that you mention\n\nUsage: ${prefix}kick <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h kick')) {
-      message.channel.send(`\`\`\`Kicks the user that you mention\n\nUsage: ${prefix}kick <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'help mute')) {
-      message.channel.send(`\`\`\`Mutes the user that you mention\n\nUsage: ${prefix}mute <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h mute')) {
-      message.channel.send(`\`\`\`Mutes the user that you mention\n\nUsage: ${prefix}mute <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'help ban')) {
-      message.channel.send(`\`\`\`Bans the user that you mention\n\nUsage: ${prefix}ban <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h ban')) {
-      message.channel.send(`\`\`\`Bans the user that you mention for a set period of time\n\nUsage: ${prefix}ban <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'help userinfo')) {
-      message.channel.send(`\`\`\`Gives you detailed information of the account of the person that you mention.\n\nUsage: ${prefix}userinfo <mention user>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h userinfo')) {
-      message.channel.send(`\`\`\`Gives you detailed information of the account of the person that you mention.\n\nUsage: ${prefix}userinfo <mention user>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help weather')) {
-      message.channel.send(`\`\`\`Gives you the weather of a certain location in either Celsius or Fahrenheit.\n\nUsage: ${prefix}weather <degree letter> <location>\n<> = Required  [] = Optional    WARNING: The degree type/letter has to be lowercase!`)
-    } else
-
-    if (message.content.startsWith(prefix + 'h weather')) {
-      message.channel.send(`\`\`\`Gives you the weather of a certain location in either Celsius or Fahrenheit.\n\nUsage: ${prefix}weather <degree letter> <location>\n<> = Required  [] = Optional    WARNING: The degree type/letter has to be lowercase!`)
-    } else
-
-    if (message.content.startsWith(prefix +'help fy')) {
-      message.channel.send(`\`\`\`A command that you trigger the bot to tell someone "Fuck You"\n\nUsage: ${prefix}fy <user>     Alias; ${prefix}fuckyou\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h fy')) {
-      message.channel.send(`\`\`\`A command that you trigger the bot to tell someone "Fuck You"\n\nUsage: ${prefix}fy <user>     Alias; ${prefix}fuckyou\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'helper')) {
-      if(message.member.roles.has(fsbmRole.id)) {
-        let user = message.mentions.users.first();
-
-        if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
-
-        message.guild.member(user).addRole(fswRole.id)
-        message.channel.send('Giving that user the needed roles for Helper now... ')
-          .then(message => message.edit('I have given that user the needed roles for Helpers! :ok_hand:'));
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`helper\` command in <#${message.channel.id}> and gave the Helper roles to **${user}**!`)
-      } else {
-        message.channel.send('You do not have the permission to use that command!')
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`helper\` command in <#${message.channel.id}>!`)
-      }
-    } else
-
-    if (message.content.startsWith(prefix + 'remove helper')) {
-      if(message.member.roles.has(fsbmRole.id)) {
-        let user = message.mentions.users.first();
-
-        if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
-
-        message.guild.member(user).removeRole(fswRole.id)
-        message.channel.send('I have removed the needed roles for Helpers from that user! :ok_hand:')
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`remove helper\` command in <#${message.channel.id}> and removed the Helper roles from **${user}**!`)
-      } else {
-        message.channel.send('You do not have the permission to use that command!')
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`remove helper\` command in <#${message.channel.id}>!`)
-      }
-    } else
-
-    if (message.content.startsWith(prefix + 'mod')) {
-      if(message.member.roles.has(fsbmRole.id)) {
-        let user = message.mentions.users.first();
-
-        if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
-
-        message.guild.member(user).addRole(fsmRole.id)
-        message.guild.member(user).addRole(fskRole.id)
-        message.guild.member(user).addRole(fswRole.id)
-        message.channel.send('Giving that user the needed roles for Moderator now...')
-          .then(message => message.edit('Giving that user the needed roles for Moderator now...'))
-          .then(message => message.edit('I have given that user the needed roles for Moderators! :ok_hand:'))
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`mod\` command in <#${message.channel.id}> and gave the Moderator roles to **${user}**!`)
-      } else {
-        message.channel.send('You do not have the permission to use that command! (mod)')
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`mod\` command in <#${message.channel.id}>!`)
-      }
-    } else
-
-    if (message.content.startsWith(prefix + 'remove mod')) {
-      if(message.member.roles.has(fsbmRole.id)) {
-        let user = message.mentions.users.first();
-
-        if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
-
-        message.guild.member(user).removeRole(fsmRole.id)
-        message.guild.member(user).removeRole(fskRole.id)
-        message.channel.send('Removing the needed roles for Moderator from that user now...')
-          .then(message => message.edit('I have removed the needed roles for Moderators from that user! :ok_hand:'))
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`remove mod\` command in <#${message.channel.id}> and removed the Moderator roles from **${user}**!`)
-      } else {
-        message.channel.send('You do not have the permission to use that command! (remove mod)')
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`remove mod\` command in <#${message.channel.id}>!`)
-      }
-    } else
-
-    if (message.content.startsWith(prefix + 'admin')) {
-      if(message.member.roles.has(fsbmRole.id)) {
-        let user = message.mentions.users.first();
-
-        if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
-
-        message.guild.member(user).addRole(fsbpRole.id)
-        message.guild.member(user).addRole(fsbRole.id)
-        message.guild.member(user).addRole(fsmRole.id)
-        message.guild.member(user).addRole(fskRole.id)
-        message.guild.member(user).addRole(fswRole.id)
-        message.channel.send('Giving that user the needed roles for Admin now...')
-          .then(message => message.edit('Giving that user the needed roles for Admin now...'))
-          .then(message => message.edit('Giving that user the needed roles for Admin now...'))
-          .then(message => message.edit('Giving that user the needed roles for Admin now...'))
-          .then(message => message.edit('Giving that user the needed roles for Admin now...'))
-          .then(message => message.edit('I have given that user the needed roles for Admins! :ok_hand:'))
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`admin\` command in <#${message.channel.id}> and gave the Admin roles to **${user}**!`)
-      } else {
-        message.channel.send('You do not have the permission to use that command! (admin)')
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`admin\` command in <#${message.channel.id}>!`)
-      }
-    } else
-
-    if (message.content.startsWith(prefix + 'remove admin')) {
-      if(message.member.roles.has(fsbmRole.id)) {
-        let user = message.mentions.users.first();
-
-        if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
-
-        message.guild.member(user).removeRole(fsbpRole.id)
-        message.guild.member(user).removeRole(fsbRole.id)
-        message.channel.send('Removing the needed roles for Admin from that user now...')
-          .then(message => message.edit('I have removed the needed roles for Admins from that user! :ok_hand:'))
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`remove admin\` command in <#${message.channel.id}> and removed the Admin roles from **${user}**!`)
-      } else {
-        message.channel.send('You do not have the permission to use that command! (remove admin)')
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`remove admin\` command in <#${message.channel.id}>!`)
-      }
-    } else
-
-    if (message.content.startsWith(prefix + 'help')) {
-      let helpembed1 = new Discord.RichEmbed()
-      .setColor('RED')
-      .setTitle('__**Help**__')
-      .addField('**Main**', `${prefix}help                        Alias; ${prefix}h\n${prefix}userinfo\n${prefix}ping\n${prefix}weather\n${prefix}weather c\n${prefix}weather f\n${prefix}time\n${prefix}say\n${prefix}sinfo\n${prefix}suggest\n${prefix}feedback\n${prefix}fuckyou                 Alias; ${prefix}fy\n\u200b`)
-      .addField('**Permissioned**', `${prefix}setgame                Alias; ${prefix}sg\n${prefix}purge                     Alias; ${prefix}prune\n${prefix}warn\n${prefix}kick\n${prefix}mute\n${prefix}unmute\n${prefix}ban\n\u200b`)
-      .addField('**Music**', 'Music Features Coming Soon!\n\u200b')
-      .addField('\u200b', `You can do \`${prefix}help <command>\` or \`${prefix}h <command>\` for more information for that command.`)
-      client.channels.get(`${bc}`).send(helpembed1);
-      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`help\` command in <#${message.channel.id}>!`)
-    } else
-
-    if (message.content.startsWith(prefix + 'h')) {
-      let helpembed2 = new Discord.RichEmbed()
-      .setColor('RED')
-      .setTitle('__**Help**__')
-      .addField('**Main**', `${prefix}help                        Alias; ${prefix}h\n${prefix}userinfo\n${prefix}ping\n${prefix}weather\n${prefix}weather c\n${prefix}weather f\n${prefix}time\n${prefix}say\n${prefix}sinfo\n${prefix}suggest\n${prefix}feedback\n${prefix}fuckyou                 Alias; ${prefix}fy\n\u200b`)
-      .addField('**Permissioned**', `${prefix}setgame                Alias; ${prefix}sg\n${prefix}purge                     Alias; ${prefix}prune\n${prefix}warn\n${prefix}kick\n${prefix}mute\n${prefix}unmute\n${prefix}ban\n\u200b`)
-      .addField('**Music**', `${prefix}play\n${prefix}pause\n${prefix}resume\n${prefix}queue\n${prefix}skip\n${prefix}nowplaying           Alias; ${prefix}np\n\u200b`)
-      .addField('\u200b', `You can do \`${prefix}help <command>\` or \`${prefix}h <command>\` for more information for that command.`)
-      client.channels.get(`${bc}`).send(helpembed2);
-      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`h\` command in <#${message.channel.id}>!`)
-    } else
-
-    if (message.content.startsWith(prefix + 'ip')) {
-      client.channels.get(`${bc}`).send('**--->>** __**IP:**__\n\nfirespread.mcpvp.live');
-      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`ip\` command in <#${message.channel.id}>!`)
-    } else
-
-    if (message.content.startsWith(prefix + 'store')) {
-      client.channels.get(`${bc}`).send('**--->>** __**Store:**__\n\n*Unavailable*');
-      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`store\` command in <#${message.channel.id}>!`)
-    } else
-
-    if (message.content.startsWith(prefix + 'website')) {
-      client.channels.get(`${bc}`).send('**--->>** __**Website:**__\n\n*Unavailable*');
-      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`website\` command in <#${message.channel.id}>!`)
-    } else
-
-    if (message.content.startsWith(prefix + 'invite')) {
-      client.channels.get(`${bc}`).send('Can invite people to the discord using this invite link: https://discord.gg/nhbqpM7')
-      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`invite\` command in <#${message.channel.id}>!`)
-    } else
-
-    if (message.content.startsWith(prefix + 'staff')) {
-      let embedstaff1 = new Discord.RichEmbed()
-      .setColor('ORANGE')
-      .setTitle('__**Firespread Staff**__\n\u200b')
-      .addField('**Owners**', '<@312632622834778113> (Founder/Creator)\n<@265039968475283456> (Owner)\n\u200b')
-      .addField('**Developers**', '<@321922926188167168> (Developer)\n<@398947686415466497> (Bot Owner/Developer)\n\u200b')
-      .addField('**Managers**', '<@335847551838322688> (Manager)\n\u200b')
-      .addField('**Admins**', '<@163278745778651136> (Head-Admin)\n\u200b')
-      .addField('**Moderators**', '<@327476614751584257> (Moderator)\n<@298222908155887616> (Moderator)\n\u200b')
-      .addField('**Helpers**', 'None :sob:')
-      client.channels.get(`${bc}`).send(embedstaff1);
-      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`staff\` command in <#${message.channel.id}>!`)
-    } else
-
-    if (message.content.startsWith(prefix + 'ping')) {
-      client.channels.get(`${bc}`).send(`Pong! \`${Date.now() - message.createdTimestamp} ms\``);
-      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`ping\` command in <#${message.channel.id}>!`)
-    } else
-
-    if (message.content.startsWith(prefix + 'info')) {
-      let embed3 = new Discord.RichEmbed()
-      .setColor('RANDOM')
-      .addField('**My Version**', `${botversion}`)
-      .addField('**Current Language**', 'JavaScript (discord.js)')
-      .addField('**Founder**', '<@398947686415466497>')
-      .addField('**My Current Developers**', '<@398947686415466497> (Main Developer)\n<@150318052058202112> (Side Dev/Contributor)')
-      client.channels.get(`${bc}`).send(embed3);
-      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`info\` command in <#${message.channel.id}>!`)
-    } else
-
-    if (message.content.startsWith(prefix + 'warn')) {
-      if(message.member.roles.has(fswRole.id)) {
-        let reason = args.slice(1).join(' ');
-        let user = message.mentions.users.first();
-        if (reason.length < 1) return message.reply('You must provide a reason for the warning');
-        if (message.mentions.users < 1) return message.reply('You must mention someone to warn them.').catch(console.error);
-        let warnlog = new Discord.RichEmbed()
-        .setColor('PURPLE')
-        .addField(':warning: __User Warned__', `${message.author} **Warned** ${user} for \`${reason}\`!`)
-        .setFooter(`${message.createdAt}`)
-
-        let embedwarn = new Discord.RichEmbed()
-        .setTitle('')
-        .setColor('PURPLE')
-        .addField('Action:', 'Warning')
-        .addField('User:', `${user.tag}`)
-        .addField('Moderator:', `${message.author.username}#${message.author.discriminator}`)
-        .addField('Reason:', `${reason}`)
-        client.channels.get(`${punishments}`).send(embedwarn)
-        message.channel.send('That user has successfully been warned! :ok_hand:')
-        client.channels.get(`${logs}`).send(warnlog)
-      } else {
-        message.channel.send('You do not have the permission to use that command!')
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`warn\` command in <#${message.channel.id}>!`)
-      }
-    } else
-
-    if (message.content.startsWith(prefix + 'mute')) {
+/*    if (message.content.startsWith(prefix + 'mute')) {
       if(message.member.roles.has(fsmRole.id)) {
         let reason = args.slice(1).join(' ');
         let user = message.mentions.users.first();
@@ -705,7 +284,7 @@ client.on('message', async message => {
       message.channel.send(`${fymention}, Fuck You!`)
       client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`fuckyou\` command in <#${message.channel.id}>!`)
     } else
-
+*/
     // if (message.content.startsWith(prefix + 'ds')) {
     //   let spamit = args.join(' ')
     //   if (spamit.length < 1) return message.reply('Please specify a message to spam Fisger\'s personal discord');
@@ -756,7 +335,7 @@ client.on('message', async message => {
       // client.channels.get('404352438330589186').send(`${spamit}`)
     // } else
 
-    if (message.content.startsWith(prefix + 'userinfo')) {
+   /* if (message.content.startsWith(prefix + 'userinfo')) {
       let member = message.mentions.members.first();
       let lastmsg;
       // let delta = Math.abs( message.createdAt - member.user.createdAt) / 1000
@@ -1097,7 +676,7 @@ client.on('message', async message => {
       `)
       client.channels.get(`${bc}`).send(`**${message.author.username}** just used the \`rules\` command in <#${message.channel.id}>!`)
     }
-
+*/
     // if (message.content.startsWith(prefix + 'promote')) {
     //   if(message.member.roles.has(fsbmRole.id)) {
     //     let user = message.mentions.users.first();
@@ -1283,7 +862,7 @@ if (message.content.startsWith(prefix + 'mute')) {
 } else
 */
 
-client.on('message', async message => { //----- RE ENABLE AFTER MAINTENANCE -----
+/*client.on('message', async message => { //----- RE ENABLE AFTER MAINTENANCE -----
   let botowner = message.guild.roles.find('name', 'Bot Owner - DO NOT TOUCH!');
   if(!message.member.roles.has(botowner.id)) return; // message.channel.send('I\'m Sorry, but I am in Maintenance Mode so my commands have been disabled!');
   if (!message.content.startsWith(prefix)) return;
@@ -1622,7 +1201,7 @@ client.on('guildBanRemove', (guild, user) => {
   // let guild = member.guild;
   guild.channels.get(`${greetings}`).send(`**${user.tag}** Was just unbanned from the **Firespread Network Discord!**`);
 });
-
+*/
 client.on('guildMemberAdd', member => {
   let guild = member.guild;
   let years = (((member.joinedAt - member.user.createdAt) / 1000 / 31556952) >> 0)
@@ -1640,9 +1219,9 @@ client.on('guildMemberAdd', member => {
   .addField('**Joined**', `${member.joinedAt}`, true)
   .addField('**Created**', `${years} years ${months} months ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds ago`)
 
-  guild.channels.get(`${greetings}`).send(`Everyone, Please Welcome the newest member of the __Firespread Network Discord__ ~~ ${member.user}! We now have a total of **${guild.memberCount}** members in the discord!`)
-  guild.channels.get(`${pbotlogs}`).send(`${prefix}new ${member.user}`);
-  member.user.send(`Hello ${member.user.username}, Thank you for being part of the Firespread Team! :heart:\n\nIf you do not mind, we would like to ask you a couple favors.\nFirst thing is that we would really appreciate it if you would read our <#392050292574781440> and when you have finished reading our rules we would like for you to check out the <#392050457230573571> and make sure that your question is or isnt there, if its not there then you can request support in <#392044096279281674> besure to tell them what your having your issue on!\n\nIf you have managed to read all of this then you are very wonderful. :heart:`)
+  guild.channels.get(`${greetings}`).send(`**${member.user}** has joined the server! To gain access to the server you must do this... (blah blah blah)`)
+  // guild.channels.get(`${pbotlogs}`).send(`${prefix}new ${member.user}`);
+  // member.user.send(`Hello ${member.user.username}, Thank you for being part of the Firespread Team! :heart:\n\nIf you do not mind, we would like to ask you a couple favors.\nFirst thing is that we would really appreciate it if you would read our <#392050292574781440> and when you have finished reading our rules we would like for you to check out the <#392050457230573571> and make sure that your question is or isnt there, if its not there then you can request support in <#392044096279281674> besure to tell them what your having your issue on!\n\nIf you have managed to read all of this then you are very wonderful. :heart:`)
   guild.channels.get(`${logs}`).send(joinlog)
 });
 
@@ -1652,12 +1231,12 @@ client.on('guildMemberRemove', member => {
   let leavelog = new Discord.RichEmbed()
   .addField(':outbox_tray: __**User left**__', `${member.user} | ${member.user.tag}`)
 
-  guild.channels.get(`${greetings}`).send(`${member.user} **(**${member.user.username}#${member.user.discriminator}**)** Has left the __Firespread Network Discord__! We now have gone down to **${guild.memberCount}** members in the discord!`)
+  guild.channels.get(`${greetings}`).send(`**${member.user.tag}** has left the server!`)
   guild.channels.get(`${logs}`).send(leavelog)
 });
 // ${member.user.presence.game === null ? "Nothing! (Literally)" :  member.user.presence.game.name}
 // Emoji Events
-client.on('emojiCreate', emoji => {
+/*client.on('emojiCreate', emoji => {
   const caniemoji = emoji.animated ? "<:nitro:422127897122439168> This is an Animated Emoji" : "This is not an Animated Emoji";
   let emojicreate = new Discord.RichEmbed()
   .addField(`-=- Emoji Event Log -=-`, `"**${emoji.name}**" was created\nID: ${emoji.id}`)
@@ -1837,7 +1416,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
      client.channels.get(`${logs}`).send(`${newMember.user.tag} got Server UnDeafened!`)
         // User leaves a voice channel
   }
-});
+}); */
 
 // User Events
 // client.on('presenceUpdate', (oldMember, newMember) => {
@@ -1857,12 +1436,3 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 //      client.channels.get(`${logs}`).send(`${newMember.user.tag} changed their nickname from **${oldMember.nickname}** to **${newMember.nickname}**`)
 //   }
 // });
-
-client.on('message', message => {
-  let args = message.content.split(' ').slice(1);
-  if (message.content.startsWith(prefix + 'tsay')) {
-    let tsay = args.join(' ')
-    if (tsay.length < 1 ) return message.reply("Please provide a message!")
-    message.channel.send(`${tsay}`)
-  }
-});
