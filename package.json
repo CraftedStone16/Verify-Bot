@@ -1,0 +1,27 @@
+{
+  "name": "firespread",
+  "version": "0.5.0",
+  "description": "A Private Bot for the Firespread Network!",
+  "main": "firespread.js",
+  "scripts": {
+    "start": "node firespread.js"
+  },
+  "author": "Firespread Bot Development Team",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.3.2",
+    "discord.js": "^11.3.2",
+    "moment": "^2.21.0",
+    "ms": "^2.1.1",
+    "mysql": "^2.15.0",
+    "node": "^9.8.0",
+    "node-gyp": "^3.6.2",
+    "opusscript": "0.0.6",
+    "rebuild": "^0.1.2",
+    "simple-youtube-api": "^5.0.1",
+    "superagent": "^3.8.2",
+    "weather-js": "^2.0.0",
+    "ytdl-core": "^0.19.0"
+  },
+  "devDependencies": {}
+}
