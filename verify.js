@@ -50,19 +50,18 @@ client.on('message', async message => {
     if (!message.content.startsWith(prefix)) return;
     if (!message.channel === '437757021953982485') return;
   
-    if (message.content === 'verify') {
-      message.channel.send(`You must provide the required phrase found in the rules`)
-    } else
-    
+  
     if (message.content === 'verify Open Source is not responsible for your loss') {
-       message.delete(5000);
-       message.channel.send('Damn!')
-       message.member.addRole('437738324183089154')
-     } else if (!message.content === 'verify Open Source is not responsible for your loss') {
-       message.delete(5000);
-       message.channel.send(`Sorry ${message.user}, but that is the incorrect phrase!`)
-       return;
-       }
+      message.delete(5000);
+      message.channel.send('Damn!')
+      message.member.addRole('437738324183089154')
+      return;
+    } else
+
+    if (message.content.startsWith(prefix + 'verify') {
+      message.delete(5000);
+      message.channel.send(`Sorry ${message.user}, Youu have provided an incorrect/invalid phrase! The correct phrase is found in the rules.`)
+      return;
     }
 });
 /*client.on('message', async message => {
