@@ -49,18 +49,19 @@ client.on('message', async message => {
     
     if (!message.content.startsWith(prefix)) return;
     if (!message.channel === '437757021953982485') return;
-  
-  
-    if (message.content === 'verify Open Source is not responsible for your loss') {
-      message.delete(5000);
-      message.channel.send('Damn!')
-      message.member.addRole('437738324183089154')
-      return;
-    } else
 
     if (message.content.startsWith(prefix + 'verify')) {
       message.delete(5000);
-      message.channel.send(`Sorry ${message.user}, Youu have provided an incorrect/invalid phrase! The correct phrase is found in the rules.`)
+      message.channel.send(`Sorry ${message.user}, You have provided an incorrect/invalid phrase! The correct phrase is found in the rules.`).then(message => message.delete(60000));
+      return;
+    }
+});
+client.on('message', async message => {
+    if (!message.channel === '437757021953982485') return;
+    if (message.content === '--verify Open Source is not responsible for your loss') {
+      message.delete(5000);
+      message.channel.send('Damn!');
+      message.member.addRole('437738324183089154');
       return;
     }
 });
