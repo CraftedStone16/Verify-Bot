@@ -48,7 +48,31 @@ client.on('message', async message => {
     let memberRole = message.guild.roles.find('name', 'Members')
     
     if (!message.content.startsWith(prefix)) return;
-
+    if (!message.channel === '437757021953982485') return;
+  
+    if (message.content === 'verify') {
+      message.channel.send(`You must provide the required phrase found in the rules`)
+    } else
+    
+    if (message.content === 'verify Open Source is not responsible for your loss') {
+       message.delete(5000);
+       message.channel.send('Damn!')
+       message.member.addRole('437738324183089154')
+     } else if (!message.content === 'verify Open Source is not responsible for your loss') {
+       message.delete(5000);
+       message.channel.send(`Sorry ${message.user}, but that is the incorrect phrase!`)
+       return;
+       }
+    }
+)};
+/*client.on('message', async message => {
+    let args = message.content.split(' ').slice(1);
+    var result = args.join(' ')
+    let botowner = message.guild.roles.find('name', 'Bot Owner - DO NOT TOUCH!');
+    let memberRole = message.guild.roles.find('name', 'Members')
+    
+    if (!message.content.startsWith(prefix)) return;
+*/  
 /*    if (message.content.startsWith(prefix + 'mute')) {
       if(message.member.roles.has(fsmRole.id)) {
         let reason = args.slice(1).join(' ');
@@ -827,7 +851,7 @@ client.on('message', async message => {
                     // let arg3 = args.slice(2).join(' ');
                     message.channel.send(`First Arg: ${testargs[0]}    Second Arg: ${testargs[1]}    Third Arg: ${testargs[2]}`)
     */
-}); //----- RE ENABLE AFTER MAINTENANCE -----
+// }); //----- RE ENABLE AFTER MAINTENANCE -----
 /*
 if (message.content.startsWith(prefix + 'mute')) {
   if(message.member.roles.has(fswRole.id)) {
@@ -1119,6 +1143,7 @@ client.on('message', message => {
     message.channel.send(`My prefix is **${prefix}**`);
   }
 });
+
 
 client.on('message', message => {
   if (message.content === 'hey') {
