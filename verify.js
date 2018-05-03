@@ -42,6 +42,7 @@ client.on('error', e => {
 
 // var mention = '<@373913434158530571>'
 client.on('message', async message => {
+    if (message.author.bot) return;
     if (!message.channel === '437757021953982485') return;
   
     if (message.content != '--verify Open Source is not responsible for your loss') return message.channel.send(`Sorry ${message.author}, You have provided an incorrect/invalid phrase! The correct phrase is found in the rules.`);
