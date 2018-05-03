@@ -6,6 +6,7 @@ const chalk = require('chalk');
 client.login(process.env.BOT_TOKEN);
 
 var prefix = "--"
+var pref = '--'
 var botversion = '0.0.1'
 
 // Channels
@@ -44,9 +45,9 @@ client.on('error', e => {
 client.on('message', async message => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
+    if (!message.content.startsWith(pref)) return;
     if (!message.channel === '437757021953982485') return;
     if (!message.channel === '441663623216103426') return;
-    if (!message.content.startsWith(prefix)) return;
   
     if (message.content === '--verify open source is not responsible for your loss') {
       message.delete(5000); 
@@ -58,9 +59,9 @@ client.on('message', async message => {
 client.on('message', async message => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
+    if (!message.content.startsWith(pref)) return;
     if (!message.channel === '437757021953982485') return;
     if (!message.channel === '441663623216103426') return;
-    if (!message.content.startsWith(prefix)) return;
     if (message.content === '--verify open source is not responsible for your loss') return;
     if (message.content.length === prefix.length) return;
     message.content = message.content.substr(prefix.length);
