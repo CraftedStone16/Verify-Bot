@@ -44,8 +44,12 @@ client.on('error', e => {
 client.on('message', async message => {
     if (message.author.bot) return;
     if (!message.channel === '437757021953982485') return;
-  
-    if (message.content != '--verify Open Source is not responsible for your loss') return message.channel.send(`Sorry ${message.author}, You have provided an incorrect/invalid phrase! The correct phrase is found in the rules.`);
+    
+    if (message.content != '--') return;
+    if (message.content != '--verify Open Source is not responsible for your loss') {
+      message.delete(5000)
+      return message.channel.send(`Sorry ${message.author}, You have provided an incorrect/invalid phrase! The correct phrase is found in the rules.`).then(message => message.delete(30000));
+    }
     if (message.content === '--verify Open Source is not responsible for your loss') {
       message.delete(5000);
       message.channel.send('Damn!');
