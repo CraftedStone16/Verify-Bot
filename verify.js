@@ -50,7 +50,7 @@ client.on('message', async message => {
   
     if (message.content === '--verify open source is not responsible for your loss') {
       message.delete(5000); 
-      message.channel.send('it hpned');
+      // message.channel.send('it hpned');
       return message.member.addRole('437738324183089154');
       return;
     }
