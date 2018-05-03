@@ -42,6 +42,15 @@ client.on('error', e => {
 
 // var mention = '<@373913434158530571>'
 client.on('message', async message => {
+    if (!message.channel === '437757021953982485') return;
+    if (message.content === '--verify Open Source is not responsible for your loss') {
+      message.delete(5000);
+      message.channel.send('Damn!');
+      message.member.addRole('437738324183089154');
+      return;
+    }
+});
+client.on('message', async message => {
     let args = message.content.split(' ').slice(1);
     var result = args.join(' ')
     let botowner = message.guild.roles.find('name', 'Bot Owner - DO NOT TOUCH!');
@@ -52,16 +61,7 @@ client.on('message', async message => {
 
     if (message.content.startsWith(prefix + 'verify')) {
       message.delete(5000);
-      message.channel.send(`Sorry ${message.user}, You have provided an incorrect/invalid phrase! The correct phrase is found in the rules.`).then(message => message.delete(60000));
-      return;
-    }
-});
-client.on('message', async message => {
-    if (!message.channel === '437757021953982485') return;
-    if (message.content === '--verify Open Source is not responsible for your loss') {
-      message.delete(5000);
-      message.channel.send('Damn!');
-      message.member.addRole('437738324183089154');
+      message.channel.send(`Sorry ${message.author.user}, You have provided an incorrect/invalid phrase! The correct phrase is found in the rules.`).then(message => message.delete(30000));
       return;
     }
 });
