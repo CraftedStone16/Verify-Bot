@@ -52,7 +52,7 @@ client.on('message', async message => {
     let cmd = args.shift().toLowerCase();
     
     // if (message.content != '--') return;
-    if (cmd === 'verify open source is not responsible for your loss') {
+    if (message.content === '--verify open source is not responsible for your loss') {
       message.delete(5000);
       message.channel.send('Damn!');
       message.member.addRole('437738324183089154');
