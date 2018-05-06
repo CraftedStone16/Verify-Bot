@@ -6,7 +6,8 @@ const chalk = require('chalk');
 client.login(process.env.BOT_TOKEN);
 
 var prefix = "--"
-var pref = '--'
+var pref = "--"
+var modprefix = "~~"
 var botversion = '0.2.1'
 
 // Channels
@@ -321,6 +322,7 @@ client.on('message', async message => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
     if (!message.content.startsWith(pref)) return;
+    if (!message.content.startWith('--verify') return;
     if (!message.channel === '437757021953982485') return;
     if (!message.channel === '441663623216103426') return;
   
@@ -335,6 +337,7 @@ client.on('message', async message => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
     if (!message.content.startsWith(pref)) return;
+    if (!message.content.startWith('--verify') return;
     if (!message.channel === '437757021953982485') return;
     if (!message.channel === '441663623216103426') return;
     if (message.content === '--verify OpenSource is not responsible') return;
