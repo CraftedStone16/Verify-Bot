@@ -4,6 +4,7 @@ const Util = require('discord.js');
 const client = new Discord.Client();
 const chalk = require('chalk');
 const ms = require('ms');
+const moment = require('moment');
 client.login(process.env.BOT_TOKEN);
 
 var prefix = "--"
@@ -321,6 +322,73 @@ client.on('message', async message => {
     
     if (message.content === '--hierarchy') {
       message.channel.send(`__**Hierarchy**__\n• Administrator\n• Developer\n• Support\n• Premium\n• Member\n• Verified`)
+    } else
+    
+    if (message.content.startsWith(prefix + 'sinfo')) {
+      let serverembed = new Discord.RichEmbed()
+      .setDescription("__**Server Information**__\n\u200b")
+      .setColor('RANDOM')
+      .addField('Server Name', `${message.guild.name}\n`)
+      .addField('Server ID', `${message.guild.id}\n`)
+      .addField('Server Owner', `${message.guild.owner} | ${message.guild.ownerID}\n`)
+      .addField('Server Region', `${message.guild.region}\n`)
+      .addField('Verification Level', `${message.guild.verificationLevel}\n`)
+      .addField('Created on', `${message.guild.createdAt}\n`)
+      .addField('You joined at', `${message.member.joinedAt}\n`)
+      .addField('Total Members', `${message.guild.memberCount}\n`)
+      return client.channels.get(`${bc}`).send(serverembed).then(message => message.delete(60000));
+      //client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`sinfo\` command in <#${message.channel.id}>!`)
+    } else
+    
+    if (message.content.startsWith(prefix + 'stats')) {
+      let duration = moment.duration(client.uptime);
+      message.channel.send(`= STATISTICS =
+    • Mem Usage  :: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB
+    • Uptime     :: ${duration}
+    • Users      :: ${client.users.size.toLocaleString()}
+    • Servers    :: ${client.guilds.size.toLocaleString()}
+    • Channels   :: ${client.channels.size.toLocaleString()}
+    • Discord.js :: v${version}
+    • Node       :: ${process.version}`, {code: "asciidoc"});
+    } else
+      
+    if (message.content.startsWith(prefix + 'uptime')) {
+      let uptime = client.uptime;
+
+      let days = 0;
+      let hours = 0;
+      let minutes = 0;
+      let seconds = 0;
+      let notCompleted = true;
+
+      while (notCompleted) {
+
+          if (uptime >= 8.64e+7) {
+
+            days++;
+            uptime -= 8.64e+7;
+
+          } else if (uptime >= 3.6e+6) {
+
+            hours++;
+            uptime -= 3.6e+6;
+
+          } else if (uptime >= 60000) {
+
+            minutes++;
+            uptime -= 60000;
+
+          } else if (uptime >= 1000) {
+
+            seconds++;
+            uptime -= 1000;
+
+          }
+
+          if (uptime < 1000)  notCompleted = false;
+
+      }
+      message.channel.send(`**Uptime:\n\nDays: \`${days}\` \nHours: \`${hours}\` \nMinutes: \`${minutes}\` \nSeconds: \`${seconds}\`**`);
     }
 });
 
