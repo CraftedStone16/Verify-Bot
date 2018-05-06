@@ -79,8 +79,8 @@ client.on('message', async message => {
 
         if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
 
-        if (message.guild.member(user).roles.has(verifiedRole.id)) {
-          message.guild.member(user).removeRole(verifiedRole.id)
+        if (message.guild.member(user).roles.has(verified.id)) {
+          message.guild.member(user).removeRole(verified.id)
           message.guild.member(user).addRole(muteRole.id).then(() => {
             client.channels.get(`${punishments}`).send(embedmute)
             message.channel.send('That user has successfully been muted! :ok_hand:')
@@ -115,13 +115,13 @@ client.on('message', async message => {
         if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
 
         if (message.guild.member(user).roles.has(muteRole.id)) {
-          message.guild.member(user).addRole(verifiedRole.id)
+          message.guild.member(user).addRole(verified.id)
           message.guild.member(user).removeRole(muteRole.id).then(() => {
             client.channels.get(`${punishments}`).send(embedunmute)
             message.channel.send('That user has successfully been unmuted! :ok_hand:')
           client.channels.get(`${logs}`).send(unmutelog)
           });
-        } else if (message.guild.member(user).roles.has(verifiedRole.id)) {
+        } else if (message.guild.member(user).roles.has(verified.id)) {
           message.channel.send(`That user is not muted! To mute that user do \`${prefix}mute\``)
           }
       } else {
