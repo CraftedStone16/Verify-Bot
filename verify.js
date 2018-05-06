@@ -336,7 +336,7 @@ client.on('message', async message => {
       .addField('Created on', `${message.guild.createdAt}\n`)
       .addField('You joined at', `${message.member.joinedAt}\n`)
       .addField('Total Members', `${message.guild.memberCount}\n`)
-      return client.channels.get(`${bc}`).send(serverembed).then(message => message.delete(60000));
+      return message.channel.send(serverembed).then(message => message.delete(60000));
       //client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`sinfo\` command in <#${message.channel.id}>!`)
     } else
     
