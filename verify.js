@@ -317,6 +317,10 @@ client.on('message', async message => {
         message.channel.send('You do not have the permission to use that command!')
         client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`setgame\` command in <#${message.channel.id}>!`)
       }
+    } else
+    
+    if (message.content === '--hierarchy') {
+      message.channel.send(`__**Hierarchy**__\n• Administrator\n• Developer\n• Support\n• Premium\n• Member\n• Verified`)
     }
 });
 
