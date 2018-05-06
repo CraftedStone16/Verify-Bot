@@ -7,12 +7,12 @@ client.login(process.env.BOT_TOKEN);
 
 var prefix = "--"
 var pref = '--'
-var botversion = '0.0.1'
+var botversion = '0.2.1'
 
 // Channels
 //var rs1 = '413096711423131648' // WierdBot Discord  Channel: greets
 var greetings = '441663494216220682' // greetings channel
-//var punishments = '420977452534202369' // punishments channel
+var punishments = '442594775368073216' // punishments channel
 var bc = '441663623216103426' // Bot-Commands channel
 //var pbotlogs = '415280410495287316' // bot logs/cmds channel
 var logs = '437757021953982485' // logging channel
@@ -73,31 +73,263 @@ client.on('message', async message => {
       return message.channel.send(`Sorry ${message.author}, You have provided an incorrect/invalid phrase! The correct phrase is found in the rules.`).then(message => message.delete(30000));
     } 
 });
-/*client.on('message', async message => {
+client.on('message', async message => {
     let args = message.content.split(' ').slice(1);
     var result = args.join(' ')
-    let botowner = message.guild.roles.find('name', 'Bot Owner - DO NOT TOUCH!');
+    let botowner = message.guild.roles.find('name', 'Bot Owner');
+    let modRole = message.guild.roles.find('name', 'Moderator');
     let memberRole = message.guild.roles.find('name', 'Members')
+    let verified = message.guild.roles.find('name', 'Verified')
     
     if (!message.content.startsWith(prefix)) return;
-    if (!message.channel === '437757021953982485') return;
+  
+    if (message.content.startsWith(prefix + 'mute')) {
+      if(message.member.roles.has(modRole.id)) {
+        let reason = args.slice(1).join(' ');
+        let user = message.mentions.users.first();
+        let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
+        if (reason.length < 1) return message.reply('You must provide a reason for the mute').catch(console.error);
+        if (message.mentions.users < 1) return message.reply('You must mention someone to mute them.').catch(console.error);
 
-    if (message.content.startsWith(prefix + 'verify')) {
-      message.delete(5000);
-      message.channel.send(`Sorry ${message.author.user}, You have provided an incorrect/invalid phrase! The correct phrase is found in the rules.`).then(message => message.delete(30000));
-      return;
+        let mutelog = new Discord.RichEmbed()
+        .setColor('GREEN')
+        .addField(':speak_no_evil: __User Muted__', `${message.author} **Muted** ${user} for \`${reason}\`!`)
+        .setFooter(`${message.createdAt}`)
+
+        let embedmute = new Discord.RichEmbed()
+        .setTitle('')
+        .setColor('GREEN')
+        .addField('Action:', 'Mute')
+        .addField('User:', `${user.tag}`)
+        .addField('Moderator:', `${message.author.username}#${message.author.discriminator}`)
+        .addField('Reason:', `${reason}`)
+
+        if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
+
+        if (message.guild.member(user).roles.has(memberRole.id)) {
+          message.guild.member(user).removeRole(memberRole.id)
+          message.guild.member(user).addRole(muteRole.id).then(() => {
+            client.channels.get(`${punishments}`).send(embedmute)
+            message.channel.send('That user has successfully been muted! :ok_hand:')
+          client.channels.get(`${logs}`).send(mutelog)
+          });
+        } else if (message.guild.member(user).roles.has(muteRole.id)) {
+          message.channel.send(`That user is already muted! To unmute that user do \`${prefix}unmute\``)
+          }
+      } else {
+        message.channel.send('You do not have the permission to use that command!')
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`mute\` command in <#${message.channel.id}>!`)
+      }
+    } else
+
+    if (message.content.startsWith(prefix + 'unmute')) {
+      if(message.member.roles.has(modRole.id)) {
+        let user = message.mentions.users.first();
+        let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
+
+        let unmutelog = new Discord.RichEmbed()
+        .setColor('GREEN')
+        .addField(':monkey_face: __User Unmuted__', `${message.author} **Unmuted** ${user}!`)
+        .setFooter(`${message.createdAt}`)
+
+        let embedunmute = new Discord.RichEmbed()
+        .setTitle('')
+        .setColor('GREEN')
+        .addField('Action:', 'Un-Mute')
+        .addField('User:', `${user.tag}`)
+        .addField('Moderator:', `${message.author.username}#${message.author.discriminator}`)
+
+        if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
+
+        if (message.guild.member(user).roles.has(muteRole.id)) {
+          message.guild.member(user).addRole(memberRole.id)
+          message.guild.member(user).removeRole(muteRole.id).then(() => {
+            client.channels.get(`${punishments}`).send(embedunmute)
+            message.channel.send('That user has successfully been unmuted! :ok_hand:')
+          client.channels.get(`${logs}`).send(unmutelog)
+          });
+        } else if (message.guild.member(user).roles.has(memberRole.id)) {
+          message.channel.send(`That user is not muted! To mute that user do \`${prefix}mute\``)
+          }
+      } else {
+        message.channel.send('You do not have the permission to use that command!')
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`unmute\` command in <#${message.channel.id}>!`)
+      }
+    } else
+
+    if (message.content.startsWith(prefix + 'kick')) {
+      if(message.member.roles.has(modRole.id)) {
+        let reason = args.slice(1).join(' ');
+        let user = message.mentions.users.first();
+        if (reason.length < 1) return message.reply('You must provide a reason for the kick');
+        if (message.mentions.users < 1) return message.reply('You must mention someone to kick them.').catch(console.error);
+
+        if (!message.guild.member(user).kickable) return message.reply('I cannot kick that member');
+          message.guild.member(user).kick();
+
+        let kicklog = new Discord.RichEmbed()
+        .setColor('BLUE')
+        .addField(':boot: __User Kicked__', `${message.author} **Kicked** ${user} for \`${reason}\`!`)
+        .setFooter(`${message.createdAt}`)
+
+        let embedkick = new Discord.RichEmbed()
+        .setTitle('')
+        .setColor('BLUE')
+        .addField('Action:', 'Kick')
+        .addField('User:', `${user.tag}`)
+        .addField('Moderator:', `${message.author.username}#${message.author.discriminator}`)
+        .addField('Reason:', `${reason}`)
+        client.channels.get(`${punishments}`).send(embedkick)
+        client.channels.get(`${logs}`).send(kicklog)
+      } else {
+        message.channel.send('You do not have the permission to use that command!')
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`kick\` command in <#${message.channel.id}>!`)
+      }
+    } else
+
+    if (message.content.startsWith(prefix + 'ban')) {
+      if(message.member.roles.has(modRole.id)) {
+        let reason = args.slice(1).join(' ');
+        let user = message.mentions.users.first();
+        if (reason.length < 1) return message.reply('You must provide a reason for the ban');
+        if (message.mentions.users < 1) return message.reply('You must mention someone to ban them.').catch(console.error);
+
+        if (!message.guild.member(user).bannable) return message.reply('I cannot ban that member');
+          message.guild.ban(user, );
+
+        let banlog = new Discord.RichEmbed()
+        .setColor('RED')
+        .addField(':no_entry_sign: __User Banned__', `${message.author} **Banned** ${user} (${user}) for \`${reason}\``)
+        .setFooter(`${message.createdAt}`)
+
+        let embedban = new Discord.RichEmbed()
+        .setTitle('')
+        .setColor('RED')
+        .addField('Action:', 'Ban')
+        .addField('User:', `${user.tag}`)
+        .addField('Moderator:', `${message.author.username}#${message.author.discriminator}`)
+        .addField('Reason:', `${reason}`)
+        .addField('\u200b', `User ID: ${user.id}`)
+        client.channels.get(`${punishments}`).send(embedban)
+        client.channels.get(`${logs}`).send(banlog)
+      } else {
+        message.channel.send('You do not have the permission to use that command!')
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`ban\` command in <#${message.channel.id}>!`)
+      }
+    } else
+
+    if (message.content.startsWith(prefix + 'unban')) {
+      if(message.member.roles.has(modRole.id)) {
+        let user = args[0];
+        if (!user) return message.reply('You must supply a user ID.').catch(console.error);
+        message.guild.unban(user);
+
+        let unbanlog = new Discord.RichEmbed()
+        .setColor('RED')
+        .addField(':o: __User Unbanned__', `${message.author} **Unbanned** <@${user}>!`)
+        .setFooter(`${message.createdAt}`)
+
+        let embedunban = new Discord.RichEmbed()
+        .setTitle('')
+        .setColor('RED')
+        .addField('Action:', 'Un-Ban')
+        .addField('User:', `<@${user}>`)
+        .addField('Moderator:', `${message.author.username}#${message.author.discriminator}`)
+        client.channels.get(`${punishments}`).send(embedunban)
+        client.channels.get(`${logs}`).send(unbanlog)
+      } else {
+        message.channel.send('You do not have the permission to use that command!')
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`unban\` command in <#${message.channel.id}>!`)
+      }
+    } else
+
+    if (message.content.startsWith(prefix + 'lockdown')) {
+      if(message.member.roles.has(modRole.id)) {
+        if (!client.lockit) client.lockit = [];
+        let time = args.slice(0).join(' ');
+        let validUnlocks = ['release', 'unlock'];
+        if (time.length < 1) return message.reply('You must provide a duration for the lockdown');
+
+        let ldlog = new Discord.RichEmbed()
+        .setTitle(':lock: __Channel Locked__')
+        .addField('Moderator', `${message.author}`, true)
+        .addField('Channel', `${message.channel}`, true)
+        .addField('Duration', `${ms(ms(time), { long:true })}`, true)
+        .setFooter(`${message.createdAt}`)
+
+        let uldlog = new Discord.RichEmbed()
+        .setTitle(':unlock: __Channel Unlocked__')
+        .addField('Channel', `${message.channel}`, true)
+
+        if (validUnlocks.includes(time)) {
+          message.channel.overwritePermissions(message.guild.id, {
+            SEND_MESSAGE: null
+          }).then(() => {
+            clearTimeout(client.lockit[message.channel.id]);
+            delete client.lockit[message.channel.id];
+            message.channel.send(`It looks like you tried to Manually Unlocked this channel! Manual unlock is a known bug, to reallow members to talk do \`${prefix}lockdown 1s\`.`)
+          }).catch(error => {
+            console.log(error);
+          });
+        } else {
+          message.channel.overwritePermissions(message.guild.id, {
+            SEND_MESSAGES: false
+          }).then(() => {
+            message.channel.send(`**${message.channel.name}** was locked down for \`${ms(ms(time), { long:true })}\``).then(() => {
+              // client.channels.get(`${rs1}`).send(`__**A Channel Went into Lockdown:**__\n\n\n**Channel**: ${message.channel}\n-\n**Duration**: ${ms(ms(time), { long:true })}\n-\n**Time of the Lockdown**: ${message.createdAt}`)
+              client.channels.get(`${logs}`).send(ldlog)
+              client.lockit[message.channel.id] = setTimeout(() => {
+                message.channel.overwritePermissions(message.guild.id, {
+                  SEND_MESSAGES: null
+                }).then(client.channels.get(`${logs}`).send(uldlog)).catch(console.error);
+                delete client.lockit[message.channel.id];
+                // client.channels.get(`${rs1}`).send(`__**A Lockdown was Lifted**__\n\n\n**Channel**: <#${message.channel.id}>\n-\nThe Lockdown was Lifted at \`${this.createdAt}\``)
+              }, ms(time));
+
+            }).catch(error => {
+              console.log(error);
+            });
+          });
+      }} else {
+        message.channel.send('You do not have the permission to use that command!')
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`lockdown\` command in <#${message.channel.id}>!`)
+      }
+    } else
+  
+    if (message.content.startsWith(prefix + 'purge')) {
+      if(message.member.roles.has(modRole.id)) {
+        let messagecount = parseInt(result);
+        message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
+        message.channel.send(`Deleted **${messagecount}** messages.`).then(message => message.delete(2500));
+      } else {
+        message.channel.send('You do not have the permission to use that command!')
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`purge\` command in <#${message.channel.id}>!`)
+      }
+    } else
+
+    if (message.content.startsWith(prefix + 'prune')) {
+      if(message.member.roles.has(modRole.id)) {
+        let messagecount = parseInt(result);
+        message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
+        message.channel.send(`Deleted **${messagecount}** messages.`).then(message => message.delete(2500));
+      } else {
+        message.channel.send('You do not have the permission to use that command!')
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`prune\` command in <#${message.channel.id}>!`)
+      }
     }
-});*/
-/*client.on('message', async message => {
+});
+/* client.on('message', async message => {
     let args = message.content.split(' ').slice(1);
     var result = args.join(' ')
-    let botowner = message.guild.roles.find('name', 'Bot Owner - DO NOT TOUCH!');
+    let botowner = message.guild.roles.find('name', 'Bot Owner');
+    let modRole = message.guild.roles.find('name', 'Moderator');
     let memberRole = message.guild.roles.find('name', 'Members')
+    let verified = message.guild.roles.find('name', 'Verified')
     
     if (!message.content.startsWith(prefix)) return;
-*/  
-/*    if (message.content.startsWith(prefix + 'mute')) {
-      if(message.member.roles.has(fsmRole.id)) {
+  
+    if (message.content.startsWith(prefix + 'mute')) {
+      if(message.member.roles.has(modRole.id)) {
         let reason = args.slice(1).join(' ');
         let user = message.mentions.users.first();
         let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
