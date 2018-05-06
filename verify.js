@@ -3,6 +3,7 @@ const { version } = require('discord.js');
 const Util = require('discord.js');
 const client = new Discord.Client();
 const chalk = require('chalk');
+const ms = require('ms');
 client.login(process.env.BOT_TOKEN);
 
 var prefix = "--"
