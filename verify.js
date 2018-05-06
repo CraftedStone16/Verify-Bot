@@ -52,6 +52,7 @@ client.on('message', async message => {
     if (message.content === '--verify OpenSource is not responsible') {
       message.delete(500); 
       // message.channel.send('it hpned');
+      client.channels.get('437738261150957579').send(`${message.author} just verified! Please welcome them with a warm hack hug.`)
       return message.member.addRole('437738324183089154');
     }
 });
@@ -315,6 +316,34 @@ client.on('message', async message => {
       } else {
         message.channel.send('You do not have the permission to use that command!')
         client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`prune\` command in <#${message.channel.id}>!`)
+      }
+    } else
+  
+    if (message.content.startsWith(prefix + 'sg')) {
+      if(message.member.roles.has(fsbmRole.id)) {
+        client.user.setActivity(result);
+        let embed2 = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setTitle(`**New Game:** "${result}"`)
+        client.channels.get(`${bc}`).send(embed2)
+        // message.channel.send(`Successfully set the game to **${result}**`);
+      } else {
+        message.channel.send('You do not have the permission to use that command!')
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`sg\` command in <#${message.channel.id}>!`)
+      }
+    } else
+    
+    if (message.content.startsWith(prefix + 'setgame')) {
+      if(message.member.roles.has(fsbmRole.id)) {
+        client.user.setActivity(result);
+        let embed2 = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setTitle(`**New Game:** "${result}"`)
+        client.channels.get(`${bc}`).send(embed2)
+        // message.channel.send(`Successfully set the game to **${result}**`);
+      } else {
+        message.channel.send('You do not have the permission to use that command!')
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`setgame\` command in <#${message.channel.id}>!`)
       }
     }
 });
@@ -646,56 +675,6 @@ client.on('message', async message => {
       .addField(`\n\u200b`, `**Account Created**: ${years} years, ${months} months, and ${days} days ago | ${member.user.createdTimestamp}\n**Avatar URL**: ${member.user.avatarURL}`)
       client.channels.get(`${bc}`).send(userembed)
       client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`userinfo\` command in <#${message.channel.id}>!`)
-    } else
-
-    if (message.content.startsWith(prefix + 'purge')) {
-      if(message.member.roles.has(fsbpRole.id)) {
-        let messagecount = parseInt(result);
-        message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
-        message.channel.send(`Deleted **${messagecount}** messages.`).then(message => message.delete(2500));
-      } else {
-        message.channel.send('You do not have the permission to use that command!')
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`purge\` command in <#${message.channel.id}>!`)
-      }
-    } else
-
-    if (message.content.startsWith(prefix + 'prune')) {
-      if(message.member.roles.has(fsbpRole.id)) {
-        let messagecount = parseInt(result);
-        message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
-        message.channel.send(`Deleted **${messagecount}** messages.`).then(message => message.delete(2500));
-      } else {
-        message.channel.send('You do not have the permission to use that command!')
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`prune\` command in <#${message.channel.id}>!`)
-      }
-    } else
-
-    if (message.content.startsWith(prefix + 'setgame')) {
-      if(message.member.roles.has(fsbmRole.id)) {
-        client.user.setActivity(result);
-        let embed2 = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .setTitle(`**New Game:** "${result}"`)
-        client.channels.get(`${bc}`).send(embed2)
-        // message.channel.send(`Successfully set the game to **${result}**`);
-      } else {
-        message.channel.send('You do not have the permission to use that command!')
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`setgame\` command in <#${message.channel.id}>!`)
-      }
-    } else
-
-    if (message.content.startsWith(prefix + 'sg')) {
-      if(message.member.roles.has(fsbmRole.id)) {
-        client.user.setActivity(result);
-        let embed2 = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .setTitle(`**New Game:** "${result}"`)
-        client.channels.get(`${bc}`).send(embed2)
-        // message.channel.send(`Successfully set the game to **${result}**`);
-      } else {
-        message.channel.send('You do not have the permission to use that command!')
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`sg\` command in <#${message.channel.id}>!`)
-      }
     } else
 
     if (message.content.startsWith(prefix + 'feedback')) {
@@ -1106,233 +1085,15 @@ client.on('message', async message => {
                     // let arg3 = args.slice(2).join(' ');
                     message.channel.send(`First Arg: ${testargs[0]}    Second Arg: ${testargs[1]}    Third Arg: ${testargs[2]}`)
     */
-// }); //----- RE ENABLE AFTER MAINTENANCE -----
+// });
 /*
-if (message.content.startsWith(prefix + 'mute')) {
-  if(message.member.roles.has(fswRole.id)) {
-    let reason = args.slice(1).join(' ');
-    let user = message.mentions.users.first();
-    let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'muted');
-    let memberRole = client.guilds.get(message.guild.id).roles.find('name', 'member');
-    if (reason.length < 1) return message.reply('You must provide a reason for the mute').catch(console.error);
-    if (message.mentions.users < 1) return message.reply('You must mention someone to mute them.').catch(console.error);
-    let embedmute = new Discord.RichEmbed()
-    .setTitle('')
-    .setColor('GREEN')
-    .addField('Action:', 'Mute')
-    .addField('User:', `${user.tag}`)
-    .addField('Moderator:', `${message.author.username}#${message.author.discriminator}`)
-    .addField('Reason:', `${reason}`)
-
-    if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
-
-    if (message.guild.member(user).roles.has(memberRole.id)) {
-      message.guild.member(user).removeRole(memberRole.id)
-      message.guild.member(user).addRole(muteRole.id).then(() => {
-        client.channels.get(`${rs1}`).send(embedmute)
-        message.channel.send('That user has successfully been muted! :ok_hand:')
-      });
-    } else if (message.guild.member(user).roles.has(muteRole.id)) {
-      message.channel.send(`That user is already muted! To unmute that user do \`${prefix}unmute\``)
-      }
-  } else {
-    message.channel.send('You do not have the permission to use that command!')
-  }
-} else
-*/
-
-/*client.on('message', async message => { //----- RE ENABLE AFTER MAINTENANCE -----
-  let botowner = message.guild.roles.find('name', 'Bot Owner - DO NOT TOUCH!');
-  if(!message.member.roles.has(botowner.id)) return; // message.channel.send('I\'m Sorry, but I am in Maintenance Mode so my commands have been disabled!');
-  if (!message.content.startsWith(prefix)) return;
-  let args = message.content.split(' ');
-  let searchString = args.slice(1).join(' ');
-  let url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
-  let serverQueue = queue.get(message.guild.id);
-
-  if (message.content.startsWith(prefix + 'play')) {
-    message.delete(15000);
-    client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`play\` command in <#${message.channel.id}>!`)
-    const voiceChannel = message.member.voiceChannel;
-    if (!voiceChannel) return client.channels.get(`${bc}`).send('You must be in a voice channel first!');
-    const permissions = voiceChannel.permissionsFor(message.client.user);
-    if (!permissions.has('CONNECT')) {
-      return client.channels.get(`${bc}`).send('I cannot join that voice channel! (No Permission)');
-    }
-    if (!permissions.has('SPEAK')) {
-      return client.channels.get(`${bc}`).send('I cannot speak in this voice channel! Please give me the permission or I cant play music for you.')
-    }
-
-    if (url.match(/^https?:\/\/(www.youtube.com|youtube.com)\/playlist(.*)$/)) {
-        const playlist = await youtube.getPlaylist(url);
-        const videos = await playlist.getVideos();
-        for (const video of Object.values(videos)) {
-          const video2 = await youtube.getVideoByID(video.id);
-          await handleVideo(video2, message, voiceChannel, true);
-        }
-        return client.channels.get(`${bc}`).send(`Playlist: **${playlist.title}** has been added to the queue!`);
-    } else {
-      try {
-        var video = await youtube.getVideo(url);
-      } catch (error) {
-        try {
-            var videos = await youtube.searchVideos(searchString, 10);
-            let index = 0;
-            let songselection = new Discord.RichEmbed()
-            .addField('__**Song Selection**__', `${videos.map(video2 => `**${++index} -** ${video2.title}`).join('\n')}\n\u200b\nPlease provide a value to select one of the searh results ranging from 1-10.`)
-            client.channels.get(`${bc}`).send(songselection).then(message => message.delete(15000));
-            try {
-              var response = await client.channels.get(`${bc}`).awaitMessages(message2 => message2.content > 0 && message2.content < 11, {
-                maxMatches: 1,
-                time: 10000,
-                errors: ['time']
-              });
-            } catch (err) {
-                console.error(err);
-                return client.channels.get(`${bc}`).send('No/Invailed value entered, cancelind video selection.');
-            }
-            const videoIndex = parseInt(response.first().content);
-            var video = await youtube.getVideoByID(videos[videoIndex - 1].id);
-        } catch (err) {
-            console.error(err);
-            return client.channels.get(`${bc}`).send('I could obtain any search results!');
-        }
-      }
-
-      return handleVideo(video, message, voiceChannel);
-    }
-  } else if (message.content.startsWith(prefix + 'skip')) {
-      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`skip\` command in <#${message.channel.id}>!`)
-      if (!serverQueue) return client.channels.get(`${bc}`).send('There is nothing to skip!');
-      serverQueue.connection.dispatcher.end();
-  } else if (message.content.startsWith(prefix + 'stop')) {
-      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`stop\` command in <#${message.channel.id}>!`)
-      if (!message.member.voiceChannel) return client.channels.get(`${bc}`).send('You must be in a voice channel!');
-      serverQueue.songs = [];
-      serverQueue.connection.dispatcher.end();
-      message.channel.send('Music Stopped!');
-  } else if (message.content.startsWith(prefix + 'np')) {
-      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`np\` command in <#${message.channel.id}>!`)
-      if (!serverQueue) return client.channels.get(`${bc}`).send('There is nothing playing!');
-      return message.channel.send(`Now Playing: **${serverQueue[0].title}**`);
-  } else if (message.content.startsWith(prefix + 'volume')) {
-      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`volume\` command in <#${message.channel.id}>!`)
-      if (!serverQueue) return client.channels.get(`${bc}`).send('There is nothing playing!');
-      if (!args[1]) return message.channel.send(`The current volume is: ${serverQueue.volume}`);
-      serverQueue.volume = args[1];
-      serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 5);
-      await client.channels.get(`${bc}`).send(`The new volume: ${args[1]}`);
-  } else if (message.content.startsWith(prefix + 'queue')) {
-      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`queue\` command in <#${message.channel.id}>!`)
-      if (!serverQueue) return client.channels.get(`${bc}`).send('There is nothing playing!');
-//       let songqueue = new Discord.RichEmbed()
-//       .addField('__**Song Queue**__', `${serverQueue.songs.map(song => `**-** ${song.title}`).join('\n')}`)
-//       .addField('__**Song Queue**__', `**-** ${serverQueue.songs[1].title}\n**-** ${serverQueue.songs[2].title}\n**-** ${serverQueue.songs[3].title}\n**-** ${serverQueue.songs[4].title}\n**-** ${serverQueue.songs[5].title}\n**-** ${serverQueue.songs[6].title}\n**-** ${serverQueue.songs[7].title}\n\u200b`)
-//       .addField('**Now Playing**:', `${serverQueue.songs[0].title}`)
-//       return message.channel.send(songqueue)
-      return message.channel.send(`
-__**Song Queue**__
-${serverQueue.songs.map(song => `**-** ${song.title}`).join('\n')}
-
-**Now Playing:** ${serverQueue.songs[0].title}
-      `);
-      // if (message.content.startsWith(prefix + 'sinfo')) {
-      //   let serverembed = new Discord.RichEmbed()
-      //   .setDescription("__**Server Information**__\n\u200b")
-      //   .setColor('RANDOM')
-      //   .addField('Server Name', `${message.guild.name}\n`)
-      //   .addField('Server ID', `${message.guild.id}\n`)
-      //   .addField('Server Owner', `${message.guild.owner} | ${message.guild.ownerID}\n`)
-      //   .addField('Server Region', `${message.guild.region}\n`)
-      //   .addField('Verification Level', `${message.guild.verificationLevel}\n`)
-      //   .addField('Created on', `${message.guild.createdAt}\n`)
-      //   .addField('You joined at', `${message.member.joinedAt}\n`)
-      //   .addField('Total Members', `${message.guild.memberCount}\n`)
-      //   return message.channel.send(serverembed)
-      // } else
-  } else if (message.content.startsWith(prefix + 'pause')) {
-      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`pause\` command in <#${message.channel.id}>!`)
-      if (serverQueue && serverQueue.playing) {
-        serverQueue.playing = false;
-        serverQueue.connection.dispatcher.pause();
-        return client.channels.get(`${bc}`).send('Music Paused!');
-      }
-      return client.channels.get(`${bc}`).send('There is nothing playing!');
-  } else if (message.content.startsWith(prefix + 'resume')) {
-      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`resume\` command in <#${message.channel.id}>!`)
-      if (serverQueue && !serverQueue.playing) {
-        serverQueue.playing = true;
-        serverQueue.connection.dispatcher.resume();
-        return client.channels.get(`${bc}`).send('Music Resumed!');
-      }
-      return client.channels.get(`${bc}`).send('The music is not paused!');
-  }
-});
-
-async function handleVideo(video, message, voiceChannel, playlist = false) {
-  let serverQueue = queue.get(message.guild.id);
-  console.log(video);
-  const song = {
-    id: video.id,
-    title: Util.escapeMarkdown(video.title),
-    url: `https://www.youtube.com/watch?v=${video.id}`
-  };
-  if (!serverQueue) {
-    const queueConstruct = {
-      textChannel: message.channel,
-      voiceChannel: voiceChannel,
-      connection: null,
-      songs: [],
-      volume: 5,
-      playing: true
-    };
-    queue.set(message.guild.id, queueConstruct);
-
-    queueConstruct.songs.push(song);
-
-    try {
-      var connection = await voiceChannel.join();
-      queueConstruct.connection = connection;
-      play(message.guild, queueConstruct.songs[0]);
-    } catch (error) {
-      console.error(`I could not join the voice channel: ${error}`);
-      queue.delete(message.guild.id);
-      return client.channels.get(`${bc}`).send(`I could not join the voice channel: ${error}`);
-    }
-  } else {
-    serverQueue.songs.push(song);
-    console.log(serverQueue.songs);
-    if (playlist);
-    else client.channels.get(`${bc}`).send(`**${song.title}** has been added to the queue! Position: ${serverQueue.postion}`);
-  }
-}
-
-function play(guild, song) {
-  const serverQueue = queue.get(guild.id);
-
-  if (!song) {
-    serverQueue.voiceChannel.leave();
-    queue.delete(guild.id);
-    return;
-  }
-
-  const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
-      .on('end', () => {
-        console.log('Song Ended!');
-        serverQueue.songs.shift();
-        play(guild, serverQueue.songs[0]);
-      })
-      .on('console', error => console.error(error));
-  dispatcher.setVolumeLogarithmic(5 / 5);
-
-  serverQueue.textChannel.send(`Now Playing: **${song.title}**`);
-}
 // client.on('channelCreate', channel => {
 //   client.channels.get('393881895919681536').send(`The Channel "**${channel.name}**" was just created! \`(${channel.type})\``)
 // });
 // client.on('channelDelete', channel => {
 //   client.channels.get('393881895919681536').send(`The Channel "**${channel.name}**" was just deleted! \`(${channel.type})\``)
 // });
+*/
 client.on('messageUpdate', (oldMessage, newMessage) => {
   if (oldMessage.editedTimestamp === newMessage.editedTimestamp) return;
   if (oldMessage.author.bot) return;
@@ -1365,6 +1126,7 @@ client.on('messageDelete', message => {
   client.channels.get(`${logs}`).send(msgdelete)
 //  client.channels.get(`${logs}`).send(`:wastebasket: __A message was Deleted:__\n\n${message.cleanContent}\n\n\n**Channel:** ${message.channel}\n**Author:** ${message.author.username}#${message.author.discriminator}\n**ID:** ${message.id}`)
 });
+
 // client.on('messageUpdate', message => {
 //     let client = message.client;
 //
@@ -1384,104 +1146,16 @@ client.on('messageDelete', message => {
 //   client.channels.get('393881895919681536').send(`${message.size} messages was just deleted!`)
 // });
 
-// Prefix help
-client.on('message', message => {
-  if (message.content === '<@422612037198413836>') {
-    message.channel.send(`My prefix is **${prefix}**`);
-  } else
-  
-  if (message.content === 'what is your prefix <@422612037198413836>?') {
-    message.channel.send(`My prefix is **${prefix}**`);
-  } else 
-  
-  if (message.content === 'What is your prefix <@422612037198413836>?') {
-    message.channel.send(`My prefix is **${prefix}**`);
-  }
-});
-
-
-client.on('message', message => {
-  if (message.content === 'hey') {
-    message.channel.send(`Hey ${message.author}!`)
-  } else 
-  
-  if (message.content === 'Hey') {
-    message.channel.send(`Hey ${message.author}!`)
-  } else 
-
-  if (message.content === 'hi') {
-    message.channel.send(`Hi ${message.author}!`)
-  } else 
-
-  if (message.content === 'Hi') {
-    message.channel.send(`Hi ${message.author}!`)
-  } else 
-
-  if (message.content === 'hello') {
-    message.channel.send(`Hello ${message.author}!`)
-  } else 
-
-  if (message.content === 'Hello') {
-    message.channel.send(`Hello ${message.author}!`)
-  }
-});
-
-client.on('message', message => {
-  if (message.content.startsWith(prefix + 'roles')) {
-    client.channels.get(`${bc}`).send(`${message.author}\n__**Available Roles/Names:**__\n• Bot-Updates\n• News/Announcements\n• News\n\nUsage: \`${prefix}giveme <Name (listed above)>\` (To get the role) \`${prefix}leave <Name (listed above)>\` (To remove the role\nPLEASE NOTE: You have to type it exactly like it is in the list for it to work!`)
-  } else
-    
-  if (message.content.startsWith(prefix + 'giveme Bot-Updates')) {
-    message.member.addRole('427189291618402304')
-    message.channel.send('Ok! I have given you the "Bot-Updates" role!')
-  } else
-  
-  if (message.content.startsWith(prefix + 'leave Bot-Updates')) {
-    message.member.removeRole('427189291618402304')
-    message.channel.send('Ok! I have removed the "Bot-Updates" role from you!')
-  } else
-
-  if (message.content.startsWith(prefix + 'giveme News/Announcements')) {
-    message.member.addRole('428245044345044992')
-    message.channel.send('Ok! I have given you the "News/Announcements" role!')
-  } else
-  
-  if (message.content.startsWith(prefix + 'leave News/Announcements')) {
-    message.member.removeRole('428245044345044992')
-    message.channel.send('Ok! I have removed the "News/Announcements" role from you!')
-  } else
-    
-  if (message.content.startsWith(prefix + 'giveme News')) {
-    message.member.addRole('428245044345044992')
-    message.channel.send('Ok! I have given you the "News/Announcements" role!')
-  } else
-  
-  if (message.content.startsWith(prefix + 'leave News')) {
-    message.member.removeRole('428245044345044992')
-    message.channel.send('Ok! I have removed the "News/Announcements" role from you!')
-  } else
-  
-  if (message.content.startsWith(prefix + 'bug')) {
-    let args = message.content.split(' ').slice(1);
-    let bug = args.join(' ')
-    if (bug.length < 1) return message.channel.send('You must provide a message');
-    client.channels.get('415280541760356369').send(`<@&415260857786695711>, **New Bug:**\n\n${bug}`)
-    message.author.send(`You just submitted a bug!\n\n\`${bug}\`\nWe appreciate all bugs that we get!`)
-    message.channel.send(':ok_hand: I have reported your bug.')
-    client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`bug\` command in <#${message.channel.id}>!`)
-  }
-});
-
 client.on('guildBanAdd', (guild, user) => {
   // let guild = member.guild;
-  guild.channels.get(`${greetings}`).send(`**${user.tag}** Was just banned from the **Firespread Network Discord!**`);
+  guild.channels.get(`${greetings}`).send(`**${user.tag}** Was just banned from **OpenSource's Hacking Arena**`);
 });
 
 client.on('guildBanRemove', (guild, user) => {
   // let guild = member.guild;
-  guild.channels.get(`${greetings}`).send(`**${user.tag}** Was just unbanned from the **Firespread Network Discord!**`);
+  guild.channels.get(`${greetings}`).send(`**${user.tag}** Was just unbanned from **OpenSource's Hacking Arena**`);
 });
-*/
+
 client.on('guildMemberAdd', member => {
   let guild = member.guild;
   let years = (((member.joinedAt - member.user.createdAt) / 1000 / 31556952) >> 0)
@@ -1586,56 +1260,7 @@ client.on('channelUpdate', (oldChannel, newChannel) => {
      client.channels.get(`${logs}`).send(channelposupdate)
   }
 });
-
-// Role Events -
-client.on('roleCreate', role => {
-  let permlist = {
-    CREATE_INSTANT_INVITE: 1 << 0,
-    KICK_MEMBERS: 1 << 1,
-    BAN_MEMBERS: 1 << 2,
-    ADMINISTRATOR: 1 << 3,
-    MANAGE_CHANNELS: 1 << 4,
-    MANAGE_GUILD: 1 << 5,
-    ADD_REACTIONS: 1 << 6,
-    VIEW_AUDIT_LOG: 1 << 7,
-    VIEW_CHANNEL: 1 << 10,
-    READ_MESSAGES: 1 << 10,
-    SEND_MESSAGES: 1 << 11,
-    SEND_TTS_MESSAGES: 1 << 12,
-    MANAGE_MESSAGES: 1 << 13,
-    EMBED_LINKS: 1 << 14,
-    ATTACH_FILES: 1 << 15,
-    READ_MESSAGE_HISTORY: 1 << 16,
-    MENTION_EVERYONE: 1 << 17,
-    EXTERNAL_EMOJIS: 1 << 18,
-    USE_EXTERNAL_EMOJIS: 1 << 18,
-    CONNECT: 1 << 20,
-    SPEAK: 1 << 21,
-    MUTE_MEMBERS: 1 << 22,
-    DEAFEN_MEMBERS: 1 << 23,
-    MOVE_MEMBERS: 1 << 24,
-    USE_VAD: 1 << 25,
-    CHANGE_NICKNAME: 1 << 26,
-    MANAGE_NICKNAMES: 1 << 27,
-    MANAGE_ROLES: 1 << 28,
-    MANAGE_ROLES_OR_PERMISSIONS: 1 << 28,
-    MANAGE_WEBHOOKS: 1 << 29,
-    MANAGE_EMOJIS: 1 << 30,
-  };
-  
-  client.channels.get(`${logs}`).send(`__**Role Created:**__\n• Name: ${role.name}\n• ID: ${role.id}\n• Color: ${role.hexColor}\n• Mentionable: ${role.mentionable}\n• Postion: ${role.calculatedPosition}`)
-//   client.channels.get(`${logs}`).send(`__**Role Permissions**__ -- __**${role.name}**__\n\n${role.serialize(permlist)}`)
-});
-
-client.on('roleDelete', role => {
-  client.channels.get(`${logs}`).send(`__**Role Deleted:**__\n• Name: ${role.name}\n• ID: ${role.id}`)
-});
-
-// client.on('roleUpdate', (oldRole, newRole) => {
-//   client.channels.get(`${logs}`).send(`__**Role Updated:**__\n•-• Before;\nName: ${oldRole.name}\nColor: ${oldRole.hexColor}\nMentionable: ${oldRole.mentionable}\n-Permissions:\n${oldRole.permissions}`)
-//   client.channels.get(`${logs}`).send(`•-• After;\nName: ${newRole.name}\nColor: ${newRole.hexColor}\nMentionable: ${newRole.mentionable}\n-Permissions:\n${newRole.permissions}`)
-// });
-
+*/
 //   +=-=+   Voice Channel Events   +=-=+ //
 // Channel Join, Leave, Changed
 client.on('voiceStateUpdate', (oldMember, newMember) => {
@@ -1696,7 +1321,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
      client.channels.get(`${logs}`).send(`${newMember.user.tag} got Server UnDeafened!`)
         // User leaves a voice channel
   }
-}); */
+});
 
 // User Events
 // client.on('presenceUpdate', (oldMember, newMember) => {
