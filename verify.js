@@ -292,12 +292,12 @@ client.on('message', async message => {
     } else
   
     if (message.content.startsWith(prefix + 'sg')) {
-      if(message.member.roles.has(fsbmRole.id)) {
+      if(message.member.roles.has(botowner.id)) {
         client.user.setActivity(result);
         let embed2 = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setTitle(`**New Game:** "${result}"`)
-        client.channels.get(`${bc}`).send(embed2)
+        message.channel.send(embed2)
         // message.channel.send(`Successfully set the game to **${result}**`);
       } else {
         message.channel.send('You do not have the permission to use that command!')
@@ -306,12 +306,12 @@ client.on('message', async message => {
     } else
     
     if (message.content.startsWith(prefix + 'setgame')) {
-      if(message.member.roles.has(fsbmRole.id)) {
+      if(message.member.roles.has(botowner.id)) {
         client.user.setActivity(result);
         let embed2 = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setTitle(`**New Game:** "${result}"`)
-        client.channels.get(`${bc}`).send(embed2)
+        message.channel.send(embed2)
         // message.channel.send(`Successfully set the game to **${result}**`);
       } else {
         message.channel.send('You do not have the permission to use that command!')
