@@ -52,7 +52,7 @@ client.on('message', async message => {
     if (message.content === '--verify OpenSource is not responsible') {
       message.delete(500); 
       // message.channel.send('it hpned');
-      client.channels.get('437738261150957579').send(`${message.author} just verified! Please welcome them with a warm hack hug.`)
+      client.channels.get('437738261150957579').send(`${message.author} just verified! Please welcome them with a warm hacking hug.`)
       return message.member.addRole('437738324183089154');
     }
 });
@@ -1114,6 +1114,7 @@ client.on('messageUpdate', (oldMessage, newMessage) => {
 
 client.on('messageDelete', message => {
   if (message.author.bot) return;
+  if (message.channel === '441663623216103426') return;
   let msgdelete = new Discord.RichEmbed()
   .setThumbnail(`${message.author.displayAvatarURL}`)
   .setTitle(':wastebasket: **Message Deleted**')
