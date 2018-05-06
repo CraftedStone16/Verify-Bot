@@ -42,38 +42,7 @@ client.on('error', e => {
 });
 
 // var mention = '<@373913434158530571>'
-client.on('message', async message => {
-    if (message.author.bot) return;
-    if (message.channel.type === "dm") return;
-    if (!message.content.startsWith(pref)) return;
-    if (!message.channel === '437757021953982485') return;
-    if (!message.channel === '441663623216103426') return;
-  
-    if (message.content === '--verify OpenSource is not responsible') {
-      message.delete(500); 
-      // message.channel.send('it hpned');
-      client.channels.get('437738261150957579').send(`${message.author} just verified! Please welcome them with a warm hacking hug.`)
-      return message.member.addRole('437738324183089154');
-    }
-});
-client.on('message', async message => {
-    if (message.author.bot) return;
-    if (message.channel.type === "dm") return;
-    if (!message.content.startsWith(pref)) return;
-    if (!message.channel === '437757021953982485') return;
-    if (!message.channel === '441663623216103426') return;
-    if (message.content === '--verify OpenSource is not responsible') return;
-    if (message.content.length === prefix.length) return;
-    message.content = message.content.substr(prefix.length);
-    let args = message.content.split(' ');
-    let cmd = args;
-    
-    // if (message.content != '--') return;
-    if (cmd != 'verify OpenSource is not responsible') {
-      message.delete(500)
-      return message.channel.send(`Sorry ${message.author}, You have provided an incorrect/invalid phrase! The correct phrase is found in the rules.`).then(message => message.delete(30000));
-    } 
-});
+
 client.on('message', async message => {
     let args = message.content.split(' ').slice(1);
     var result = args.join(' ')
@@ -347,6 +316,40 @@ client.on('message', async message => {
       }
     }
 });
+
+client.on('message', async message => {
+    if (message.author.bot) return;
+    if (message.channel.type === "dm") return;
+    if (!message.content.startsWith(pref)) return;
+    if (!message.channel === '437757021953982485') return;
+    if (!message.channel === '441663623216103426') return;
+  
+    if (message.content === '--verify OpenSource is not responsible') {
+      message.delete(500); 
+      // message.channel.send('it hpned');
+      client.channels.get('437738261150957579').send(`${message.author} just verified! Please welcome them with a warm hacking hug.`)
+      return message.member.addRole('437738324183089154');
+    }
+});
+client.on('message', async message => {
+    if (message.author.bot) return;
+    if (message.channel.type === "dm") return;
+    if (!message.content.startsWith(pref)) return;
+    if (!message.channel === '437757021953982485') return;
+    if (!message.channel === '441663623216103426') return;
+    if (message.content === '--verify OpenSource is not responsible') return;
+    if (message.content.length === prefix.length) return;
+    message.content = message.content.substr(prefix.length);
+    let args = message.content.split(' ');
+    let cmd = args;
+    
+    // if (message.content != '--') return;
+    if (cmd != 'verify OpenSource is not responsible') {
+      message.delete(500)
+      return message.channel.send(`Sorry ${message.author}, You have provided an incorrect/invalid phrase! The correct phrase is found in the rules.`).then(message => message.delete(30000));
+    } 
+});
+
 /* client.on('message', async message => {
     let args = message.content.split(' ').slice(1);
     var result = args.join(' ')
