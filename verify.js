@@ -58,23 +58,32 @@ client.on('message', async message => {
     if (!message.content.startsWith(prefix)) return;
     
     if (message.content.startsWith(prefix + 'promote')) {
-      if(message.member.roles.has(memberRole.id)) {
-        let user = message.mentions.users.first();
+       if(message.member.roles.has(memberRole.id)) {
+         let user = message.mentions.users.first();
 
-        if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
+         if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
 
-        message.guild.member(user).addRole(memberRole.id)
+         message.guild.member(user).addRole(memberRole.id)
       //  message.channel.send('Giving that user the needed roles for Admin now...')
           //.then(message => message.edit('Giving that user the needed roles for Admin now...'))
           //.then(message => message.edit('Giving that user the needed roles for Admin now...'))
           //.then(message => message.edit('Giving that user the needed roles for Admin now...'))
           //.then(message => message.edit('Giving that user the needed roles for Admin now...'))
           //.then(message => message.edit('I have given that user the needed roles for Admins! :ok_hand:'))
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Verified** to **Member**]`)
+         return client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Verified** to **Member**]`)
       } else {
-        message.channel.send('You do not have the permission to use that command!')
+         message.channel.send('You do not have the permission to use that command!')
         // client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`admin\` command in <#${message.channel.id}>!`)
-      }
+      } return;
+      
+      if(message.member.roles.has(memberRole.id)) {
+        let user = message.mentions.users.first();
+        if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
+        message.guild.member(user).addRole(memberRole.id)
+        return client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Verified** to **Member**]`)
+      } else {
+       message.channel.send('You do not have the permission to use that command!')
+      } return;
     } else
 
     if (message.content.startsWith(prefix + 'remove admin')) {
