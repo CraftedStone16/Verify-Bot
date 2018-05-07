@@ -56,7 +56,34 @@ client.on('message', async message => {
     let muteRole = message.guild.roles.find('name', 'Muted')
     
     if (!message.content.startsWith(prefix)) return;
-  
+    
+    if (message.content.startsWith(prefix + 'warn')) {
+      if(message.member.roles.has(modRole.id)) {
+        let reason = args.slice(1).join(' ');
+        let user = message.mentions.users.first();
+        if (reason.length < 1) return message.reply('You must provide a reason for the warning');
+        if (message.mentions.users < 1) return message.reply('You must mention someone to warn them.').catch(console.error);
+        let warnlog = new Discord.RichEmbed()
+        .setColor('PURPLE')
+        .addField(':warning: __User Warned__', `${message.author} **Warned** ${user} for \`${reason}\`!`)
+        .setFooter(`${message.createdAt}`)
+
+        let embedwarn = new Discord.RichEmbed()
+        .setTitle('')
+        .setColor('PURPLE')
+        .addField('Action:', 'Warning')
+        .addField('User:', `${user.tag}`)
+        .addField('Moderator:', `${message.author.username}#${message.author.discriminator}`)
+        .addField('Reason:', `${reason}`)
+        client.channels.get(`${punishments}`).send(embedwarn)
+        message.channel.send('That user has successfully been warned! :ok_hand:')
+        client.channels.get(`${logs}`).send(warnlog)
+      } else {
+        message.channel.send('You do not have the permission to use that command!')
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`warn\` command in <#${message.channel.id}>!`)
+      }
+    } else
+      
     if (message.content.startsWith(prefix + 'mute')) {
       if(message.member.roles.has(modRole.id)) {
         let reason = args.slice(1).join(' ');
