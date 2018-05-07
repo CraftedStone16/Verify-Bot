@@ -51,6 +51,7 @@ client.on('message', async message => {
     var result = args.join(' ')
     let botowner = message.guild.roles.find('name', 'Bot Owner');
     let modRole = message.guild.roles.find('name', 'Moderator');
+    let supportRole = message.guild.roles.find('name', 'Support Team');
     let premiumRole = message.guild.roles.find('name', 'Premium');
     let memberRole = message.guild.roles.find('name', 'Member');
     let verified = message.guild.roles.find('name', 'Verified');
@@ -73,7 +74,7 @@ client.on('message', async message => {
           //.then(message => message.edit('I have given that user the needed roles for Admins! :ok_hand:'))
          client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Verified** to **Member**]`)
        } else {
-         return message.channel.send('You do not have the permission to use that command!')
+         return;
         // client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`admin\` command in <#${message.channel.id}>!`)
        }
       
@@ -84,7 +85,17 @@ client.on('message', async message => {
         message.guild.member(user).removeRole(memberRole.id)
         return client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Member** to **Premium**]`)
       } else {
-       return message.channel.send('You do not have the permission to use that command!')
+        return;
+      }
+      
+      if(message.member.roles.has(supportRole.id)) {
+        let user = message.mentions.users.first();
+        if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
+        message.guild.member(user).addRole(supportRole.id)
+        message.guild.member(user).removeRole(premiumRole.id)
+        return client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Premium** to **Support Team**]`)
+      } else {
+        return;
       }
     } else
 
