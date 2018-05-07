@@ -58,12 +58,12 @@ client.on('message', async message => {
     if (!message.content.startsWith(prefix)) return;
     
     if (message.content.startsWith(prefix + 'promote')) {
-      if(message.member.roles.has(member.id)) {
+      if(message.member.roles.has(memberRole.id)) {
         let user = message.mentions.users.first();
 
         if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
 
-        message.guild.member(user).addRole(member.id)
+        message.guild.member(user).addRole(memberRole.id)
       //  message.channel.send('Giving that user the needed roles for Admin now...')
           //.then(message => message.edit('Giving that user the needed roles for Admin now...'))
           //.then(message => message.edit('Giving that user the needed roles for Admin now...'))
