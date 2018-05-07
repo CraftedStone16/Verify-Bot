@@ -81,8 +81,8 @@ client.on('message', async message => {
       if(message.member.roles.has(premiumRole.id)) {
         let user = message.mentions.users.first();
         if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
+        message.guild.member(user).removeRole(memberRole.id)
         message.guild.member(user).addRole(premiumRole.id)
-        await message.guild.member(user).removeRole(memberRole.id)
         client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Member** to **Premium**]`)
       } else {
         return;
@@ -91,8 +91,9 @@ client.on('message', async message => {
       if(message.member.roles.has(supportRole.id)) {
         let user = message.mentions.users.first();
         if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
+        message.guild.member(user).removeRole(premiumRole.id)
+        message.guild.member(user).removeRole(memberRole.id)
         message.guild.member(user).addRole(supportRole.id)
-        await message.guild.member(user).removeRole(premiumRole.id)
         client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Premium** to **Support Team**]`)
       } else {
         return;
