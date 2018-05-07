@@ -83,7 +83,7 @@ client.on('message', async message => {
         if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
         message.guild.member(user).addRole(premiumRole.id)
         message.guild.member(user).removeRole(memberRole.id)
-        return client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Member** to **Premium**]`)
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Member** to **Premium**]`)
       } else {
         return;
       }
@@ -93,7 +93,7 @@ client.on('message', async message => {
         if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
         message.guild.member(user).addRole(supportRole.id)
         message.guild.member(user).removeRole(premiumRole.id)
-        return client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Premium** to **Support Team**]`)
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Premium** to **Support Team**]`)
       } else {
         return;
       }
