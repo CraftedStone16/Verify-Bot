@@ -72,10 +72,10 @@ client.on('message', async message => {
           //.then(message => message.edit('Giving that user the needed roles for Admin now...'))
           //.then(message => message.edit('I have given that user the needed roles for Admins! :ok_hand:'))
          client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Verified** to **Member**]`)
-      } else {
-        return message.channel.send('You do not have the permission to use that command!')
+       } else {
+         return message.channel.send('You do not have the permission to use that command!')
         // client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`admin\` command in <#${message.channel.id}>!`)
-      }
+       }
       
       if(message.member.roles.has(premiumRole.id)) {
         let user = message.mentions.users.first();
