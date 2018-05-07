@@ -51,7 +51,7 @@ client.on('message', async message => {
     var result = args.join(' ')
     let botowner = message.guild.roles.find('name', 'Bot Owner');
     let modRole = message.guild.roles.find('name', 'Moderator');
-    let memberRole = message.guild.roles.find('name', 'Members')
+    let memberRole = message.guild.roles.find('name', 'Member')
     let verified = message.guild.roles.find('name', 'Verified')
     let muteRole = message.guild.roles.find('name', 'Muted')
     
