@@ -57,6 +57,43 @@ client.on('message', async message => {
     
     if (!message.content.startsWith(prefix)) return;
     
+    if (message.content.startsWith(prefix + 'promote')) {
+      if(message.member.roles.has(member.id)) {
+        let user = message.mentions.users.first();
+
+        if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
+
+        message.guild.member(user).addRole(member.id)
+      //  message.channel.send('Giving that user the needed roles for Admin now...')
+          //.then(message => message.edit('Giving that user the needed roles for Admin now...'))
+          //.then(message => message.edit('Giving that user the needed roles for Admin now...'))
+          //.then(message => message.edit('Giving that user the needed roles for Admin now...'))
+          //.then(message => message.edit('Giving that user the needed roles for Admin now...'))
+          //.then(message => message.edit('I have given that user the needed roles for Admins! :ok_hand:'))
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Verified** to **Member**]`)
+      } else {
+        message.channel.send('You do not have the permission to use that command!')
+        // client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`admin\` command in <#${message.channel.id}>!`)
+      }
+    } else
+
+    if (message.content.startsWith(prefix + 'remove admin')) {
+      if(message.member.roles.has(fsbmRole.id)) {
+        let user = message.mentions.users.first();
+
+        if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
+
+        message.guild.member(user).removeRole(fsbpRole.id)
+        message.guild.member(user).removeRole(fsbRole.id)
+        message.channel.send('Removing the needed roles for Admin from that user now...')
+          .then(message => message.edit('I have removed the needed roles for Admins from that user! :ok_hand:'))
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`remove admin\` command in <#${message.channel.id}> and removed the Admin roles from **${user}**!`)
+      } else {
+        message.channel.send('You do not have the permission to use that command! (remove admin)')
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`remove admin\` command in <#${message.channel.id}>!`)
+      }
+    } else
+      
     if (message.content.startsWith(prefix + 'warn')) {
       if(message.member.roles.has(modRole.id)) {
         let reason = args.slice(1).join(' ');
