@@ -59,7 +59,7 @@ client.on('message', async message => {
     
     if (!message.content.startsWith(prefix)) return;
     
-    if (message.content.startsWith(prefix + 'promote')) {
+    /* if (message.content === `${prefix}promote`)) {
        if(message.member.roles.has(memberRole.id)) {
          let user = message.mentions.users.first();
 
@@ -74,19 +74,17 @@ client.on('message', async message => {
           //.then(message => message.edit('I have given that user the needed roles for Admins! :ok_hand:'))
          client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Verified** to **Member**]`)
        } else {
-         return;
+         message.channel.send('You do not have the permission to use that command! (remove admin)')
         // client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`admin\` command in <#${message.channel.id}>!`)
        }
-      
-      if(message.member.roles.has(premiumRole.id)) {
-        let user = message.mentions.users.first();
-        if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
-        message.guild.member(user).removeRole(memberRole.id)
-        message.guild.member(user).addRole(premiumRole.id)
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Member** to **Premium**]`)
-      } else {
-        return;
-      }
+    } else
+   
+    if (message.content.startsWith(prefix + 'promote')) {
+       if(message.member.roles.has(memberRole.id)) {
+         let user = message.mentions.users.first();
+
+         if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
+
       
       if(message.member.roles.has(supportRole.id)) {
         let user = message.mentions.users.first();
@@ -96,7 +94,7 @@ client.on('message', async message => {
         message.guild.member(user).addRole(supportRole.id)
         client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Premium** to **Support Team**]`)
       } else {
-        return;
+        message.channel.send('You do not have the permission to use that command!')
       }
     } else
 
@@ -115,7 +113,7 @@ client.on('message', async message => {
         message.channel.send('You do not have the permission to use that command! (remove admin)')
         client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`remove admin\` command in <#${message.channel.id}>!`)
       }
-    } else
+    } else */
       
     if (message.content.startsWith(prefix + 'warn')) {
       if(message.member.roles.has(modRole.id)) {
@@ -128,7 +126,7 @@ client.on('message', async message => {
         .addField(':warning: __User Warned__', `${message.author} **Warned** ${user} for \`${reason}\`!`)
         .setFooter(`${message.createdAt}`)
 
-        let embedwarn = new Discord.RichEmbed()
+        let embedwarn = new Discord.RichEmbed ()
         .setTitle('')
         .setColor('PURPLE')
         .addField('Action:', 'Warning')
@@ -216,7 +214,7 @@ client.on('message', async message => {
         message.channel.send('You do not have the permission to use that command!')
         client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`unmute\` command in <#${message.channel.id}>!`)
       }
-    } else
+    } else 
 
     if (message.content.startsWith(prefix + 'kick')) {
       if(message.member.roles.has(modRole.id)) {
@@ -407,7 +405,7 @@ client.on('message', async message => {
       }
     } else
     
-    if (message.content === '--hierarchy') {
+    if (message.content === `${prefix}hierarch`) {
       message.channel.send(`__**Hierarchy**__\n• Administrator\n• Developer\n• Support\n• Premium\n• Member\n• Verified`)
     } else
     
@@ -483,11 +481,11 @@ client.on('message', async message => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
     if (!message.content.startsWith(pref)) return;
-    if (!message.content.startsWith('--verify')) return;
+    if (!message.content.startsWith(`${prefix}verify`)) return;
     if (!message.channel === '437757021953982485') return;
     if (!message.channel === '441663623216103426') return;
   
-    if (message.content === '--verify OpenSource is not responsible') {
+    if (message.content === `${prefix}verify OpenSource is not responsible`) {
       message.delete(500); 
       // message.channel.send('it hpned');
       client.channels.get('437738261150957579').send(`${message.author} just verified! Please welcome them with a warm hacking hug.`)
@@ -498,10 +496,10 @@ client.on('message', async message => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
     if (!message.content.startsWith(pref)) return;
-    if (!message.content.startsWith('--verify')) return;
+    if (!message.content.startsWith(`${prefix}verify`)) return;
     if (!message.channel === '437757021953982485') return;
     if (!message.channel === '441663623216103426') return;
-    if (message.content === '--verify OpenSource is not responsible') return;
+    if (message.content === `${prefix}verify OpenSource is not responsible') return;
     if (message.content.length === prefix.length) return;
     message.content = message.content.substr(prefix.length);
     let args = message.content.split(' ');
