@@ -10,7 +10,7 @@ client.login(process.env.BOT_TOKEN);
 var prefix = "--"
 var pref = "--"
 var modprefix = "~~"
-var botversion = '0.2.1'
+var botversion = '0.3.2'
 
 // Channels
 //var rs1 = '413096711423131648' // WierdBot Discord  Channel: greets
@@ -59,7 +59,7 @@ client.on('message', async message => {
     
     if (!message.content.startsWith(prefix)) return;
     
-    /* if (message.content === `${prefix}promote`)) {
+    if (message.content === `${prefix}promote`) {
        if(message.member.roles.has(memberRole.id)) {
          let user = message.mentions.users.first();
 
@@ -74,28 +74,37 @@ client.on('message', async message => {
           //.then(message => message.edit('I have given that user the needed roles for Admins! :ok_hand:'))
          client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Verified** to **Member**]`)
        } else {
-         message.channel.send('You do not have the permission to use that command! (remove admin)')
+       //  message.channel.send('You do not have the permission to use that command! (remove admin)')
+       //  message.channel.send('You do not have the permission to use that command! (remove admin)')
+        // message.channel.send('You do not have the permission to use that command! (remove admin)')
+       //  message.channel.send('You do not have the permission to use that command! (remove admin)')
         // client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`admin\` command in <#${message.channel.id}>!`)
        }
     } else
    
-    if (message.content.startsWith(prefix + 'promote')) {
-       if(message.member.roles.has(memberRole.id)) {
+    if (message.content === `${prefix}promote p`) {
+       if(message.member.roles.has(premiumRole.id)) {
+         if(!message.guild.member(user).has(memberRole.id)) return message.channel.send('That user must have the Member role first!');
          let user = message.mentions.users.first();
-
          if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
-
+         message.guild.member(user).removeRole(memberRole.id)
+         message.guild.member(user).addRole(premiumRole.id)
+         client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Member** to **Premium**]`)
+       } else {
+         message.channel.send('You do not have the permission to use that command!')
+       }
+    } else
       
-      if(message.member.roles.has(supportRole.id)) {
-        let user = message.mentions.users.first();
-        if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
-        message.guild.member(user).removeRole(premiumRole.id)
-        message.guild.member(user).removeRole(memberRole.id)
-        message.guild.member(user).addRole(supportRole.id)
-        client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Premium** to **Support Team**]`)
-      } else {
-        message.channel.send('You do not have the permission to use that command!')
-      }
+    if (message.content === `${prefix}promote s`) {
+       if(message.member.roles.has(supportRole.id)) {
+         if(!message.guild.member(user).has(premiumRole.id)) return message.channel.send('That user must have the premium role first!');
+         let user = message.mentions.users.first();
+         message.guild.member(user).removeRole(premiumRole.id)
+         message.guild.member(user).addRole(supportRole.id)
+         client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Premium** to **Support Team**]`)
+       } else {
+         message.channel.send('You do not have the permission to use that command!')
+       }
     } else
 
     if (message.content.startsWith(prefix + 'remove admin')) {
@@ -113,7 +122,7 @@ client.on('message', async message => {
         message.channel.send('You do not have the permission to use that command! (remove admin)')
         client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`remove admin\` command in <#${message.channel.id}>!`)
       }
-    } else */
+    } else 
       
     if (message.content.startsWith(prefix + 'warn')) {
       if(message.member.roles.has(modRole.id)) {
