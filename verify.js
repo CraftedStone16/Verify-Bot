@@ -405,8 +405,24 @@ client.on('message', async message => {
       }
     } else
     
-    if (message.content === `${prefix}hierarch`) {
-      message.channel.send(`__**Hierarchy**__\n• Administrator\n• Developer\n• Support\n• Premium\n• Member\n• Verified`)
+    if (message.content === `${prefix}hierarchy`) {
+      message.channel.send(`__**Hierarchy**__
+   • Administrator
+   • Developer
+   • Support
+   • Premium
+   • Member
+   • Verified`)
+    } else
+    
+    if (message.content === `${prefix}ranks`) {
+      message.channel.send(`__**Hierarchy**__
+   • Administrator
+   • Developer
+   • Support
+   • Premium
+   • Member
+   • Verified`)
     } else
     
     if (message.content.startsWith(prefix + 'sinfo')) {
