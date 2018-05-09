@@ -97,7 +97,7 @@ client.on('message', async message => {
       
     if (message.content.startsWith(prefix + 'promote s')) {
        if(message.member.roles.has(supportRole.id)) {
-         let user = message.mentions.users.();
+         let user = message.mentions.users.first();
         // if(!message.guild.member(user).has(premiumRole.id)) return message.channel.send('That user must have the Premium role first!');
          message.guild.member(user).removeRole(premiumRole.id)
          message.guild.member(user).addRole(supportRole.id)
