@@ -434,8 +434,8 @@ client.on('message', async message => {
     • Servers    :: ${client.guilds.size.toLocaleString()}
     • Channels   :: ${client.channels.size.toLocaleString()}
     • Discord.js :: v${version}
-    • Node       :: ${process.version}`, {code: "asciidoc"}
-    • Verify Bot :: ${botversion});
+    • Node       :: ${process.version} 
+    • Verify Bot :: ${botversion}`, {code: "asciidoc"});
     } else
       
     if (message.content.startsWith(prefix + 'uptime')) {
