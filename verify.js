@@ -82,7 +82,7 @@ client.on('message', async message => {
        }
     } else
    
-    if (message.content === `${prefix}promote p`) {
+    if (message.content.startsWith(prefix + 'promote p')) {
        if(message.member.roles.has(premiumRole.id)) {
          let user = message.mentions.users.second();
          //if(!message.guild.member(user).has(memberRole.id)) return message.channel.send('That user must have the Member role first!');
@@ -95,7 +95,7 @@ client.on('message', async message => {
        }
     } else
       
-    if (message.content === `${prefix}promote s`) {
+    if (message.content.startsWith(prefix + 'promote s')) {
        if(message.member.roles.has(supportRole.id)) {
          let user = message.mentions.users.second();
         // if(!message.guild.member(user).has(premiumRole.id)) return message.channel.send('That user must have the Premium role first!');
