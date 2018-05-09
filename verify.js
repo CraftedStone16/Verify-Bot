@@ -95,7 +95,7 @@ client.on('message', async message => {
        }
     } else
       
-    if (message.content.startsWith(prefix + 'promote s')) {
+    /* if (message.content.startsWith(prefix + 'promote s')) {
        if(message.member.roles.has(supportRole.id)) {
          let user = message.mentions.users.first();
          if(!message.guild.member(user).has(premiumRole.id)) return message.channel.send('That user must have the Premium role first!');
@@ -105,7 +105,7 @@ client.on('message', async message => {
        } else {
          message.channel.send('You do not have the permission to use that command!')
        }
-    } else
+    } else 
 
     if (message.content.startsWith(prefix + 'remove admin')) {
       if(message.member.roles.has(fsbmRole.id)) {
@@ -122,7 +122,7 @@ client.on('message', async message => {
         message.channel.send('You do not have the permission to use that command! (remove admin)')
         client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`remove admin\` command in <#${message.channel.id}>!`)
       }
-    } else 
+    } else */ 
       
     if (message.content.startsWith(prefix + 'warn')) {
       if(message.member.roles.has(modRole.id)) {
