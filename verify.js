@@ -522,7 +522,7 @@ client.on('message', async message => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
     if (!message.content.startsWith(pref)) return;
-    if (!message.content.startsWith(`${prefix}verify`)) return;
+    if (!message.content.startsWith(`${prefix}verify`)) return message.delete(2000);
     if (!message.channel === '437757021953982485') return;
     if (!message.channel === '441663623216103426') return;
     if (message.content === `${prefix}verify OpenSource is not responsible`) return;
