@@ -5,6 +5,7 @@ const client = new Discord.Client();
 const chalk = require('chalk');
 const ms = require('ms');
 const moment = require('moment');
+const superagent = require('superagent');
 client.login(process.env.BOT_TOKEN);
 
 var prefix = "--"
@@ -657,7 +658,7 @@ client.on('message', async message => {
     if (!message.content.startsWith(pref)) return; //message.delete(2000);
     if (!message.channel === '437757021953982485') return;
     if (!message.channel === '441663623216103426') return;
-    // if (!message.content.startsWith(`${prefix}verify`));//.then(message => message.delete(3000)) return;
+    if (!message.content.startsWith(`${prefix}verify`)) return;//.then(message => message.delete(3000)) return;
     if (message.content === `${prefix}verify OpenSource is not responsible`) return;
     if (message.content.length === prefix.length) return;
     message.content = message.content.substr(prefix.length);
