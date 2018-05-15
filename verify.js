@@ -60,7 +60,7 @@ client.on('message', async message => {
     
     if (!message.content.startsWith(prefix)) return;
     
-    if (message.content === `${prefix}promote`) {
+    if (message.content.startsWith(prefix + 'promote')) {
        if(message.member.roles.has(memberRole.id)) {
          let user = message.mentions.users.first();
 
