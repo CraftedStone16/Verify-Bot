@@ -1508,7 +1508,11 @@ client.on('guildMemberAdd', member => {
   .addField('**Created**', `${years} years ${months} months ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds ago`)
 
   guild.channels.get(`${greetings}`).send(`**${member.user}** has joined the server! To gain access to the server you must read the rules and look for the secret phrase and type in <#441663623216103426> the phrase by doing '--verify (phrase here)'`)
-  member.user.send(`Hello ${member.user.username}, Thank you for being part of the Firespread Team! :heart:\n\nIf you do not mind, we would like to ask you a couple favors.\nFirst thing is that we would really appreciate it if you would read our <#392050292574781440> and when you have finished reading our rules we would like for you to check out the <#392050457230573571> and make sure that your question is or isnt there, if its not there then you can request support in <#392044096279281674> besure to tell them what your having your issue on!\n\nIf you have managed to read all of this then you are very wonderful. :heart:`)
+  member.user.send('You need this picture in order to verify!', {
+       files: [
+           "./captcha.png"
+       ]
+  })
   // guild.channels.get(`${pbotlogs}`).send(`${prefix}new ${member.user}`);
   // member.user.send(`Hello ${member.user.username}, Thank you for being part of the Firespread Team! :heart:\n\nIf you do not mind, we would like to ask you a couple favors.\nFirst thing is that we would really appreciate it if you would read our <#392050292574781440> and when you have finished reading our rules we would like for you to check out the <#392050457230573571> and make sure that your question is or isnt there, if its not there then you can request support in <#392044096279281674> besure to tell them what your having your issue on!\n\nIf you have managed to read all of this then you are very wonderful. :heart:`)
   guild.channels.get(`${logs}`).send(joinlog)
