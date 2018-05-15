@@ -635,6 +635,14 @@ client.on('message', async message => {
       .setImage(body.file);
       message.channel.send(catembed)
     }
+  
+    if (message.content === `${prefix}image`) {
+      message.channel.send({
+          files: [
+              "./captcha.png"
+          ]
+      })
+    }
 });
 
 client.on('message', async message => {
