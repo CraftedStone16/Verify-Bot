@@ -653,7 +653,7 @@ client.on('message', async message => {
     if (!message.channel === '437757021953982485') return;
     if (!message.channel === '441663623216103426') return;
   
-    if (message.content === `${prefix}verify HNsqjDo`) {
+    if (message.content === `${prefix}verify 22583888`) {
       message.delete(500); 
       // message.channel.send('it hpned');
       client.channels.get('437738261150957579').send(`${message.author} just verified! Please welcome them with a warm hacking hug.`)
@@ -667,16 +667,16 @@ client.on('message', async message => {
     if (!message.channel === '437757021953982485') return;
     if (!message.channel === '441663623216103426') return;
     if (!message.content.startsWith(`${prefix}verify`)) return;//.then(message => message.delete(3000)) return;
-    if (message.content === `${prefix}verify HNsqjDo`) return;
+    if (message.content === `${prefix}verify 22583888`) return;
     if (message.content.length === prefix.length) return;
     message.content = message.content.substr(prefix.length);
     let args = message.content.split(' ');
     let cmd = args;
     
     // if (message.content != '--') return;
-    if (cmd != 'verify HNsqjDo') {
+    if (cmd != 'verify 22583888') {
       message.delete(500)
-      return message.channel.send(`Sorry ${message.author}, You have provided an incorrect/invalid phrase! The correct phrase is found in the rules.`).then(message => message.delete(30000));
+      return message.channel.send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`).then(message => message.delete(30000));
     }
 });
 
@@ -1508,9 +1508,9 @@ client.on('guildMemberAdd', member => {
   .addField('**Created**', `${years} years ${months} months ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds ago`)
 
   guild.channels.get(`${greetings}`).send(`**${member.user}** has joined the server! To gain access to the server you must enter the captcha sent to your direct messages in <#441663623216103426> by doing '\`--verify (captcha code)\`'`)
-  member.user.send('You need this picture in order to verify and gain access to the server! The code is case sensitive!', {
+  member.user.send('You need this picture in order to verify and gain access to the server!', {
        files: [
-           "./captcha.png"
+           "./captcha1.png"
        ]
   })
   // guild.channels.get(`${pbotlogs}`).send(`${prefix}new ${member.user}`);
