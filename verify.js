@@ -60,6 +60,31 @@ client.on('message', async message => {
     
     if (!message.content.startsWith(prefix)) return;
     
+    if (message.content.startsWith(prefix + 'promote s')) {
+       if(message.member.roles.has(supportRole.id)) {
+         let user = message.mentions.users.first();
+         if(!message.guild.member(user).has(premiumRole.id)) return message.channel.send('That user must have the Premium role first!');
+         message.guild.member(user).removeRole(premiumRole.id)
+         message.guild.member(user).addRole(supportRole.id)
+         client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Premium** to **Support Team**]`)
+       } else {
+         message.channel.send('You do not have the permission to use that command!')
+       }
+    } else
+  
+    if (message.content.startsWith(prefix + 'promote p')) {
+       if(message.member.roles.has(premiumRole.id)) {
+         let user = message.mentions.users.first();
+         if(!message.guild.member(user).has(memberRole.id)) return message.channel.send('That user must have the Member role first!');
+         if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
+         message.guild.member(user).removeRole(memberRole.id)
+         message.guild.member(user).addRole(premiumRole.id)
+         client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Member** to **Premium**]`)
+       } else {
+         message.channel.send('You do not have the permission to use that command!')
+       }
+    } else
+   
     if (message.content.startsWith(prefix + 'promote')) {
        if(message.member.roles.has(memberRole.id)) {
          let user = message.mentions.users.first();
@@ -81,34 +106,9 @@ client.on('message', async message => {
        //  message.channel.send('You do not have the permission to use that command! (remove admin)')
         // client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`admin\` command in <#${message.channel.id}>!`)
        }
-    } else
-   
-    if (message.content.startsWith(prefix + 'promote p')) {
-       if(message.member.roles.has(premiumRole.id)) {
-         let user = message.mentions.users.first();
-         if(!message.guild.member(user).has(memberRole.id)) return message.channel.send('That user must have the Member role first!');
-         if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
-         message.guild.member(user).removeRole(memberRole.id)
-         message.guild.member(user).addRole(premiumRole.id)
-         client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Member** to **Premium**]`)
-       } else {
-         message.channel.send('You do not have the permission to use that command!')
-       }
-    } else
-      
-    /* if (message.content.startsWith(prefix + 'promote s')) {
-       if(message.member.roles.has(supportRole.id)) {
-         let user = message.mentions.users.first();
-         if(!message.guild.member(user).has(premiumRole.id)) return message.channel.send('That user must have the Premium role first!');
-         message.guild.member(user).removeRole(premiumRole.id)
-         message.guild.member(user).addRole(supportRole.id)
-         client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Premium** to **Support Team**]`)
-       } else {
-         message.channel.send('You do not have the permission to use that command!')
-       }
     } else 
 
-    if (message.content.startsWith(prefix + 'remove admin')) {
+    /*if (message.content.startsWith(prefix + 'remove admin')) {
       if(message.member.roles.has(fsbmRole.id)) {
         let user = message.mentions.users.first();
 
