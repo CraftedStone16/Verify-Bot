@@ -77,7 +77,7 @@ client.on('message', async message => {
          let user = message.mentions.users.first();
          if(!message.guild.member(user).roles.has(memberRole.id)) return message.channel.send('That user must have the Member role first!');
          if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
-         // if(!message.guild.member(user).removeRole(memberRole.id)) return message.channel.send('That user must have the member role!');
+         message.guild.member(user).removeRole(memberRole.id) // return message.channel.send('That user must have the member role!');
          message.guild.member(user).addRole(premiumRole.id)
          client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Member** to **Premium**]`)
          return;
