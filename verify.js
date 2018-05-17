@@ -80,6 +80,7 @@ client.on('message', async message => {
          if(!message.guild.member(user).removeRole(memberRole.id)) return message.channel.send('That user must have the member role!');
          message.guild.member(user).addRole(premiumRole.id)
          client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Member** to **Premium**]`)
+         return;
        } else {
          message.channel.send('You do not have the permission to use that command!')
        }
