@@ -420,7 +420,9 @@ client.on('message', async message => {
       message.channel.send(`__**Hierarchy**__
    • Administrator
    • Developer
-   • Support
+   • Moderator
+   • Cracker
+   • Mom
    • Premium
    • Member
    • Verified`)
@@ -430,7 +432,9 @@ client.on('message', async message => {
       message.channel.send(`__**Hierarchy**__
    • Administrator
    • Developer
-   • Support
+   • Moderator
+   • Cracker
+   • Mom
    • Premium
    • Member
    • Verified`)
