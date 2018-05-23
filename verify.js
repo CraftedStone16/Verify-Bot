@@ -196,7 +196,7 @@ client.on('message', async message => {
 
     if (message.content.startsWith(prefix + 'unmute')) {
       if(message.member.roles.has(modRole.id)) {
-        message.delete(3000)
+        message.delete(1500)
         let user = message.mentions.users.first();
         let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
 
@@ -219,7 +219,7 @@ client.on('message', async message => {
           message.guild.member(user).addRole(verified.id)
           message.guild.member(user).removeRole(muteRole.id).then(() => {
             client.channels.get(`${punishments}`).send(embedunmute)
-            message.channel.send('That user has successfully been unmuted! :ok_hand:').then(message => message.delete(5000));
+            message.channel.send('That user has successfully been unmuted! :ok_hand:').then(message => message.delete(1500));
           client.channels.get(`${logs}`).send(unmutelog)
           });
         } else if (message.guild.member(user).roles.has(verified.id)) {
