@@ -169,6 +169,7 @@ client.on('message', async message => {
 
         let embedmute = new Discord.RichEmbed()
         .setTitle('')
+        .setThumbnail(`${user.displayAvatarURL}`)
         .setColor('GREEN')
         .addField('Action:', 'Mute')
         .addField('User:', `${user.tag}`)
@@ -205,6 +206,7 @@ client.on('message', async message => {
 
         let embedunmute = new Discord.RichEmbed()
         .setTitle('')
+        .setThumbnail(`${user.displayAvatarURL}`)
         .setColor('GREEN')
         .addField('Action:', 'Un-Mute')
         .addField('User:', `${user.tag}`)
@@ -245,6 +247,7 @@ client.on('message', async message => {
 
         let embedkick = new Discord.RichEmbed()
         .setTitle('')
+        .setThumbnail(`${user.displayAvatarURL}`)
         .setColor('BLUE')
         .addField('Action:', 'Kick')
         .addField('User:', `${user.tag}`)
@@ -275,6 +278,7 @@ client.on('message', async message => {
 
         let embedban = new Discord.RichEmbed()
         .setTitle('')
+        .setThumbnail(`${user.displayAvatarURL}`)
         .setColor('RED')
         .addField('Action:', 'Ban')
         .addField('User:', `${user.tag}`)
@@ -302,6 +306,7 @@ client.on('message', async message => {
 
         let embedunban = new Discord.RichEmbed()
         .setTitle('')
+        .setThumbnail(`${user.displayAvatarURL}`)
         .setColor('RED')
         .addField('Action:', 'Un-Ban')
         .addField('User:', `<@${user}>`)
