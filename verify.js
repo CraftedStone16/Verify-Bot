@@ -20,6 +20,7 @@ var punishments = '442594775368073216' // punishments channel
 var bc = '441663623216103426' // Bot-Commands channel
 //var pbotlogs = '415280410495287316' // bot logs/cmds channel
 var logs = '437757021953982485' // logging channel
+var pollchannel = '448893894768197632`
 
 // Bot Code 
 client.on('ready', () => {
