@@ -449,7 +449,7 @@ client.on('message', async message => {
     if (message.content.startsWith(prefix + 'sinfo')) {
       let serverembed = new Discord.RichEmbed()
       .setDescription("__**Server Information**__\n\u200b")
-      .setThumbnail(`${message.guild.icon}`)
+      .setThumbnail(`${message.guild.iconURL}`)
       .setColor('RANDOM')
       .addField('Server Name', `${message.guild.name}\n`)
       .addField('Server ID', `${message.guild.id}\n`)
