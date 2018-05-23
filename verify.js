@@ -655,6 +655,20 @@ client.on('message', async message => {
               "./captcha.png"
           ]
       })
+    } else
+   
+    if (message.content.startsWith(prefix + 'poll ys')) {
+      let pollname = message.content.split(' |').slice(1);
+
+      let poll = new Discord.RichEmbed ()
+      .setTitle('')
+      .setColor('RANDOM')
+      .addField('New Poll!', `${pollname}\n\nTo vote just simply react with 'Y'for Yes or 'N' for No!`).then(function (message) {
+                    message.react("🇾")
+                    message.react("🇳")
+                  })
+
+      client.channels.get(`${pollchannel}`).send(`@everyone\n${poll}`)
     }
 });
 
