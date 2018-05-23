@@ -1487,12 +1487,12 @@ client.on('messageDelete', message => {
 
 client.on('guildBanAdd', (guild, user) => {
   // let guild = member.guild;
-  guild.channels.get(`${greetings}`).send(`**${user.tag}** Was just banned from **OpenSource's Hacking Arena**`);
+  guild.channels.get(`${greetings}`).send(`**${user.tag}** Was just banned from **${user.guild.name}**`);
 });
 
 client.on('guildBanRemove', (guild, user) => {
   // let guild = member.guild;
-  guild.channels.get(`${greetings}`).send(`**${user.tag}** Was just unbanned from **OpenSource's Hacking Arena**`);
+  guild.channels.get(`${greetings}`).send(`**${user.tag}** Was just unbanned from **${user.guild.name}**`);
 });
 
 client.on('guildMemberAdd', member => {
