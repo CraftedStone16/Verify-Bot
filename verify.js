@@ -20,7 +20,7 @@ var punishments = '442594775368073216' // punishments channel
 var bc = '441663623216103426' // Bot-Commands channel
 //var pbotlogs = '415280410495287316' // bot logs/cmds channel
 var logs = '437757021953982485' // logging channel
-var pollchannel = '448893894768197632`
+var pollchannel = '448893894768197632' // Polls Channel
 
 // Bot Code 
 client.on('ready', () => {
@@ -660,6 +660,7 @@ client.on('message', async message => {
    
     if (message.content.startsWith(prefix + 'poll ys')) {
       let pollname = message.content.split(' |').slice(1);
+      if (pollname.length < 1) return message.channel.send('You must provide a Poll Name!');
 
       let poll = new Discord.RichEmbed ()
       .setTitle('')
