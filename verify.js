@@ -658,19 +658,19 @@ client.on('message', async message => {
       })
     } else
    
-    if (message.content.startsWith(prefix + 'poll ys')) {
-      let pollname = message.content.split(' |').slice(1);
+    if (message.content.startsWith(prefix + 'poll')) {
+      let pollname = message.content.split(' ').slice(1);
       if (pollname.length < 1) return message.channel.send('You must provide a Poll Name!');
 
       let poll = new Discord.RichEmbed ()
       .setTitle('')
       .setColor('RANDOM')
-      .addField('New Poll!', `${pollname}\n\nTo vote just simply react with 'Y'for Yes or 'N' for No!`).then(function (message) {
+      .addField('New Poll!', `${pollname}\n\nTo vote just simply react with 'Y'for Yes or 'N' for No!`)
+
+      client.channels.get(`${pollchannel}`).send(`@everyone\n${poll}`).then(function (message) {
                     message.react("🇾")
                     message.react("🇳")
                   })
-
-      client.channels.get(`${pollchannel}`).send(`@everyone\n${poll}`)
     }
 });
 
