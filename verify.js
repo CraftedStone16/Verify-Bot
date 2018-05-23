@@ -667,8 +667,8 @@ client.on('message', async message => {
       .setColor('RANDOM')
       .addField('New Poll!', `${pollname}\n\nTo vote just simply react with 'Y'for Yes or 'N' for No!`)
       
-      client.channels.get(`${pollchannel}`).send('@everyone')
-      client.channels.get(`${pollchannel}`).send(poll).then(function (message) {
+      // client.channels.get(`${pollchannel}`).send('@everyone')
+      client.channels.get(`${pollchannel}`).send('@everyone'{poll}).then(function (message) {
                     message.react("🇾")
                     message.react("🇳")
                   })
