@@ -662,7 +662,7 @@ client.on('message', async message => {
       let pollname = message.content.split(' ').slice(1);
       if (pollname.length < 1) return message.channel.send('You must provide a Poll Name!');
 
-      let poll = new Discord.RichEmbed ()
+      let poll = new Discord.RichEmbed()
       .setTitle('')
       .setColor('RANDOM')
       .addField('New Poll!', `${pollname}\n\nTo vote just simply react with 'Y'for Yes or 'N' for No!`)
