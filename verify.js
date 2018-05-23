@@ -27,7 +27,7 @@ client.on('ready', () => {
   console.log(`Bot Prefix: "${prefix}"`);
   console.log('All commands Loaded!');
   console.log(chalk.bgWhite.black('Your bot is now online (Verify Bot)'));
-  // client.channels.get('421362442191241236').send('Im here after restarting');
+  client.channels.get('448873575747944448').send('Im here after restarting');
 //   client.channels.get('419040375961812992').send('Hello Firespread Members :wave:')
 //   client.channels.get('419040375961812992').send('[I was turned on or I was restarted]')
 });
