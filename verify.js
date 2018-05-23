@@ -139,7 +139,7 @@ client.on('message', async message => {
 
         let embedwarn = new Discord.RichEmbed ()
         .setTitle('')
-        .setThumbnail(`${member.user.displayAvatarURL}`)
+        .setThumbnail(`${user.displayAvatarURL}`)
         .setColor('PURPLE')
         .addField('Action:', 'Warning')
         .addField('User:', `${user.tag}`)
