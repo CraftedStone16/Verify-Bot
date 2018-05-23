@@ -673,6 +673,7 @@ client.on('message', async message => {
                      message.react("🇾")
                       message.react("🇳")
                    })
+       message.channel.send(`Your poll has been created! :ok_hand:`)
       } else {
         message.channel.send('You do not have the permission to use that command!')
       }
