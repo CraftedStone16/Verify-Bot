@@ -659,19 +659,23 @@ client.on('message', async message => {
     } else
    
     if (message.content.startsWith(prefix + 'poll')) {
-      let pollname = args.join(' ')
-      if (pollname.length < 1) return message.channel.send('You must provide a Poll Name!');
+      if(message.member.roles.has(modRole.id)) {
+        let pollname = args.join(' ')
+        if (pollname.length < 1) return message.channel.send('You must provide a Poll Name!');
 
-      let poll = new Discord.RichEmbed()
-      .setTitle('')
-      .setColor('RANDOM')
-      .addField(`${pollname}`, `\nTo vote just simply react with 'Y'for Yes or 'N' for No!`)
+       let poll = new Discord.RichEmbed()
+       .setTitle('')
+       .setColor('RANDOM')
+       .addField(`${pollname}`, `\nTo vote just simply react with 'Y'for Yes or 'N' for No!`)
       
-      client.channels.get(`${pollchannel}`).send('@everyone New Poll!')
-      client.channels.get(`${pollchannel}`).send(poll).then(function (message) {
-                    message.react("🇾")
-                    message.react("🇳")
-                  })
+       client.channels.get(`${pollchannel}`).send('@everyone New Poll!')
+       client.channels.get(`${pollchannel}`).send(poll).then(function (message) {
+                     message.react("🇾")
+                      message.react("🇳")
+                   })
+      } else {
+        message.channel.send('You do not have the permission to use that command!')
+      }
     }
 });
 
