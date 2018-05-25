@@ -462,7 +462,7 @@ client.on('message', async message => {
       message.channel.send(`Pong! \`${Date.now() - message.createdTimestamp} ms\``);
     } else
 
-    if (message.content.startsWith(modprefix + 'purge')) {
+    if (message.content.startsWith(prefix + 'purge')) {
       if(message.member.roles.has(modRole.id)) {
         let messagecount = parseInt(result);
         message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
@@ -473,7 +473,7 @@ client.on('message', async message => {
       }
     } else
 
-    if (message.content.startsWith(modprefix + 'prune')) {
+    if (message.content.startsWith(prefix + 'prune')) {
       if(message.member.roles.has(modRole.id)) {
         let messagecount = parseInt(result);
         message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
