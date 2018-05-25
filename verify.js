@@ -520,8 +520,8 @@ client.on('message', async message => {
 // Help Commands
 client.on('message', async message => {
     if (message.author.bot) return;
-    let botowner = message.guild.roles.get(`${bo);
-    let modRole = message.guild.roles.get(`${mod);
+    let botowner = message.guild.roles.get(`${bo}`);
+    let modRole = message.guild.roles.get(`${mod}`);
     let supportRole = message.guild.roles.get(`${support}`);
     let premiumRole = message.guild.roles.get(`${premium}`);
     let memberRole = message.guild.roles.get(`${member}`);
