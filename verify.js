@@ -198,7 +198,7 @@ client.on('message', async message => {
 
     // Punishment Commands
     if (message.content.startsWith(modprefix + 'warn')) {
-      if(message.member.roles.has(modRole)) {
+      if(message.member.roles.has(modRole.id)) {
         let reason = args.slice(1).join(' ');
         let user = message.mentions.users.first();
         if (!message.mentions.users.first()) return message.reply('You must mention someone to warn them.').catch(console.error);
@@ -221,11 +221,12 @@ client.on('message', async message => {
         client.channels.get(`${logs}`).send(warnlog)
       } else {
         message.channel.send('You do not have the permission to use that command!')
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`warn\` command in <#${message.channel.id}>!`)
       }
     } else
 
     if (message.content.startsWith(modprefix + 'mute')) {
-      if(message.member.roles.has(modRole)) {
+      if(message.member.roles.has(modRole.id)) {
         let reason = args.slice(1).join(' ');
         let user = message.mentions.users.first();
         if (!message.mentions.users.first()) return message.reply('You must mention someone to mute them.').catch(console.error);
@@ -247,23 +248,24 @@ client.on('message', async message => {
 
         if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
 
-        if (message.guild.member(user).roles.has(verified)) {
-          message.guild.member(user).removeRole(verified)
-          message.guild.member(user).addRole(muteRole).then(() => {
+        if (message.guild.member(user).roles.has(verified.id)) {
+          message.guild.member(user).removeRole(verified.id)
+          message.guild.member(user).addRole(muteRole.id).then(() => {
             client.channels.get(`${punishments}`).send(embedmute)
             message.channel.send('That user has successfully been muted! :ok_hand:')
             client.channels.get(`${logs}`).send(mutelog)
           });
-        } else if (message.guild.member(user).roles.has(muteRole)) {
+        } else if (message.guild.member(user).roles.has(muteRole.id)) {
           message.channel.send(`That user is already muted! To unmute that user do \`${prefix}unmute\``)
         }
       } else {
         message.channel.send('You do not have the permission to use that command!')
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`mute\` command in <#${message.channel.id}>!`)
       }
     } else
 
     if (message.content.startsWith(modprefix + 'unmute')) {
-      if(message.member.roles.has(modRole)) {
+      if(message.member.roles.has(modRole.id)) {
         message.delete(1500);
         let user = message.mentions.users.first();
 
@@ -282,23 +284,24 @@ client.on('message', async message => {
 
         if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
 
-        if (message.guild.member(user).roles.has(muteRole)) {
-          message.guild.member(user).addRole(verified)
-          message.guild.member(user).removeRole(muteRole).then(() => {
+        if (message.guild.member(user).roles.has(muteRole.id)) {
+          message.guild.member(user).addRole(verified.id)
+          message.guild.member(user).removeRole(muteRole.id).then(() => {
             client.channels.get(`${punishments}`).send(embedunmute)
             message.channel.send('That user has successfully been unmuted! :ok_hand:').then(message => message.delete(1500));
             client.channels.get(`${logs}`).send(unmutelog)
           });
-        } else if (message.guild.member(user).roles.has(verified)) {
+        } else if (message.guild.member(user).roles.has(verified.id)) {
           message.channel.send(`That user is not muted! To mute that user do \`${prefix}mute\``)
         }
       } else {
         message.channel.send('You do not have the permission to use that command!')
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`unmute\` command in <#${message.channel.id}>!`)
       }
     } else
 
     if (message.content.startsWith(modprefix + 'kick')) {
-      if(message.member.roles.has(modRole)) {
+      if(message.member.roles.has(modRole.id)) {
         let reason = args.slice(1).join(' ');
         let user = message.mentions.users.first();
         if (!message.mentions.users.first()) return message.reply('You must mention someone to kick them.').catch(console.error);
@@ -324,11 +327,12 @@ client.on('message', async message => {
         client.channels.get(`${logs}`).send(kicklog)
       } else {
         message.channel.send('You do not have the permission to use that command!')
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`kick\` command in <#${message.channel.id}>!`)
       }
     } else
 
     if (message.content.startsWith(modprefix + 'ban')) {
-      if(message.member.roles.has(modRole)) {
+      if(message.member.roles.has(modRole.id)) {
         let reason = args.slice(1).join(' ');
         let user = message.mentions.users.first();
         if (!message.mentions.users.first()) return message.reply('You must mention someone to ban them.').catch(console.error);
@@ -355,11 +359,12 @@ client.on('message', async message => {
         client.channels.get(`${logs}`).send(banlog)
       } else {
         message.channel.send('You do not have the permission to use that command!')
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`ban\` command in <#${message.channel.id}>!`)
       }
     } else
 
     if (message.content.startsWith(modprefix + 'unban')) {
-      if(message.member.roles.has(modRole)) {
+      if(message.member.roles.has(modRole.id)) {
         let user = args[0];
         if (!user) return message.reply('You must supply a user ID.').catch(console.error);
         message.guild.unban(user);
@@ -380,17 +385,18 @@ client.on('message', async message => {
         client.channels.get(`${logs}`).send(unbanlog)
       } else {
         message.channel.send('You do not have the permission to use that command!')
+        client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`unban\` command in <#${message.channel.id}>!`)
       }
     } else
 
     // Super Useful Commands
     if (message.content.startsWith(prefix + 'promote')) {
-       if(message.member.roles.has(memberRole)) {
+       if(message.member.roles.has(memberRole.id)) {
          let user = message.mentions.users.first();
 
          if(!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('I do not have the correct permissions.').catch(console.error);
 
-         message.guild.member(user).addRole(memberRole)
+         message.guild.member(user).addRole(memberRole.id)
          client.channels.get(`${logs}`).send(`**${message.author.username}** just promoted **${user}**! [**Verified** to **Member**]`)
        } else {
          message.channel.send('You must have the Member role in order to promote that user to Member!')
@@ -398,7 +404,7 @@ client.on('message', async message => {
     } else
 
     if (message.content.startsWith(modprefix + 'poll')) {
-      if(message.member.roles.has(modRole)) {
+      if(message.member.roles.has(modRole.id)) {
         let pollname = args.join(' ')
         if (pollname.length < 1) return message.channel.send('You must provide a Poll Name!');
 
@@ -463,8 +469,8 @@ client.on('message', async message => {
       message.channel.send(`Pong! \`${Date.now() - message.createdTimestamp} ms\``);
     } else
 
-    if (message.content.startsWith(prefix + 'purge')) {
-      if(message.member.roles.has(modRole)) {
+    if (message.content.startsWith(modprefix + 'purge')) {
+      if(message.member.roles.has(modRole.id)) {
         let messagecount = parseInt(result);
         message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
         message.channel.send(`Deleted **${messagecount}** messages.`).then(message => message.delete(2500));
@@ -474,8 +480,8 @@ client.on('message', async message => {
       }
     } else
 
-    if (message.content.startsWith(prefix + 'prune')) {
-      if(message.member.roles.has(modRole)) {
+    if (message.content.startsWith(modprefix + 'prune')) {
+      if(message.member.roles.has(modRole.id)) {
         let messagecount = parseInt(result);
         message.channel.fetchMessages({limit: messagecount}).then(messages => message.channel.bulkDelete(messages));
         message.channel.send(`Deleted **${messagecount}** messages.`).then(message => message.delete(2500));
@@ -486,7 +492,7 @@ client.on('message', async message => {
     } else
 
     if (message.content.startsWith(modprefix + 'sg')) {
-      if(message.member.roles.has(botowner)) {
+      if(message.member.roles.has(botowner.id)) {
         client.user.setActivity(result);
         let embed2 = new Discord.RichEmbed()
         .setColor('RANDOM')
@@ -499,7 +505,7 @@ client.on('message', async message => {
     } else
 
     if (message.content.startsWith(modprefix + 'setgame')) {
-      if(message.member.roles.has(botowner)) {
+      if(message.member.roles.has(botowner.id)) {
         client.user.setActivity(result);
         let embed2 = new Discord.RichEmbed()
         .setColor('RANDOM')
