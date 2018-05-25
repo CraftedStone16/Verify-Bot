@@ -431,7 +431,7 @@ client.on('message', async message => {
      .setAuthor(`${message.author.tag}`, message.author.displayAvatarURL)
      .addField('Ticket Report:', `${targs}`)
      .setColor("FFFFFF");
-     message.channel.send({utembed})
+     message.channel.send(utembed)
      message.author.send(`Hey, ${message.author}, we got your report! We will reply soon as possible!`);
      
      let atembed = new Discord.RichEmbed()
@@ -439,7 +439,7 @@ client.on('message', async message => {
      .addField('Full Report:', `${targs}`)
      .setFooter(`${moment().format('MMMM Do YYYY, h:mm:ss a')}`)
      .setColor(16711728);
-     client.channels.get(`${sticket}`).send({atembed})
+     client.channels.get(`${sticket}`).send(atembed)
     } else
 
     // Fun Commands
