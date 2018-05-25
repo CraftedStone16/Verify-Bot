@@ -10,16 +10,16 @@ client.login(process.env.BOT_TOKEN);
 
 
 // <-=-> Channel Variables
-var v-h = '441663623216103426' // Verify Here Channel
+var vh = '441663623216103426' // Verify Here Channel
 var greetings = '441663494216220682' // Greetings channel
 var rulesc = '437744189455728640' // Rules Channel
 var announcements = '437740937448390657' // Announcements Channel
-var bot-things = '448871211389288449' // Bot Things Channel
+var botthings = '448871211389288449' // Bot Things Channel
 var rankinfo = '445362784071450630' // Hierarchy Info Channel
 var pollchannel = '448893894768197632' // Polls Channel
 var punishments = '442594775368073216' // Punishments channel
 var chat = '437738261150957579' // Main Server Chat
-var staff-td = '444604798189305856' // Staff To Do Channel
+var stafftd = '444604798189305856' // Staff To Do Channel
 var staffchannel = '441718552865800192'// Main Staff Talk Channels
 var logs = '437757021953982485' // logging channel
 var configc = '437756098573893642' // Config Channel
@@ -755,7 +755,7 @@ client.on('message', async message => {
     if (message.channel.type === "dm") return;
     if (!message.content.startsWith(prefix)) return;
     if (!message.content.startsWith(`${prefix}verify`)) return;
-    if (!message.channel === `${v-h}`) return;
+    if (!message.channel === `${vh}`) return;
     if (!message.channel === `${staffchannel}`) return;
     if (!message.channel === `${logs}`) return;
     if (!message.channel === `${configc}`) return;
@@ -772,7 +772,7 @@ client.on('message', async message => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
     if (!message.content.startsWith(prefix)) return; //message.delete(2000);
-    if (!message.channel === `${v-h}`) return;
+    if (!message.channel === `${vh}`) return;
     if (!message.channel === `${staffchannel}`) return;
     if (!message.channel === `${logs}`) return;
     if (!message.channel === `${configc}`) return;
@@ -798,9 +798,9 @@ client.on('messageUpdate', (oldMessage, newMessage) => {
   if (newMessage.author.bot) return;
   if (newMessage.channel.id === `${rulesc}`) return;
   if (newMessage.channel.id === `${announcements}`) return;
-  if (newMessage.channel.id === `${bot-things}`) return;
+  if (newMessage.channel.id === `${botthings}`) return;
   if (newMessage.channel.id === `${rankinfo}`) return;
-  if (newMessage.channel.id === `${staff-td}`) return;
+  if (newMessage.channel.id === `${stafftd}`) return;
   let msgedited = new Discord.RichEmbed()
   .setThumbnail(`${newMessage.author.displayAvatarURL}`)
   .setTitle(':writing_hand: **Message Edited**')
@@ -816,7 +816,7 @@ client.on('messageUpdate', (oldMessage, newMessage) => {
 // Message Deleted
 client.on('messageDelete', message => {
   if (message.author.bot) return;
-  if (message.channel === '441663623216103426') return;
+  if (message.channel === `${vh}`) return;
   let msgdelete = new Discord.RichEmbed()
   .setThumbnail(`${message.author.displayAvatarURL}`)
   .setTitle(':wastebasket: **Message Deleted**')
