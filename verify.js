@@ -1466,6 +1466,8 @@ client.on('messageUpdate', (oldMessage, newMessage) => {
   if (oldMessage.editedTimestamp === newMessage.editedTimestamp) return;
   if (oldMessage.author.bot) return;
   if (newMessage.author.bot) return;
+  if (newMessage.channel.id === '437740937448390657') return; // Announcements Channel
+  if (newMessage.channel.id === '448871211389288449') return; // Bot Things Channel
   let msgedited = new Discord.RichEmbed()
   .setThumbnail(`${newMessage.author.displayAvatarURL}`)
   .setTitle(':writing_hand: **Message Edited**')
