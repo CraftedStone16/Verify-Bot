@@ -25,13 +25,13 @@ var logs = '437757021953982485' // logging channel
 var configc = '437756098573893642' // Config Channel
 
 // <-=-> Role Variables
-var botowner = client.guilds.get('437703989765603358').roles.find('name', 'Bot Owner');
-var modRole = client.guilds.get('437703989765603358').roles.find('name', 'Moderator');
-var supportRole = client.guilds.get('437703989765603358').roles.find('name', 'Support Team');
-var premiumRole = client.guilds.get('437703989765603358').roles.find('name', 'Premium');
-var memberRole = client.guilds.get('437703989765603358').roles.find('name', 'Member');
-var verified = client.guilds.get('437703989765603358').roles.find('name', 'Verified');
-var muteRole = client.guilds.get('437703989765603358').roles.find('name', 'Muted');
+var botowner = client.guilds.roles.find('name', 'Bot Owner');
+var modRole = client.guilds.roles.find('name', 'Moderator');
+var supportRole = client.guilds.roles.find('name', 'Support Team');
+var premiumRole = client.guilds.roles.find('name', 'Premium');
+var memberRole = client.guilds.roles.find('name', 'Member');
+var verified = client.guilds.roles.find('name', 'Verified');
+var muteRole = client.guilds.roles.find('name', 'Muted');
 
 var prefix = "--"
 var p = "--"
