@@ -420,10 +420,11 @@ client.on('message', async message => {
     } else
       
     if (message.content.startsWith(prefix + 'ticket')) {
-      if (!message.channel === `${roler}`) return message.delete();
-      if (!message.channel === `${tsupport}`) return message.delete();
-      let targs = message.content.split(' ').slice(1).join(' ');
+      if (!message.channel === `437739768223367168`) return;
+      if (!message.channel === `437739674577010688`) return;
+      if (message.channel === '437738261150957579') return;
       message.delete();
+      let targs = message.content.split(' ').slice(1).join(' ');
       if (targs.length < 1) return message.channel.send('You must provide a report for the ticket!');
 
      let utembed = new Discord.RichEmbed()
