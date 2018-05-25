@@ -20,8 +20,11 @@ var rankinfo = '445362784071450630' // Hierarchy Info Channel
 var pollchannel = '448893894768197632' // Polls Channel
 var punishments = '442594775368073216' // Punishments channel
 var chat = '437738261150957579' // Main Server Chat
+var roler = '437739768223367168' // Role Request Channel
+var tsupport = '437739674577010688' // Support Channel
 var stafftd = '444604798189305856' // Staff To Do Channel
 var staffchannel = '441718552865800192'// Main Staff Talk Channels
+var sticket = '449654475481808896' // Support Ticket Channel
 var logs = '437757021953982485' // logging channel
 var configc = '437756098573893642' // Config Channel
 
@@ -416,41 +419,29 @@ client.on('message', async message => {
       }
     } else
       
-    if (message.content.startsWith(modprefix + 'ticket')) {
+    if (message.content.startsWith(prefix + 'ticket')) {
       let targs = message.content.split(' ').slice(1).join(' ');
       message.delete();
-      if (cooldown.has(message.author.id && message.guild.id)) {
-          return message.reply('**[COOLDOWN]** Sending tickets has **1 Minute** Cooldown!');
-      }
+      if (!message.channel === `${roler}`) return;
+      if (!message.channel === `${tsupport}`) return;
       if (targs.length < 1) {
-          return message.reply(`You must give me something to report first ${message.author}`);
+        return message.channel.send('You must provide a report for the ticket!');
       }
-    
-      cooldown.add(message.author.id && message.guild.id);
-      setTimeout(() => {
-          cooldown.delete(message.author.id && message.guild.id);
-      }, 10000);
-      
-      let guild = message.guild;
-      const cnl = client.channels.get('449653574939705405');
-      
-      message.reply(`Hey, ${message.author}, we got your report! We will reply soon as possible! Here is the full ticket:`);
-      
-      const embed2 = new Discord.RichEmbed()
-      .setAuthor(`Ticket from ${message.author.tag}`, message.author.displayAvatarURL)
-      .addField('Ticket:', `**Tickets's Author:** ${message.author.tag}\n**Server:** ${guild.name}\n**Full ticket:** ${args}`)
-      .setThumbnail(message.author.displayAvatarURL)
-      .setFooter(`${moment().format('MMMM Do YYYY, h:mm:ss a')}`)
-      .setColor(16711728);
-      message.channel.send({embed: embed2});
-      
-      const embed = new Discord.RichEmbed()
-      .setAuthor(`Ticket from ${message.author.tag}`, message.author.displayAvatarURL)
-      .addField('Ticket:', `**Report's Author:** ${message.author.tag}\n**Server:** ${guild.name}\n**Full report:** ${args}`)
-      .setThumbnail(message.author.displayAvatarURL)
-      .setColor("#ffd700");
-      
-      cnl.send({embed})
+
+     let utembed = new Discord.RichEmbed()
+     .setAuthor(`${message.author.tag}`, message.author.displayAvatarURL)
+     .addField('Ticket Report:', `${targs}`)
+     .setColor("FFFFFF");
+
+     let atembed = new Discord.RichEmbed()
+     .setAuthor(`Ticket from ${message.author.tag}`, message.author.displayAvatarURL)
+     .addField('Full Report:', `${targs}`)
+     .setFooter(`${moment().format('MMMM Do YYYY, h:mm:ss a')}`)
+     .setColor(16711728);
+
+     message.author.send(`Hey, ${message.author}, we got your report! We will reply soon as possible! Here is the full ticket:`);
+     message.channel.send({utembed})
+     client.channels.get(`${sticket}`).send({atembed})
     } else
 
     // Fun Commands
