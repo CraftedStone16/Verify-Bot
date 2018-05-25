@@ -25,13 +25,13 @@ var logs = '437757021953982485' // logging channel
 var configc = '437756098573893642' // Config Channel
 
 // <-=-> Role Variables
-var botowner = client.roles.find('name', 'Bot Owner');
-var modRole = client.roles.find('name', 'Moderator');
-var supportRole = client.roles.find('name', 'Support Team');
-var premiumRole = client.roles.find('name', 'Premium');
-var memberRole = client.guild.roles.find('name', 'Member');
-var verified = client.guild.roles.find('name', 'Verified');
-var muteRole = client.guild.roles.find('name', 'Muted');
+var botowner = client.guilds.find('name', 'Bot Owner');
+var modRole = client.guilds.find('name', 'Moderator');
+var supportRole = client.guilds.find('name', 'Support Team');
+var premiumRole = client.guilds.find('name', 'Premium');
+var memberRole = client.guilds.find('name', 'Member');
+var verified = client.guilds.find('name', 'Verified');
+var muteRole = client.guilds.find('name', 'Muted');
 
 var prefix = "--"
 var p = "--"
