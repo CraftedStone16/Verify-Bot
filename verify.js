@@ -432,7 +432,7 @@ client.on('message', async message => {
       }, 10000);
       
       let guild = message.guild;
-      const cnl = client.channels.get('421569960029192202');
+      const cnl = client.channels.get('449653574939705405');
       
       message.reply(`Hey, ${message.author}, we got your report! We will reply soon as possible! Here is the full ticket:`);
       
