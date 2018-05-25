@@ -24,15 +24,6 @@ var staffchannel = '441718552865800192'// Main Staff Talk Channels
 var logs = '437757021953982485' // logging channel
 var configc = '437756098573893642' // Config Channel
 
-// <-=-> Role Variables
-var bo = "442610811169538060"
-var mod = "437754287691399179"
-var support = "437757606690291722"
-var premium = "438180630828941324"
-var member = "441704122291453956"
-var verify = "437738324183089154"
-var mute = "442606115067396097"
-
 var prefix = "--"
 var p = "--"
 var modprefix = "~~"
@@ -64,13 +55,13 @@ client.on('error', e => {
 client.on('message', async message => {
     let args = message.content.split(' ').slice(1);
     var result = args.join(' ');
-    let botowner = message.guild.roles.get(`${bo}`);
-    let modRole = message.guild.roles.get(`${mod}`);
-    let supportRole = message.guild.roles.get(`${support}`);
-    let premiumRole = message.guild.roles.get(`${premium}`);
-    let memberRole = message.guild.roles.get(`${member}`);
-    let verified = message.guild.roles.get(`${verify}`);
-    let muteRole = message.guild.roles.get(`${mute}`);
+    let botowner = message.guild.roles.find('name', 'Bot Owner');
+    let modRole = message.guild.roles.find('name', 'Moderator');
+    let supportRole = message.guild.roles.find('name', 'Support Team');
+    let premiumRole = message.guild.roles.find('name', 'Premium');
+    let memberRole = message.guild.roles.find('name', 'Member');
+    let verified = message.guild.roles.find('name', 'Verified');
+    let muteRole = message.guild.roles.find('name', 'Muted');
     if (!message.content.startsWith(prefix)) return;
 
     // Info Commands
@@ -526,13 +517,13 @@ client.on('message', async message => {
 // Help Commands
 client.on('message', async message => {
     if (message.author.bot) return;
-    let botowner = message.guild.roles.get(`${bo}`);
-    let modRole = message.guild.roles.get(`${mod}`);
-    let supportRole = message.guild.roles.get(`${support}`);
-    let premiumRole = message.guild.roles.get(`${premium}`);
-    let memberRole = message.guild.roles.get(`${member}`);
-    let verified = message.guild.roles.get(`${verify}`);
-    let muteRole = message.guild.roles.get(`${mute}`);
+    let botowner = message.guild.roles.find('name', 'Bot Owner');
+    let modRole = message.guild.roles.find('name', 'Moderator');
+    let supportRole = message.guild.roles.find('name', 'Support Team');
+    let premiumRole = message.guild.roles.find('name', 'Premium');
+    let memberRole = message.guild.roles.find('name', 'Member');
+    let verified = message.guild.roles.find('name', 'Verified');
+    let muteRole = message.guild.roles.find('name', 'Muted');
   
     if (message.content.startsWith(prefix + 'help help')) {
       message.channel.send(`\`\`\`Displays the commands list\n\nUsage: ${prefix}help     Alias; ${prefix}h\`\`\``)
