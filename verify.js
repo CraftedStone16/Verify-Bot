@@ -24,9 +24,9 @@ var staffchannel = '441718552865800192'// Main Staff Talk Channels
 var logs = '437757021953982485' // logging channel
 var configc = '437756098573893642' // Config Channel
 
-var prefix = "--"
-var p = "--"
-var modprefix = "~~"
+var prefix = "-"
+var p = "-"
+var modprefix = "--"
 var botversion = '2.2.0'
 
 client.on('ready', () => {
