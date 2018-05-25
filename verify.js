@@ -6,6 +6,7 @@ const chalk = require('chalk');
 const ms = require('ms');
 const moment = require('moment');
 const superagent = require('superagent');
+const cooldown = new Set();
 client.login(process.env.BOT_TOKEN);
 
 
@@ -413,6 +414,43 @@ client.on('message', async message => {
       } else {
         message.channel.send('You do not have the permission to use that command!')
       }
+    } else
+      
+    if (message.content.startsWith(modprefix + 'ticket')) {
+      let targs = message.content.split(' ').slice(1).join(' ');
+      message.delete();
+      if (cooldown.has(message.author.id && message.guild.id)) {
+          return message.reply('**[COOLDOWN]** Sending tickets has **1 Minute** Cooldown!');
+      }
+      if (targs.length < 1) {
+          return message.reply(`You must give me something to report first ${message.author}`);
+      }
+    
+      cooldown.add(message.author.id && message.guild.id);
+      setTimeout(() => {
+          cooldown.delete(message.author.id && message.guild.id);
+      }, 10000);
+      
+      let guild = message.guild;
+      const cnl = client.channels.get('421569960029192202');
+      
+      message.reply(`Hey, ${message.author}, we got your report! We will reply soon as possible! Here is the full ticket:`);
+      
+      const embed2 = new Discord.RichEmbed()
+      .setAuthor(`Ticket from ${message.author.tag}`, message.author.displayAvatarURL)
+      .addField('Ticket:', `**Tickets's Author:** ${message.author.tag}\n**Server:** ${guild.name}\n**Full ticket:** ${args}`)
+      .setThumbnail(message.author.displayAvatarURL)
+      .setFooter(`${moment().format('MMMM Do YYYY, h:mm:ss a')}`)
+      .setColor(16711728);
+      message.channel.send({embed: embed2});
+      
+      const embed = new Discord.RichEmbed()
+      .setAuthor(`Ticket from ${message.author.tag}`, message.author.displayAvatarURL)
+      .addField('Ticket:', `**Report's Author:** ${message.author.tag}\n**Server:** ${guild.name}\n**Full report:** ${args}`)
+      .setThumbnail(message.author.displayAvatarURL)
+      .setColor("#ffd700");
+      
+      cnl.send({embed})
     } else
 
     // Fun Commands
