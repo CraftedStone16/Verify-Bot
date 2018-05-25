@@ -131,7 +131,7 @@ client.on('message', async message => {
       if(message.member.roles.has(modRole.id)) {
         let reason = args.slice(1).join('| ');
         let user = message.mentions.users.first();
-        if (reason.length < 1) return message.reply('You must provide a reason for the warning');
+        if (reason.length < 2) return message.reply('You must provide a reason for the warning');
         if (message.mentions.users < 1) return message.reply('You must mention someone to warn them.').catch(console.error);
         let warnlog = new Discord.RichEmbed()
         .setColor('PURPLE')
