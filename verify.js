@@ -420,9 +420,9 @@ client.on('message', async message => {
     } else
       
     if (message.content.startsWith(prefix + 'ticket')) {
-      if (!message.channel === `437739768223367168`) return;
-      if (!message.channel === `437739674577010688`) return;
-      if (message.channel === '437738261150957579') return;
+      if (!message.channel.id === `437739768223367168`) return;
+      if (!message.channel.id === `437739674577010688`) return;
+      if (message.channel.id === '437738261150957579') return;
       message.delete();
       let targs = message.content.split(' ').slice(1).join(' ');
       if (targs.length < 1) return message.channel.send('You must provide a report for the ticket!');
@@ -431,15 +431,14 @@ client.on('message', async message => {
      .setAuthor(`${message.author.tag}`, message.author.displayAvatarURL)
      .addField('Ticket Report:', `${targs}`)
      .setColor("FFFFFF");
-
+     message.channel.send({utembed})
+     message.author.send(`Hey, ${message.author}, we got your report! We will reply soon as possible!`);
+     
      let atembed = new Discord.RichEmbed()
      .setAuthor(`Ticket from ${message.author.tag}`, message.author.displayAvatarURL)
      .addField('Full Report:', `${targs}`)
      .setFooter(`${moment().format('MMMM Do YYYY, h:mm:ss a')}`)
      .setColor(16711728);
-
-     message.author.send(`Hey, ${message.author}, we got your report! We will reply soon as possible! Here is the full ticket:`);
-     message.channel.send({utembed})
      client.channels.get(`${sticket}`).send({atembed})
     } else
 
