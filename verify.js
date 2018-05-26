@@ -7,6 +7,8 @@ const ms = require('ms');
 const moment = require('moment');
 const superagent = require('superagent');
 const cooldown = new Set();
+const fetch = require("snekfetch");
+const hexcols = [`#4285F4, #2D313C, #ffd700`];
 client.login(process.env.BOT_TOKEN);
 
 
@@ -481,6 +483,34 @@ client.on('message', async message => {
       let question = args.slice(0).join(" ");
       message.channel.send(`${replies[result]}`)
     } else
+      
+    if (message.content.startsWith(prefix +'urban')) {
+      if(!args) {
+        return reply("Give me something to search idiot!");
+      }
+      fecth.get("http://api.urbandictionary.com/v0/define?term" + args).then(res => {
+        if(res.body.list[0] === undefined) {
+         return msg.channel.send("Could not find that term");
+        }
+        const definition = res.body.list[0].defenition;
+        const word = res.body.list[0].word;
+        const Author = res.body.list[0].author;
+        const exam = res.body.list[0].example;
+        const thump = res.body.list[0].thumbs_up;
+        const thumbdown = res.body.list[0].thumbs_down;
+        const embed = new Discord.RichEmbed()
+        .setColor(hexcols[~~(Math.random() * hexcols.length)])
+        .setTitle(`Info on the word: **${word}**`)
+        .addField("Definition:", `${defenition}`)
+        .addField("Author:", `${author}`)
+        .addField("Example:", ~`${exam}`)
+        .addField("Ratings", `:thumbsup: ${thumbup} :thumbsdown: ${thumbdown}`, true)
+        .setThumbnail("Here is your search results", msg.author.displayAvatarURL);
+        msg.channel.send({embed}).catch(e => logger.error(e));
+      }).catch(err => {
+        if(err) {}
+      });
+    };
 
     // Other Commands
     if (message.content.startsWith(prefix + 'ping')) {
