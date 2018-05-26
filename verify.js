@@ -485,18 +485,16 @@ client.on('message', async message => {
     } else
       
     if (message.content.startsWith(prefix +'urban')) {
-      if(!args) {
-        return reply("Give me something to search idiot!");
-      }
+      if (!args) return message.channel.send("Give me something to search idiot!");
       fetch.get("http://api.urbandictionary.com/v0/define?term" + args).then(res => {
-        if(res.body.list[0] === undefined) {
-         return msg.channel.send("Could not find that term");
+        if (res.body.list[0] === undefined) {
+         return message.channel.send("Could not find that term");
         }
         const definition = res.body.list[0].defenition;
         const word = res.body.list[0].word;
         const Author = res.body.list[0].author;
         const exam = res.body.list[0].example;
-        const thumpup = res.body.list[0].thumbs_up;
+        const thumbup = res.body.list[0].thumbs_up;
         const thumbdown = res.body.list[0].thumbs_down;
         const embed = new Discord.RichEmbed()
         .setColor(hexcols[~~(Math.random() * hexcols.length)])
