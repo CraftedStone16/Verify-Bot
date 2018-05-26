@@ -403,6 +403,7 @@ client.on('message', async message => {
     if (message.content.startsWith(modprefix + 'poll')) {
       if(message.member.roles.has(modRole.id)) {
         let pollname = args.join(' ')
+        message.delete();
         if (pollname.length < 1) return message.channel.send('You must provide a Poll Name!');
 
        let poll = new Discord.RichEmbed()
@@ -415,7 +416,7 @@ client.on('message', async message => {
                      message.react("🇾")
                       message.react("🇳")
                    })
-       message.channel.send(`Your poll has been created! :ok_hand:`)
+       message.channel.send(`Your poll has been created! :ok_hand:`).then(message => message.delete(5000));
       } else {
         message.channel.send('You do not have the permission to use that command!')
       }
@@ -772,7 +773,7 @@ client.on('message', async message => {
       .addField('**Main**', `${p}help                        Alias; ${p}h\n${p}userinfo\n${p}ping\n${p}sinfo\n${p}fuckyou                 Alias; ${p}fy\n${p}hierarchy                 Alias; ${p}ranks\n${p}stats\n${p}uptime\n${p}8ball\n${p}cat\n${p}dog\n\u200b`)
       .addField('**Permissioned**', `${p}promote (Member Role Needed)\n${p}poll\n${p}setgame                Alias; ${p}sg\n${p}purge                     Alias; ${p}prune\n${p}warn\n${p}kick\n${p}mute\n${p}unmute\n${p}ban\n${p}unban\n\u200b`)
       .addField('\u200b', `You can do \`${p}help <command>\` or \`${p}h <command>\` for more information for that command.`)
-      message.channel.send(helpembed1);
+      message.channel.send(helpembed1).then(message => message.delete(60000));
     } else
 
     if (message.content === `${prefix}h`) {
@@ -782,7 +783,7 @@ client.on('message', async message => {
       .addField('**Main**', `${p}help                        Alias; ${p}h\n${p}userinfo\n${p}ping\n${p}sinfo\n${p}fuckyou                 Alias; ${p}fy\n${p}hierarchy                 Alias; ${p}ranks\n${p}stats\n${p}uptime\n${p}8ball\n${p}cat\n${p}dog\n\u200b`)
       .addField('**Permissioned**', `${p}promote (Member Role Needed)\n${p}poll\n${p}setgame                Alias; ${p}sg\n${p}purge                     Alias; ${p}prune\n${p}warn\n${p}kick\n${p}mute\n${p}unmute\n${p}ban\n${p}unban\n\u200b`)
       .addField('\u200b', `You can do \`${p}help <command>\` or \`${p}h <command>\` for more information for that command.`)
-      message.channel.send(helpembed2);
+      message.channel.send(helpembed2).then(message => message.delete(60000));
     }
 });
 
