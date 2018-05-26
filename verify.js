@@ -487,7 +487,7 @@ client.on('message', async message => {
     if (message.content.startsWith(prefix +'urban')) {
       let uargs = message.content.split(' ').slice(1).join(' ');
       if (!uargs) return message.channel.send("Give me something to search idiot!");
-      fetch.get("http://api.urbandictionary.com/v0/define?term" + uargs).then(res => {
+      fetch.get("https://api.urbandictionary.com/define.php?term=" + uargs).then(res => {
         if (res.body.list[0] === undefined) {
          return message.channel.send("Could not find that term");
         }
