@@ -697,11 +697,11 @@ client.on('message', async message => {
     } else
 
     if (message.content.startsWith(prefix + 'help 8ball')) {
-      message.channel.send(`\`\`\`It's majestic that I can't even tell you the secrets\n\nUsage: ${prefix}8ball <question>\n<> = Required  [] = Optional\`\`\``)
+      message.channel.send(`\`\`\`It's so majestic that I can't even tell you the secrets\n\nUsage: ${prefix}8ball <question>\n<> = Required  [] = Optional\`\`\``)
     } else
 
     if (message.content.startsWith(prefix + 'h 8ball')) {
-      message.channel.send(`\`\`\`It's majestic that I can't even tell you the secrets\n\nUsage: ${prefix}8ball <question>\n<> = Required  [] = Optional\`\`\``)
+      message.channel.send(`\`\`\`It's so majestic that I can't even tell you the secrets\n\nUsage: ${prefix}8ball <question>\n<> = Required  [] = Optional\`\`\``)
     } else
 
     if (message.content.startsWith(prefix + 'help cat')) {
