@@ -484,33 +484,6 @@ client.on('message', async message => {
       message.channel.send(`${replies[result]}`)
     } else
       
-    if (message.content.startsWith(prefix +'urban')) {
-      let uargs = message.content.split(' ').slice(1).join(' ');
-      if (!uargs) return message.channel.send("Give me something to search idiot!");
-      fetch.get("https://api.urbandictionary.com/define.php?term=" + uargs).then(res => {
-        if (res.body.list[0] === undefined) {
-         return message.channel.send("Could not find that term");
-        }
-        const definition = res.body.list[0].defenition;
-        const word = res.body.list[0].word;
-        const Author = res.body.list[0].author;
-        const exam = res.body.list[0].example;
-        const thumbup = res.body.list[0].thumbs_up;
-        const thumbdown = res.body.list[0].thumbs_down;
-        const embed = new Discord.RichEmbed()
-        .setColor(hexcols[~~(Math.random() * hexcols.length)])
-        .setTitle(`Info on the word: **${word}**`)
-        .addField("Definition:", `${definition}`)
-        .addField("Author:", `${Author}`)
-        .addField("Example:", ~`${exam}`)
-        .addField("Ratings", `:thumbsup: ${thumbup} :thumbsdown: ${thumbdown}`, true)
-        .setThumbnail("Here is your search results", message.author.displayAvatarURL);
-        message.channel.send({embed}).catch(e => logger.error(e));
-      }).catch(err => {
-        if(err) {}
-      });
-    };
-
     // Other Commands
     if (message.content.startsWith(prefix + 'ping')) {
       message.channel.send(`Pong! \`${Date.now() - message.createdTimestamp} ms\``);
