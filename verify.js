@@ -887,7 +887,7 @@ client.on('guildMemberAdd', member => {
   .addField('**Joined**', `${member.joinedAt}`, true)
   .addField('**Created**', `${years} years ${months} months ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds ago`)
 
-  guild.channels.get(`${greetings}`).send(`**${member.user}** has joined the server! To gain access to the server you must enter the captcha sent to your direct messages in <#441663623216103426> by doing '\`--verify (captcha code)\`'`)
+  guild.channels.get(`${greetings}`).send(`**${member.user}** has joined the server! To gain access to the server you must enter the captcha sent to your direct messages in <#441663623216103426> by doing '\`=verify (captcha code)\`'`)
   member.user.send('You need this picture in order to verify and gain access to the server!', {
        files: [
            "./captcha1.png"
