@@ -57,19 +57,21 @@ client.on('error', e => {
 });
 
 
-/* <=-=> Bot Code Starts Here <=-=> */
+// Bot Shut Down Command //
 client.on('message', async message => {
     let botowner = message.guild.roles.find('name', 'Bot Owner');
   
     if (message.content.startsWith(modprefix + 'quit')) {
       if(message.member.roles.has(botowner.id)) {
-        message.channel.send('Shutting Down now...').then(process.exit());
+         message.channel.send('Shutting Down now...').then(process > process.exit())
       } else {
         message.channel.send('You do not have the permission to use that command!')
       }
     } else
 });
 
+  
+/* <=-=> Bot Code Starts Here <=-=> */
 client.on('message', async message => {
     let args = message.content.split(' ').slice(1);
     var result = args.join(' ');
