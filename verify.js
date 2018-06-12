@@ -63,8 +63,7 @@ client.on('message', async message => {
   
     if (message.content.startsWith(modprefix + 'quit')) {
       if(message.member.roles.has(botowner.id)) {
-        message.channel.send('Shutting Down now...')
-         process.exit();
+        message.channel.send('Shutting Down now...').then(process > process.exit())
       } else {
         message.channel.send('You do not have the permission to use that command!')
       }
