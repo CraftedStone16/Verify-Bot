@@ -62,7 +62,7 @@ client.on('message', async message => {
     let botowner = message.guild.roles.find('name', 'Bot Owner');
   
     if (message.content.startsWith(modprefix + 'quit')) {
-      if(message.member.roles.has(bot0wner.id)) {
+      if(message.member.roles.has(botowner.id)) {
         message.channel.send('Shutting Down now...')
          process.exit();
       } else {
