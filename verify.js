@@ -59,6 +59,18 @@ client.on('error', e => {
 
 /* <=-=> Bot Code Starts Here <=-=> */
 client.on('message', async message => {
+    let botowner = message.guild.roles.find('name', 'Bot Owner');
+    
+    if(message.member.roles.has(botOwner.id)) {
+       message.channel.send('Shutting Down now...')
+      process.exit();
+      } else {
+        message.channel.send('You do not have the permission to use that command!')
+      }
+    }
+});
+
+client.on('message', async message => {
     let args = message.content.split(' ').slice(1);
     var result = args.join(' ');
     let botowner = message.guild.roles.find('name', 'Bot Owner');
