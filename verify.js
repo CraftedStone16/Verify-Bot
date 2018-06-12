@@ -63,15 +63,14 @@ client.on('message', async message => {
   
     if (message.content.startsWith(modprefix + 'quit')) {
       if(message.member.roles.has(botowner.id)) {
-         message.channel.send('Shutting Down now...')
+        message.channel.send('Shutting Down now...')
          process.exit();
       } else {
-         message.channel.send('You do not have the permission to use that command!')
+        message.channel.send('You do not have the permission to use that command!')
       }
-    } else
+    }
 });
 
-  
 /* <=-=> Bot Code Starts Here <=-=> */
 client.on('message', async message => {
     let args = message.content.split(' ').slice(1);
