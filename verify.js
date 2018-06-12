@@ -68,6 +68,16 @@ client.on('message', async message => {
       } else {
         message.channel.send('You do not have the permission to use that command!')
       }
+    } else
+  
+    if (message.content.startsWith(modprefix + 'restart')) {
+      if(message.member.roles.has(botowner.id)) {
+        message.channel.send('Restarting...')
+        await process.exit();
+        process.start();
+      } else {
+        message.channel.send('You do not have the permission to use that command!')
+      }
     }
 });
 
