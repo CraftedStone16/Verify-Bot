@@ -61,8 +61,8 @@ client.on('error', e => {
 client.on('message', async message => {
     let botowner = message.guild.roles.find('name', 'Bot Owner');
   
-    if (message.content.startsWith(prefix + 'quit')) {
-      if(message.member.roles.has(botOwner.id)) {
+    if (message.content.startsWith(modprefix + 'quit')) {
+      if(message.member.roles.has(bot0wner.id)) {
         message.channel.send('Shutting Down now...')
          process.exit();
       } else {
