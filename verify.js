@@ -63,23 +63,11 @@ client.on('message', async message => {
   
     if (message.content.startsWith(modprefix + 'quit')) {
       if(message.member.roles.has(botowner.id)) {
-        message.channel.send('Shutting Down now...')
-         process.exit();
+        message.channel.send('Shutting Down now...').then(process.exit());
       } else {
         message.channel.send('You do not have the permission to use that command!')
       }
     } else
-  
-    if (message.content.startsWith(modprefix + 'restart')) {
-      if(message.member.roles.has(botowner.id)) {
-        message.channel.send('Restarting...')
-        await process.exit();
-        process.start();
-        client.channels.get(`${logs}`).send('Restarted!')
-      } else {
-        message.channel.send('You do not have the permission to use that command!')
-      }
-    }
 });
 
 client.on('message', async message => {
