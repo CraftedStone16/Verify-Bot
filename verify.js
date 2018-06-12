@@ -80,7 +80,7 @@ client.on('message', async message => {
       } else {
         message.channel.send('You do not have the permission to use that command!')
       }
-    } else
+    }
 });
 
 /* <=-=> Bot Code Starts Here <=-=> */
