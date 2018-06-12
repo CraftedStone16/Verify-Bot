@@ -60,10 +60,11 @@ client.on('error', e => {
 /* <=-=> Bot Code Starts Here <=-=> */
 client.on('message', async message => {
     let botowner = message.guild.roles.find('name', 'Bot Owner');
-    
-    if(message.member.roles.has(botOwner.id)) {
-       message.channel.send('Shutting Down now...')
-      process.exit();
+  
+    if (message.content.startsWith(prefix + 'quit')) {
+      if(message.member.roles.has(botOwner.id)) {
+        message.channel.send('Shutting Down now...')
+         process.exit();
       } else {
         message.channel.send('You do not have the permission to use that command!')
       }
