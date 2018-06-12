@@ -32,6 +32,7 @@ var configc = '437756098573893642' // Config Channel
 
 var prefix = "="
 var p = "="
+var mp = "=="
 var modprefix = "=="
 var botversion = '2.2.5'
 
@@ -79,6 +80,7 @@ client.on('message', async message => {
       } else {
         message.channel.send('You do not have the permission to use that command!')
       }
+    } else
 });
 
 /* <=-=> Bot Code Starts Here <=-=> */
@@ -795,7 +797,7 @@ client.on('message', async message => {
       .setColor('RANDOM')
       .setTitle('__**Help**__')
       .addField('**Main**', `${p}help                        Alias; ${p}h\n${p}userinfo\n${p}ping\n${p}sinfo\n${p}fuckyou                 Alias; ${p}fy\n${p}hierarchy                 Alias; ${p}ranks\n${p}stats\n${p}uptime\n${p}8ball\n${p}cat\n${p}dog\n\u200b`)
-      .addField('**Permissioned**', `${p}promote (Member Role Needed)\n${p}poll\n${p}setgame                Alias; ${p}sg\n${p}purge                     Alias; ${p}prune\n${p}warn\n${p}kick\n${p}mute\n${p}unmute\n${p}ban\n${p}unban\n\u200b`)
+      .addField('**Permissioned**', `${p}promote (Member Role Needed)\n${mp}poll\n${mp}setgame                Alias; ${mp}sg\n${mp}purge                     Alias; ${mp}prune\n${mp}warn\n${mp}kick\n${mp}mute\n${mp}unmute\n${mp}ban\n${mp}unban\n${mp}quit          Alias${mp}shutdown\n\u200b`)
       .addField('\u200b', `You can do \`${p}help <command>\` or \`${p}h <command>\` for more information for that command.`)
       message.channel.send(helpembed1).then(message => message.delete(60000));
     } else
@@ -805,7 +807,7 @@ client.on('message', async message => {
       .setColor('RANDOM')
       .setTitle('__**Help**__')
       .addField('**Main**', `${p}help                        Alias; ${p}h\n${p}userinfo\n${p}ping\n${p}sinfo\n${p}fuckyou                 Alias; ${p}fy\n${p}hierarchy                 Alias; ${p}ranks\n${p}stats\n${p}uptime\n${p}8ball\n${p}cat\n${p}dog\n\u200b`)
-      .addField('**Permissioned**', `${p}promote (Member Role Needed)\n${p}poll\n${p}setgame                Alias; ${p}sg\n${p}purge                     Alias; ${p}prune\n${p}warn\n${p}kick\n${p}mute\n${p}unmute\n${p}ban\n${p}unban\n\u200b`)
+      .addField('**Permissioned**', `${p}promote (Member Role Needed)\n${mp}poll\n${mp}setgame                Alias; ${mp}sg\n${mp}purge                     Alias; ${mp}prune\n${mp}warn\n${mp}kick\n${mp}mute\n${mp}unmute\n${mp}ban\n${mp}unban\n${mp}quit          Alias${mp}shutdown\n\u200b`)
       .addField('\u200b', `You can do \`${p}help <command>\` or \`${p}h <command>\` for more information for that command.`)
       message.channel.send(helpembed2).then(message => message.delete(60000));
     }
