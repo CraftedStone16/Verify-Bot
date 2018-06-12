@@ -72,9 +72,10 @@ client.on('message', async message => {
   
     if (message.content.startsWith(modprefix + 'restart')) {
       if(message.member.roles.has(botowner.id)) {
-        process.exit();
-        process.start();
         message.channel.send('Restarting...')
+        await process.exit();
+        process.start();
+        client.channels.get(`${logs}`).send('Restarted!')
       } else {
         message.channel.send('You do not have the permission to use that command!')
       }
