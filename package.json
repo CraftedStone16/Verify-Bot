@@ -9,14 +9,14 @@
   "author": "Bot Development Team",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^2.3.2",
+    "chalk": "^2.4.1",
     "discord.js": "^11.3.2",
-    "superagent": "^3.8.2",
+    "superagent": "^3.8.3",
     "ms": "^2.1.1",
-    "moment": "^2.21.0",
-    "snekfetch": "^4.0.0",
-    "node": "^9.8.0",
-    "node-gyp": "^3.6.2"
+    "moment": "^2.22.2",
+    "snekfetch": "^4.0.4",
+    "node": "^9.11.2",
+    "node-gyp": "^3.7.0"
   },
   "devDependencies": {}
 }
