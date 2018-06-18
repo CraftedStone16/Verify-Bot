@@ -34,7 +34,7 @@ var prefix = "="
 var p = "="
 var mp = "=="
 var modprefix = "=="
-var botversion = '2.2.5'
+var botversion = '3.0.3'
 
 client.on('ready', () => {
   console.log(`Bot version: ${botversion}`);
