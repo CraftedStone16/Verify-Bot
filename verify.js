@@ -470,6 +470,16 @@ client.on('message', async message => {
      .setColor(16711728);
      client.channels.get(`${sticket}`).send(atembed)
     } else
+      
+    if (message.content.startsWith(prefix + 'bug')) {
+      let args = message.content.split(' ').slice(1);
+      let bug = args.join(' ')
+      if (bug.length < 1) return message.channel.send('You must provide a message');
+      client.channels.get('415280541760356369').send(`<@&415260857786695711>, **New Bug:**\n\n${bug}`)
+      message.author.send(`You just submitted a bug!\n\n\`${bug}\`\nWe appreciate all bugs that we get!`)
+      message.channel.send(':ok_hand: I have reported your bug.')
+      client.channels.get(`${logs}`).send(`**${message.author.username}** just used the \`bug\` command in <#${message.channel.id}>!`)
+    } else
 
     // Fun Commands
     if (message.content === `${prefix}dog`) {
@@ -569,6 +579,52 @@ client.on('message', async message => {
     }*/
 });
 
+// Self Roles Commands 
+client.on('message', message => {
+    if (message.content.startsWith(prefix + 'roles')) {
+      client.channels.get(`${bc}`).send(`${message.author}\n__**Available Roles/Names:**__\n• Announcements\n• News\n• Bot-Updates\n• Giveaways\n\nUsage: \`${prefix}giveme <Name (listed above)>\` (To get the role) \`${prefix}leave <Name (listed above)>\` (To remove the role\nPLEASE NOTE: You have to type it exactly like it is in the list for it to work!`)
+    } else
+    
+    if (message.content.startsWith(prefix + 'giveme Bot-Updates')) {
+      message.member.addRole('458349140007583765')
+      message.channel.send('Ok! I have given you the "Bot-Updates" role!')
+    } else
+  
+    if (message.content.startsWith(prefix + 'leave Bot-Updates')) {
+      message.member.removeRole('458349140007583765')
+      message.channel.send('Ok! I have removed the "Bot-Updates" role from you!')
+    } else
+
+    if (message.content.startsWith(prefix + 'giveme Announcements')) {
+      message.member.addRole('458349140640792598')
+      message.channel.send('Ok! I have given you the "Announcements" role!')
+    } else
+  
+    if (message.content.startsWith(prefix + 'leave Announcements')) {
+      message.member.removeRole('458349140640792598')
+      message.channel.send('Ok! I have removed the "Announcements" role from you!')
+    } else
+    
+    if (message.content.startsWith(prefix + 'giveme News')) {
+      message.member.addRole('458349141467332608')
+      message.channel.send('Ok! I have given you the "News" role!')
+    } else
+  
+    if (message.content.startsWith(prefix + 'leave News')) {
+      message.member.removeRole('458349141467332608')
+      message.channel.send('Ok! I have removed the "News" role from you!')
+    } else
+  
+    if (message.content.startsWith(prefix + 'giveme Giveaways')) {
+      message.member.addRole('458349417838149633')
+      message.channel.send('Ok! I have given you the "Giveaways" role!')
+    } else
+  
+    if (message.content.startsWith(prefix + 'leave Giveaways')) {
+      message.member.removeRole('458349417838149633')
+      message.channel.send('Ok! I have removed the "Giveaways" role from you!')
+    }
+});
 
 // Help Commands
 client.on('message', async message => {
