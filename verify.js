@@ -582,7 +582,7 @@ client.on('message', async message => {
 // Self Roles Commands 
 client.on('message', message => {
     if (message.content.startsWith(prefix + 'roles')) {
-      message.channel.send(`${message.author}\n__**Available Roles/Names:**__\n• Announcements\n• News\n• Bot-Updates\n• Giveaways\n\nUsage: \`${prefix}giveme <Name (listed above)>\` (To get the role) \`${prefix}leave <Name (listed above)>\` (To remove the role\nPLEASE NOTE: You have to type it exactly like it is in the list for it to work!`)
+      message.channel.send(`__**Available Roles/Names:**__\n• Announcements\n• News\n• Bot-Updates\n• Giveaways\n\nUsage: \`${prefix}giveme <Name (listed above)>\` (To get the role) \`${prefix}leave <Name (listed above)>\` (To remove the role\nPLEASE NOTE: You have to type it exactly like it is in the list for it to work!`)
     } else
     
     if (message.content.startsWith(prefix + 'giveme Bot-Updates')) {
