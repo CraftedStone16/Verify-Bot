@@ -998,7 +998,7 @@ client.on('guildBanRemove', (guild, user) => {
   guild.channels.get(`${greetings}`).send(`**${user.tag}** Was just unbanned from **${guild.name}**`);
 });
 
-
+/*
 // =+-+=   Voice Channel Events   =+-+=
 // Channel Join, Leave, Changed
 client.on('voiceStateUpdate', (oldMember, newMember) => {
@@ -1060,3 +1060,4 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
         // User leaves a voice channel
   }
 });
+*/
