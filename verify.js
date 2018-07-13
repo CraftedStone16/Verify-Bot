@@ -481,6 +481,18 @@ client.on('message', async message => {
     } else
 
     // Fun Commands
+    if (message.content === `${prefix}rando`) {
+      const rando_imgs = [
+      './',
+      ]
+      
+      message.channel.send('Testing Random Image Thingy', {
+       files: [
+           "./captcha1.png"
+       ]
+      })
+    } else
+    
     if (message.content === `${prefix}dog`) {
       let {body} = await superagent
       .get(`https://random.dog/woof.json?filter=png,jpg,jpeg,mp4`);
