@@ -977,10 +977,9 @@ client.on('guildMemberAdd', member => {
   .addField('**Created**', `${years} years ${months} months ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds ago`)
 
   guild.channels.get(`${greetings}`).send(`**${member.user}** has joined the server! To gain access to the server you must enter the captcha sent to your direct messages in <#441663623216103426> by doing '\`=verify (captcha code)\`'`)
+  var rando_imgs = ["./captcha-easy/Easy-captcha1.png", "./captcha-easy/Easy-captcha2.png", "./captcha-easy/Easy-captcha3.png",]
   member.user.send('You need this picture in order to verify and gain access to the server!', {
-       files: [
-           "./captcha1.png"
-       ]
+   files: [rando_imgs[Math.round(Math.random() * (rando_imgs.length - 1))]]
   })
   guild.channels.get(`${logs}`).send(joinlog)
 });
