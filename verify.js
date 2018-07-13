@@ -485,7 +485,7 @@ client.on('message', async message => {
       var rando_imgs = ["./captcha-easy/Easy-captcha1.png", "./captcha-easy/Easy-captcha2.png", "./captcha-easy/Easy-captcha3.png",]
       
       message.channel.send('Testing Random Image Thingy', {
-       files: [rando_imgs[Math.floor(Math.random() * (rando_imgs.length - 1))]]
+       files: [rando_imgs[Math.round(Math.random() * (rando_imgs.length - 1))]]
       })
     } else
     
