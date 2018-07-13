@@ -482,11 +482,7 @@ client.on('message', async message => {
 
     // Fun Commands
     if (message.content === `${prefix}rando`) {
-      const rando_imgs = [
-      './captcha-easy/Easy-captcha1.png',
-      './captcha-easy/Easy-captcha2.png',
-      './captcha-easy/Easy-captcha3.png',
-      ]
+      var rando_imgs = ["./captcha-easy/Easy-captcha1.png", "./captcha-easy/Easy-captcha2.png", "./captcha-easy/Easy-captcha3.png",]
       
       message.channel.send('Testing Random Image Thingy', {
        files: rando_imgs[Math.floor(Math.random() * rando_imgs.length)]
