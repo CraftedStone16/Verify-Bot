@@ -875,7 +875,7 @@ client.on('message', async message => {
       message.channel.send(helpembed2).then(message => message.delete(60000));
     }
 });
-
+/*
 // Verification Succeeded Code 4 
 client.on('message', async message => {
     if (message.author.bot) return;
@@ -997,10 +997,11 @@ client.on('message', async message => {
       message.delete(500)
       return message.channel.send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`).then(message => message.delete(30000));
     }
-});
+}); */
 
 // Verification Succeeded Code 1
 client.on('message', async message => {
+    var c_easy = ["aumso", "dati", "sLs8FLwy",]
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
     if (!message.content.startsWith(prefix)) return;
@@ -1013,15 +1014,17 @@ client.on('message', async message => {
     if (message.content === `${prefix}verify anictiu`) return;
     if (message.content === `${prefix}verify 7JpAL5n`) return;
 
-    if (message.content === `${prefix}verify aumso`) {
+    if (message.content === `${prefix}verify ${c_easy}`) {
       message.delete(500);
       client.channels.get(`${chat}`).send(`${message.author} just verified! Please welcome them with a warm hacking hug.`)
       return message.member.addRole('467428407400202240');
     }
 });
 
+
 // Verification Failed Code 1
 client.on('message', async message => {
+    var c_easy = ["aumso", "dati", "sLs8FLwy",]
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
     if (!message.content.startsWith(prefix)) return; //message.delete(2000);
@@ -1030,7 +1033,7 @@ client.on('message', async message => {
     if (!message.channel === `${logs}`) return;
     if (!message.channel === `${configc}`) return;
     if (!message.content.startsWith(`${prefix}verify`)) return;//.then(message => message.delete(3000)) return;
-    if (message.content === `${prefix}verify aumso`) return;
+    if (message.content === `${prefix}verify ${c_easy}`) return;
     if (message.content.length === prefix.length) return message.channel.send('You must provide numbers/letters of the captcha sent in your DMs').then(message => message.delete(30000));
     if (message.content === `${prefix}verify TIeVnMF`) return;
     if (message.content === `${prefix}verify anictiu`) return;
@@ -1039,12 +1042,13 @@ client.on('message', async message => {
     let args = message.content.split(' ');
     let cmd = args;
 
-    if (cmd != 'verify aumso') {
+    if (cmd != `verify ${c_easy}`) {
       message.delete(500)
       return message.channel.send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`).then(message => message.delete(30000));
     }
 });
 
+/*
 // Verification Succeeded Code 2
 client.on('message', async message => {
     if (message.author.bot) return;
@@ -1136,6 +1140,7 @@ client.on('message', async message => {
       return message.channel.send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`).then(message => message.delete(30000));
     }
 });
+*/
 
 // <+-=-+>   Message Events   <+-=-+>
 // Message Edited
