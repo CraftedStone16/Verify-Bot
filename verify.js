@@ -887,10 +887,10 @@ client.on('message', async message => {
     if (!message.channel === `${logs}`) return;
     if (!message.channel === `${configc}`) return;
 
-    if (message.content === `${prefix}verify 22583888`) {
+    if (message.content === `${prefix}verify aumso`) {
       message.delete(500);
       client.channels.get(`${chat}`).send(`${message.author} just verified! Please welcome them with a warm hacking hug.`)
-      return message.member.addRole('437738324183089154');
+      return message.member.addRole('467428407400202240');
     }
 });
 
@@ -904,13 +904,13 @@ client.on('message', async message => {
     if (!message.channel === `${logs}`) return;
     if (!message.channel === `${configc}`) return;
     if (!message.content.startsWith(`${prefix}verify`)) return;//.then(message => message.delete(3000)) return;
-    if (message.content === `${prefix}verify 22583888`) return;
+    if (message.content === `${prefix}verify aumso`) return;
     if (message.content.length === prefix.length) return;
     message.content = message.content.substr(prefix.length);
     let args = message.content.split(' ');
     let cmd = args;
 
-    if (cmd != 'verify 22583888') {
+    if (cmd != 'verify aumso') {
       message.delete(500)
       return message.channel.send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`).then(message => message.delete(30000));
     }
@@ -927,7 +927,7 @@ client.on('message', async message => {
     if (!message.channel === `${logs}`) return;
     if (!message.channel === `${configc}`) return;
 
-    if (message.content === `${prefix}verify 22583888`) {
+    if (message.content === `${prefix}verify dati`) {
       message.delete(500);
       client.channels.get(`${chat}`).send(`${message.author} just verified! Please welcome them with a warm hacking hug.`)
       return message.member.addRole('437738324183089154');
@@ -944,13 +944,13 @@ client.on('message', async message => {
     if (!message.channel === `${logs}`) return;
     if (!message.channel === `${configc}`) return;
     if (!message.content.startsWith(`${prefix}verify`)) return;//.then(message => message.delete(3000)) return;
-    if (message.content === `${prefix}verify 22583888`) return;
+    if (message.content === `${prefix}verify dati`) return;
     if (message.content.length === prefix.length) return;
     message.content = message.content.substr(prefix.length);
     let args = message.content.split(' ');
     let cmd = args;
 
-    if (cmd != 'verify 22583888') {
+    if (cmd != 'verify dati') {
       message.delete(500)
       return message.channel.send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`).then(message => message.delete(30000));
     }
@@ -967,7 +967,7 @@ client.on('message', async message => {
     if (!message.channel === `${logs}`) return;
     if (!message.channel === `${configc}`) return;
 
-    if (message.content === `${prefix}verify 22583888`) {
+    if (message.content === `${prefix}verify sLs8FLwy`) {
       message.delete(500);
       client.channels.get(`${chat}`).send(`${message.author} just verified! Please welcome them with a warm hacking hug.`)
       return message.member.addRole('437738324183089154');
@@ -984,13 +984,13 @@ client.on('message', async message => {
     if (!message.channel === `${logs}`) return;
     if (!message.channel === `${configc}`) return;
     if (!message.content.startsWith(`${prefix}verify`)) return;//.then(message => message.delete(3000)) return;
-    if (message.content === `${prefix}verify 22583888`) return;
+    if (message.content === `${prefix}verify sLs8FLwy`) return;
     if (message.content.length === prefix.length) return;
     message.content = message.content.substr(prefix.length);
     let args = message.content.split(' ');
     let cmd = args;
 
-    if (cmd != 'verify 22583888') {
+    if (cmd != 'verify sLs8FLwy') {
       message.delete(500)
       return message.channel.send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`).then(message => message.delete(30000));
     }
