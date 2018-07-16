@@ -1014,7 +1014,7 @@ client.on('message', async message => {
     if (message.content === `${prefix}verify anictiu`) return;
     if (message.content === `${prefix}verify 7JpAL5n`) return;
 
-    if (message.content.startsWith(`${prefix}verify ${c_easy}`) {
+    if (message.content.startsWith(`${prefix}verify ${c_easy}`)) {
       message.delete(500);
       client.channels.get(`${chat}`).send(`${message.author} just verified! Please welcome them with a warm hacking hug.`)
       return message.member.addRole('467428407400202240');
