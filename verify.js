@@ -1018,6 +1018,9 @@ client.on('message', async message => {
   
     if(responseObject[message.content]) {
       client.channels.get(`${configc}`).send(responseObject[message.content]);
+      return message.member.addRole('467428407400202240');
+    } else {
+      client.channels.get(`${configc}`).send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`)
     }
     //if (message.content === `${prefix}verify TIeVnMF`) return;
   //  if (message.content === `${prefix}verify anictiu`) return;
@@ -1030,8 +1033,8 @@ client.on('message', async message => {
     }*/
 });
 
-
-/*// Verification Failed Code 1
+/*
+// Verification Failed Code 1
 client.on('message', async message => {
     var c_easy = ["aumso", "dati", "sLs8FLwy",]
     if (message.author.bot) return;
