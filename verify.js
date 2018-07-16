@@ -1001,7 +1001,12 @@ client.on('message', async message => {
 
 // Verification Succeeded Code 1
 client.on('message', async message => {
-    var c_easy = ["aumso", "dati", "sLs8FLwy",]
+   // var c_easy = ["aumso", "dati", "sLs8FLwy",]
+    const responseObject = {
+      "=verify aumso": `${message.author} just verified! Please welcome them with a warm hacking hug.`,
+      "=verify dati": `${message.author} just verified! Please welcome them with a warm hacking hug.`,
+      "=verify sLs8FLwy": `${message.author} just verified! Please welcome them with a warm hacking hug.`
+    };
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
     if (!message.content.startsWith(prefix)) return;
@@ -1010,19 +1015,23 @@ client.on('message', async message => {
     if (!message.channel === `${staffchannel}`) return;
     if (!message.channel === `${logs}`) return;
     if (!message.channel === `${configc}`) return;
-    if (message.content === `${prefix}verify TIeVnMF`) return;
-    if (message.content === `${prefix}verify anictiu`) return;
-    if (message.content === `${prefix}verify 7JpAL5n`) return;
+  
+    if(responseObject[message.content]) {
+      client.channels.get(`${configc}`).send(responseObject[message.content]);
+    }
+    //if (message.content === `${prefix}verify TIeVnMF`) return;
+  //  if (message.content === `${prefix}verify anictiu`) return;
+//    if (message.content === `${prefix}verify 7JpAL5n`) return;
 
-    if (message.content.startsWith(`${prefix}verify ${c_easy}`)) {
+    /*if (message.content.startsWith(`${prefix}verify ${c_easy}`)) {
       message.delete(500);
       client.channels.get(`${chat}`).send(`${message.author} just verified! Please welcome them with a warm hacking hug.`)
       return message.member.addRole('467428407400202240');
-    }
+    }*/
 });
 
 
-// Verification Failed Code 1
+/*// Verification Failed Code 1
 client.on('message', async message => {
     var c_easy = ["aumso", "dati", "sLs8FLwy",]
     if (message.author.bot) return;
@@ -1048,7 +1057,7 @@ client.on('message', async message => {
     }
 });
 
-/*
+
 // Verification Succeeded Code 2
 client.on('message', async message => {
     if (message.author.bot) return;
