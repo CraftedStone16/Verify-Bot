@@ -1003,9 +1003,9 @@ client.on('message', async message => {
 client.on('message', async message => {
    // var c_easy = ["aumso", "dati", "sLs8FLwy",]
     const responseObject = {
-      "=verify aumso": `${message.author} just verified! Please welcome them with a warm hacking hug.`,
-      "=verify dati": `${message.author} just verified! Please welcome them with a warm hacking hug.`,
-      "=verify sLs8FLwy": `${message.author} just verified! Please welcome them with a warm hacking hug.`
+      "`${prefix} aumso`": `${message.author} just verified! Please welcome them with a warm hacking hug.`,
+      "`${prefix} dati`": `${message.author} just verified! Please welcome them with a warm hacking hug.`,
+      "`${prefix} sLs8FLwy`": `${message.author} just verified! Please welcome them with a warm hacking hug.`
     };
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
@@ -1022,15 +1022,6 @@ client.on('message', async message => {
     } else {
       client.channels.get(`${configc}`).send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`)
     }
-    //if (message.content === `${prefix}verify TIeVnMF`) return;
-  //  if (message.content === `${prefix}verify anictiu`) return;
-//    if (message.content === `${prefix}verify 7JpAL5n`) return;
-
-    /*if (message.content.startsWith(`${prefix}verify ${c_easy}`)) {
-      message.delete(500);
-      client.channels.get(`${chat}`).send(`${message.author} just verified! Please welcome them with a warm hacking hug.`)
-      return message.member.addRole('467428407400202240');
-    }*/
 });
 
 /*
