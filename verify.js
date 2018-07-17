@@ -884,15 +884,16 @@ client.on('message', async message => {
     }
 });
 
+
 // Verification Code
 client.on('message', async message => {
    // var c_easy = ["aumso", "dati", "sLs8FLwy",]
-    const responseObject = {
+    const c_easy = {
       "=verify aumso": `Check your DMs for the Verification Code Part 2!`,
       "=verify dati": `Check your DMs for the Verification Code Part 2!`,
       "=verify sLs8FLwy": `Check your DMs for the Verification Code Part 2!`
     };
-    const responseObject2 = {
+    const c_hard1 = {
       "=verify TIeVnMF": `${message.author} just verified! Please welcome them with a warm hacking hug.`,
       "=verify anictiu": `${message.author} just verified! Please welcome them with a warm hacking hug.`,
       "=verify 7JpAL5n": `${message.author} just verified! Please welcome them with a warm hacking hug.`
@@ -905,12 +906,17 @@ client.on('message', async message => {
     if (!message.channel === `${staffchannel}`) return;
     if (!message.channel === `${logs}`) return;
     if (!message.channel === `${configc}`) return;
+    var c_hard2 = ["./captcha-hard/Hard-captcha1.png", "./captcha-hard/Hard-captcha2.png", "./captcha-hard/Hard-captcha3.png",]
+
   
-    if(responseObject[message.content]) {
-      client.channels.get(`${configc}`).send(responseObject[message.content]);
-      return message.member.addRole('467428407400202240');
-    } else if(responseObject2[message.content]) {
-      client.channels.get(`${configc}`).send(responseObject2[message.content]);
+    if(c_easy[message.content]) {
+      client.channels.get(`${configc}`).send(c_easy[message.content]);
+      message.member.addRole('467428407400202240');
+      return message.user.send('You need this picture in order to verify and gain access to the server!', {
+       files: [c_hard2[Math.round(Math.random() * (c_hard2.length - 1))]]
+      }).then(message => message.delete(120000));
+    } else if(c_hard1[message.content]) {
+      client.channels.get(`${configc}`).send(c_hard1[message.content]);
       message.member.addRole('437738324183089154');
       return message.member.removeRole('467428407400202240');
     } else {
