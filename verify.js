@@ -652,212 +652,62 @@ client.on('message', async message => {
     let verified = message.guild.roles.find('name', 'Verified');
     let muteRole = message.guild.roles.find('name', 'Muted');
   
-    if (message.content.startsWith(prefix + 'help help')) {
-      message.channel.send(`\`\`\`Displays the commands list\n\nUsage: ${prefix}help     Alias; ${prefix}h\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h help')) {
-      message.channel.send(`\`\`\`Displays the commands list\n\nUsage: ${prefix}help     Alias; ${prefix}h\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help h')) {
-      message.channel.send(`\`\`\`Displays the commands list\n\nUsage: ${prefix}h     Alias; ${prefix}help\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h h')) {
-      message.channel.send(`\`\`\`Displays the commands list\n\nUsage: ${prefix}h     Alias; ${prefix}help\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'help ping')) {
-      message.channel.send(`\`\`\`Pong! :joy:\n\nUsage: ${prefix}ping\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h ping')) {
-      message.channel.send(`\`\`\`Pong! :joy:\n\nUsage: ${prefix}ping\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help fy')) {
-      message.channel.send(`\`\`\`A command that you trigger the bot to tell someone "Fuck You"\n\nUsage: ${prefix}fy <user>     Alias; ${prefix}fuckyou\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h fy')) {
-      message.channel.send(`\`\`\`A command that you trigger the bot to tell someone "Fuck You"\n\nUsage: ${prefix}fy <user>     Alias; ${prefix}fuckyou\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help fuckyou')) {
-      message.channel.send(`\`\`\`A command that you trigger the bot to tell someone "Fuck You"\n\nUsage: ${prefix}fuckyou <user>     Alias; ${prefix}fy\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h fuckyou')) {
-      message.channel.send(`\`\`\`A command that you trigger the bot to tell someone "Fuck You"\n\nUsage: ${prefix}fuckyou <user>     Alias; ${prefix}fy\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help setgame')) {
-      message.channel.send(`\`\`\`Sets my game status to the specified name\n\nUsage: ${prefix}setgame <game name>     Alias; ${prefix}sg\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h setgame')) {
-      message.channel.send(`\`\`\`Sets my game status to the specified name\n\nUsage: ${prefix}setgame <game name>     Alias; ${prefix}sg\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help sg')) {
-      message.channel.send(`\`\`\`Sets my game status to the specified name\n\nUsage: ${prefix}sg <game name>     Alias; ${prefix}setgame\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h sg')) {
-      message.channel.send(`\`\`\`Sets my game status to the specified name\n\nUsage: ${prefix}sg <game name>     Alias; ${prefix}setgame\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help purge')) {
-      message.channel.send(`\`\`\`Deletes the specified amount of messages - Limit: 100 (Changing Soon)\n\nUsage: ${prefix}purge <number>     Alias; ${prefix}prune\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h purge')) {
-      message.channel.send(`\`\`\`Deletes the specified amount of messages - Limit: 100 (Changing Soon)\n\nUsage: ${prefix}purge <number>     Alias; ${prefix}prune\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help prune')) {
-      message.channel.send(`\`\`\`Deletes the specified amount of messages - Limit: 100 (Changing Soon)\n\nUsage: ${prefix}prune <number>     Alias; ${prefix}purge\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h prune')) {
-      message.channel.send(`\`\`\`Deletes the specified amount of messages - Limit: 100 (Changing Soon)\n\nUsage: ${prefix}prune <number>     Alias; ${prefix}purge\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help warn')) {
-      message.channel.send(`\`\`\`Warns the user that you mention\n\nUsage: ${prefix}warn <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h warn')) {
-      message.channel.send(`\`\`\`Warns the user that you mention\n\nUsage: ${prefix}warn <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help kick')) {
-      message.channel.send(`\`\`\`Kicks the user that you mention\n\nUsage: ${prefix}kick <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h kick')) {
-      message.channel.send(`\`\`\`Kicks the user that you mention\n\nUsage: ${prefix}kick <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help mute')) {
-      message.channel.send(`\`\`\`Mutes the user that you mention\n\nUsage: ${prefix}mute <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h mute')) {
-      message.channel.send(`\`\`\`Mutes the user that you mention\n\nUsage: ${prefix}mute <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help unmute')) {
-      message.channel.send(`\`\`\`Unmutes the user that you mention\n\nUsage: ${prefix}unmute <user (mention the user)>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h unmute')) {
-      message.channel.send(`\`\`\`Unmutes the user that you mention\n\nUsage: ${prefix}unmute <user (mention the user)>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help ban')) {
-      message.channel.send(`\`\`\`Bans the user that you mention\n\nUsage: ${prefix}ban <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h ban')) {
-      message.channel.send(`\`\`\`Bans the user that you mention\n\nUsage: ${prefix}ban <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help unban')) {
-      message.channel.send(`\`\`\`Unbans a certain user by using their user id\n\nUsage: ${prefix}unban <user id>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h unban')) {
-      message.channel.send(`\`\`\`Unbans a certain user by using their user id\n\nUsage: ${prefix}unban <user id>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help userinfo')) {
-      message.channel.send(`\`\`\`Gives you detailed information of the account of the person that you mention.\n\nUsage: ${prefix}userinfo <mention user>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h userinfo')) {
-      message.channel.send(`\`\`\`Gives you detailed information of the account of the person that you mention.\n\nUsage: ${prefix}userinfo <mention user>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help promote')) {
-      message.channel.send(`\`\`\`Promotes a certain user from Verified to the Members rank\n\nUsage: ${prefix}promote <user>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h promote')) {
-      message.channel.send(`\`\`\`Promotes a certain user from Verified to the Members rank\n\nUsage: ${prefix}promote <user>\n<> = Required  [] = Optional\`\`\``)
-    } else
-          
-    if (message.content.startsWith(prefix + 'help poll')) {
-      message.channel.send(`\`\`\`Generates a poll for users to vote on. Currently only Yes or No polls\n\nUsage: ${prefix}poll <poll question>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h poll')) {
-      message.channel.send(`\`\`\`Generates a poll for users to vote on. Currently only Yes or No polls\n\nUsage: ${prefix}poll <poll question>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help 8ball')) {
-      message.channel.send(`\`\`\`It's so majestic that I can't even tell you the secrets\n\nUsage: ${prefix}8ball <question>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h 8ball')) {
-      message.channel.send(`\`\`\`It's so majestic that I can't even tell you the secrets\n\nUsage: ${prefix}8ball <question>\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help cat')) {
-      message.channel.send(`\`\`\`Gives you a random cat meme\n\nUsage: ${prefix}cat\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h cat')) {
-      message.channel.send(`\`\`\`Gives you a random cat meme\n\nUsage: ${prefix}cat\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help dog')) {
-      message.channel.send(`\`\`\`Gives you a random dog meme\n\nUsage: ${prefix}dog\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h dog')) {
-      message.channel.send(`\`\`\`Gives you a random dog meme\n\nUsage: ${prefix}dog\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help hierarchy')) {
-      message.channel.send(`\`\`\`Gives you a list of the current ranks on the server\n\nUsage: ${prefix}hierarchy     Alias; ${prefix}ranks\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h hierarchy')) {
-      message.channel.send(`\`\`\`Gives you a list of the current ranks on the server\n\nUsage: ${prefix}hierarchy     Alias; ${prefix}ranks\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help ranks')) {
-      message.channel.send(`\`\`\`Gives you a list of the current ranks on the server\n\nUsage: ${prefix}ranks     Alias; ${prefix}hierarchy\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h ranks')) {
-      message.channel.send(`\`\`\`Gives you a list of the current ranks on the server\n\nUsage: ${prefix}ranks     Alias; ${prefix}hierarchy\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help stats')) {
-      message.channel.send(`\`\`\`Tells you all kinds of information about me including my versions\n\nUsage: ${prefix}stats\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h stats')) {
-      message.channel.send(`\`\`\`Tells you all kinds of information about me including my versions\n\nUsage: ${prefix}stats\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help uptime')) {
-      message.channel.send(`\`\`\`Tells you how long I have been up and running in days, hours, minutes, and seconds\n\nUsage: ${prefix}uptime\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix +'h uptime')) {
-      message.channel.send(`\`\`\`Tells you how long I have been up and running in days, hours, minutes, and seconds\n\nUsage: ${prefix}uptime\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'help sinfo')) {
-      message.channel.send(`\`\`\`Tells you all kinds of information about this server\n\nUsage: ${prefix}sinfo\n<> = Required  [] = Optional\`\`\``)
-    } else
-
-    if (message.content.startsWith(prefix + 'h sinfo')) {
-      message.channel.send(`\`\`\`Tells you all kinds of information about this server\n\nUsage: ${prefix}sinfo\n<> = Required  [] = Optional\`\`\``)
+    const help = {
+      "=help help": `\`\`\`Displays the commands list\n\nUsage: ${prefix}help     Alias; ${prefix}h\`\`\``,
+      "=h help": `\`\`\`Displays the commands list\n\nUsage: ${prefix}help     Alias; ${prefix}h\`\`\``,
+      "=help h": `\`\`\`Displays the commands list\n\nUsage: ${prefix}h     Alias; ${prefix}help\`\`\``,
+      "=h h": `\`\`\`Displays the commands list\n\nUsage: ${prefix}h     Alias; ${prefix}help\`\`\``,
+      "=help ping": `\`\`\`Pong! :joy:\n\nUsage: ${prefix}ping\`\`\``,
+      "=h ping": `\`\`\`Pong! :joy:\n\nUsage: ${prefix}ping\`\`\``,
+      "=help fy": `\`\`\`A command that you trigger the bot to tell someone "Fuck You"\n\nUsage: ${prefix}fy <user>     Alias; ${prefix}fuckyou\n<> = Required  [] = Optional\`\`\``,
+      "=h fy": `\`\`\`A command that you trigger the bot to tell someone "Fuck You"\n\nUsage: ${prefix}fy <user>     Alias; ${prefix}fuckyou\n<> = Required  [] = Optional\`\`\``,
+      "=help fuckyou": `\`\`\`A command that you trigger the bot to tell someone "Fuck You"\n\nUsage: ${prefix}fuckyou <user>     Alias; ${prefix}fy\n<> = Required  [] = Optional\`\`\``,
+      "=h fuckyou": `\`\`\`A command that you trigger the bot to tell someone "Fuck You"\n\nUsage: ${prefix}fuckyou <user>     Alias; ${prefix}fy\n<> = Required  [] = Optional\`\`\``,
+      "=help setgame": `\`\`\`Sets my game status to the specified name\n\nUsage: ${prefix}setgame <game name>     Alias; ${prefix}sg\n<> = Required  [] = Optional\`\`\``,
+      "=h setgame": `\`\`\`Sets my game status to the specified name\n\nUsage: ${prefix}setgame <game name>     Alias; ${prefix}sg\n<> = Required  [] = Optional\`\`\``,
+      "=help sg": `\`\`\`Sets my game status to the specified name\n\nUsage: ${prefix}sg <game name>     Alias; ${prefix}setgame\n<> = Required  [] = Optional\`\`\``,
+      "=h sg": `\`\`\`Sets my game status to the specified name\n\nUsage: ${prefix}sg <game name>     Alias; ${prefix}setgame\n<> = Required  [] = Optional\`\`\``,
+      "=help purge": `\`\`\`Deletes the specified amount of messages - Limit: 100 (Changing Soon)\n\nUsage: ${prefix}purge <number>     Alias; ${prefix}prune\n<> = Required  [] = Optional\`\`\``,
+      "=h purge": `\`\`\`Deletes the specified amount of messages - Limit: 100 (Changing Soon)\n\nUsage: ${prefix}purge <number>     Alias; ${prefix}prune\n<> = Required  [] = Optional\`\`\``,
+      "=help prune": `\`\`\`Deletes the specified amount of messages - Limit: 100 (Changing Soon)\n\nUsage: ${prefix}prune <number>     Alias; ${prefix}purge\n<> = Required  [] = Optional\`\`\``,
+      "=h prune": `\`\`\`Deletes the specified amount of messages - Limit: 100 (Changing Soon)\n\nUsage: ${prefix}prune <number>     Alias; ${prefix}purge\n<> = Required  [] = Optional\`\`\``,
+      "=help warn": `\`\`\`Warns the user that you mention\n\nUsage: ${prefix}warn <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``,
+      "=h warn": `\`\`\`Warns the user that you mention\n\nUsage: ${prefix}warn <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``,
+      "=help kick": `\`\`\`Kicks the user that you mention\n\nUsage: ${prefix}kick <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``,
+      "=h kick": `\`\`\`Kicks the user that you mention\n\nUsage: ${prefix}kick <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``,
+      "=help mute": `\`\`\`Mutes the user that you mention\n\nUsage: ${prefix}mute <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``,
+      "=h mute": `\`\`\`Mutes the user that you mention\n\nUsage: ${prefix}mute <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``,
+      "=help unmute": `\`\`\`Unmutes the user that you mention\n\nUsage: ${prefix}unmute <user (mention the user)>\n<> = Required  [] = Optional\`\`\``,
+      "=h unmute": `\`\`\`Unmutes the user that you mention\n\nUsage: ${prefix}unmute <user (mention the user)>\n<> = Required  [] = Optional\`\`\``,
+      "=help ban": `\`\`\`Bans the user that you mention\n\nUsage: ${prefix}ban <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``,
+      "=h ban": `\`\`\`Bans the user that you mention\n\nUsage: ${prefix}ban <user (mention the user)> <reason>\n<> = Required  [] = Optional\`\`\``,
+      "=help unban": `\`\`\`Unbans a certain user by using their user id\n\nUsage: ${prefix}unban <user id>\n<> = Required  [] = Optional\`\`\``,
+      "=h unban": `\`\`\`Unbans a certain user by using their user id\n\nUsage: ${prefix}unban <user id>\n<> = Required  [] = Optional\`\`\``,
+      "=help userinfo": `\`\`\`Gives you detailed information of the account of the person that you mention.\n\nUsage: ${prefix}userinfo <mention user>\n<> = Required  [] = Optional\`\`\``,
+      "=h userinfo": `\`\`\`Gives you detailed information of the account of the person that you mention.\n\nUsage: ${prefix}userinfo <mention user>\n<> = Required  [] = Optional\`\`\``,
+      "=help promote": `\`\`\`Promotes a certain user from Verified to the Members rank\n\nUsage: ${prefix}promote <user>\n<> = Required  [] = Optional\`\`\``,
+      "=h promote": \`\`\`Promotes a certain user from Verified to the Members rank\n\nUsage: ${prefix}promote <user>\n<> = Required  [] = Optional\`\`\```,
+      "=help poll": `\`\`\`Generates a poll for users to vote on. Currently only Yes or No polls\n\nUsage: ${prefix}poll <poll question>\n<> = Required  [] = Optional\`\`\``,
+      "=h poll": `\`\`\`Generates a poll for users to vote on. Currently only Yes or No polls\n\nUsage: ${prefix}poll <poll question>\n<> = Required  [] = Optional\`\`\``,
+      "=help 8ball": `\`\`\`It's so majestic that I can't even tell you the secrets\n\nUsage: ${prefix}8ball <question>\n<> = Required  [] = Optional\`\`\``,
+      "=h 8ball": `\`\`\`It's so majestic that I can't even tell you the secrets\n\nUsage: ${prefix}8ball <question>\n<> = Required  [] = Optional\`\`\``,
+      "=help cat": `\`\`\`Gives you a random cat meme\n\nUsage: ${prefix}cat\n<> = Required  [] = Optional\`\`\``,
+      "=h cat": `\`\`\`Gives you a random cat meme\n\nUsage: ${prefix}cat\n<> = Required  [] = Optional\`\`\``,
+      "=help dog": `\`\`\`Gives you a random dog meme\n\nUsage: ${prefix}dog\n<> = Required  [] = Optional\`\`\``,
+      "=h dog": `\`\`\`Gives you a random dog meme\n\nUsage: ${prefix}dog\n<> = Required  [] = Optional\`\`\``,
+      "=help hierarchy": `\`\`\`Gives you a list of the current ranks on the server\n\nUsage: ${prefix}hierarchy     Alias; ${prefix}ranks\n<> = Required  [] = Optional\`\`\``,
+      "=h hierarchy": `\`\`\`Gives you a list of the current ranks on the server\n\nUsage: ${prefix}hierarchy     Alias; ${prefix}ranks\n<> = Required  [] = Optional\`\`\``,
+      "=help ranks": `\`\`\`Gives you a list of the current ranks on the server\n\nUsage: ${prefix}ranks     Alias; ${prefix}hierarchy\n<> = Required  [] = Optional\`\`\``,
+      "=h ranks": `\`\`\`Gives you a list of the current ranks on the server\n\nUsage: ${prefix}ranks     Alias; ${prefix}hierarchy\n<> = Required  [] = Optional\`\`\``,
+      "=help stats": `\`\`\`Tells you all kinds of information about me including my versions\n\nUsage: ${prefix}stats\n<> = Required  [] = Optional\`\`\``,
+      "=h stats": `\`\`\`Tells you all kinds of information about me including my versions\n\nUsage: ${prefix}stats\n<> = Required  [] = Optional\`\`\``,
+      "=help uptime": `\`\`\`Tells you how long I have been up and running in days, hours, minutes, and seconds\n\nUsage: ${prefix}uptime\n<> = Required  [] = Optional\`\`\``,
+      "=h uptime": `\`\`\`Tells you how long I have been up and running in days, hours, minutes, and seconds\n\nUsage: ${prefix}uptime\n<> = Required  [] = Optional\`\`\``,
+      "=help info": `\`\`\`Tells you all kinds of information about this server\n\nUsage: ${prefix}sinfo\n<> = Required  [] = Optional\`\`\``,
+      "=h info": `\`\`\`Tells you all kinds of information about this server\n\nUsage: ${prefix}sinfo\n<> = Required  [] = Optional\`\`\``,
+    };
+    if(help[message.content]) {
+      message.channel.send(help[message.content]);
     }
 });
 
