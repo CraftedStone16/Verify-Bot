@@ -1015,6 +1015,7 @@ client.on('message', async message => {
     if (!message.channel === `${staffchannel}`) return;
     if (!message.channel === `${logs}`) return;
     if (!message.channel === `${configc}`) return;
+    if (message.content.length === prefix.length) return message.channel.send('You must provide numbers/letters of the captcha sent in your DMs').then(message => message.delete(30000));
   
     if(responseObject[message.content]) {
       client.channels.get(`${configc}`).send(responseObject[message.content]);
@@ -1041,6 +1042,7 @@ client.on('message', async message => {
     if (!message.channel === `${staffchannel}`) return;
     if (!message.channel === `${logs}`) return;
     if (!message.channel === `${configc}`) return;
+    if (message.content.length === prefix.length) return message.channel.send('You must provide numbers/letters of the captcha sent in your DMs').then(message => message.delete(30000));
     if (message.content === `${prefix}verify TIeVnMF`) return;
     if (message.content === `${prefix}verify anictiu`) return;
     if (message.content === `${prefix}verify 7JpAL5n`) return;
