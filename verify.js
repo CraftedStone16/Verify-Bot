@@ -30,6 +30,14 @@ var sticket = '449654475481808896' // Support Ticket Channel
 var logs = '437757021953982485' // logging channel
 var configc = '437756098573893642' // Config Channel
 
+/*=- Prefix & Prefix Notes + Bot Information -=*/
+
+
+/* ==-> Manually Change these Prefixes;   
++ Roles Commands
++ Help Commands
++ Verification Commands*/
+
 var prefix = "="
 var p = "="
 var mp = "=="
@@ -880,9 +888,9 @@ client.on('message', async message => {
 client.on('message', async message => {
    // var c_easy = ["aumso", "dati", "sLs8FLwy",]
     const responseObject = {
-      "aumso": `Check your DMs for the Verification Code Part 2!`,
-      "dati": `Check your DMs for the Verification Code Part 2!`,
-      "sLs8FLwy": `Check your DMs for the Verification Code Part 2!`
+      "=verify aumso": `Check your DMs for the Verification Code Part 2!`,
+      "=verify dati": `Check your DMs for the Verification Code Part 2!`,
+      "=verify sLs8FLwy": `Check your DMs for the Verification Code Part 2!`
     };
     const responseObject2 = {
       "=verify TIeVnMF": `${message.author} just verified! Please welcome them with a warm hacking hug.`,
@@ -897,14 +905,11 @@ client.on('message', async message => {
     if (!message.channel === `${staffchannel}`) return;
     if (!message.channel === `${logs}`) return;
     if (!message.channel === `${configc}`) return;
-//    if (message.content === `${prefix}verify TIeVnMF`) return;
-  //  if (message.content === `${prefix}verify anictiu`) return;
-    //if (message.content === `${prefix}verify 7JpAL5n`) return;
   
-    if(message.content === `${prefix} ${responseObject[message.content]}`) {
+    if(responseObject[message.content]) {
       client.channels.get(`${configc}`).send(responseObject[message.content]);
       return message.member.addRole('467428407400202240');
-    } else if(message.content === `${prefix} ${responseObject2[message.content]}`) {
+    } else if(responseObject2[message.content]) {
       client.channels.get(`${configc}`).send(responseObject2[message.content]);
       message.member.addRole('437738324183089154');
       return message.member.removeRole('467428407400202240');
