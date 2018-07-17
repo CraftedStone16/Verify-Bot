@@ -686,7 +686,7 @@ client.on('message', async message => {
       "=help userinfo": `\`\`\`Gives you detailed information of the account of the person that you mention.\n\nUsage: ${prefix}userinfo <mention user>\n<> = Required  [] = Optional\`\`\``,
       "=h userinfo": `\`\`\`Gives you detailed information of the account of the person that you mention.\n\nUsage: ${prefix}userinfo <mention user>\n<> = Required  [] = Optional\`\`\``,
       "=help promote": `\`\`\`Promotes a certain user from Verified to the Members rank\n\nUsage: ${prefix}promote <user>\n<> = Required  [] = Optional\`\`\``,
-      "=h promote": \`\`\`Promotes a certain user from Verified to the Members rank\n\nUsage: ${prefix}promote <user>\n<> = Required  [] = Optional\`\`\```,
+      "=h promote": `\`\`\`Promotes a certain user from Verified to the Members rank\n\nUsage: ${prefix}promote <user>\n<> = Required  [] = Optional\`\`\```,
       "=help poll": `\`\`\`Generates a poll for users to vote on. Currently only Yes or No polls\n\nUsage: ${prefix}poll <poll question>\n<> = Required  [] = Optional\`\`\``,
       "=h poll": `\`\`\`Generates a poll for users to vote on. Currently only Yes or No polls\n\nUsage: ${prefix}poll <poll question>\n<> = Required  [] = Optional\`\`\``,
       "=help 8ball": `\`\`\`It's so majestic that I can't even tell you the secrets\n\nUsage: ${prefix}8ball <question>\n<> = Required  [] = Optional\`\`\``,
