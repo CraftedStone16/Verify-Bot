@@ -911,18 +911,18 @@ client.on('message', async message => {
   
     if(c_easy[message.content]) {
       message.delete();
-      client.channels.get(`${configc}`).send(c_easy[message.content]).then(message => message.delete(60000));
+      client.channels.get(`${vh}`).send(c_easy[message.content]).then(message => message.delete(60000));
       message.member.addRole('467428407400202240');
       return message.author.send('You need this picture in order to verify and gain access to the server!', {
        files: [c_hard2[Math.round(Math.random() * (c_hard2.length - 1))]]
       }).then(message => message.delete(300000));
     } else if(c_hard1[message.content]) {
       message.delete();
-      client.channels.get(`${configc}`).send(c_hard1[message.content]).then(message => message.delete(60000));
+      client.channels.get(`${chat}`).send(c_hard1[message.content]);
       message.member.addRole('437738324183089154');
       return message.member.removeRole('467428407400202240');
     } else {
-      client.channels.get(`${configc}`).send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`).then(message => message.delete(60000));
+      client.channels.get(`${vh}`).send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`).then(message => message.delete(60000));
     }
 });
 
