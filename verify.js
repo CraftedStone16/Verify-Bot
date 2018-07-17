@@ -875,137 +875,14 @@ client.on('message', async message => {
       message.channel.send(helpembed2).then(message => message.delete(60000));
     }
 });
-/*
-// Verification Succeeded Code 4 
-client.on('message', async message => {
-    if (message.author.bot) return;
-    if (message.channel.type === "dm") return;
-    if (!message.content.startsWith(prefix)) return;
-    if (!message.content.startsWith(`${prefix}verify`)) return;
-    if (!message.channel === `${vh}`) return;
-    if (!message.channel === `${staffchannel}`) return;
-    if (!message.channel === `${logs}`) return;
-    if (!message.channel === `${configc}`) return;
 
-    if (message.content === `${prefix}verify TIeVnMF`) {
-      message.delete(500);
-      client.channels.get(`${chat}`).send(`${message.author} just verified! Please welcome them with a warm hacking hug.`)
-      return message.member.addRole('437738324183089154');
-    }
-});
-
-// Verification Failed Code 4
-client.on('message', async message => {
-    if (message.author.bot) return;
-    if (message.channel.type === "dm") return;
-    if(!message.member.roles.has('467428407400202240')) return message.channel.send("You must complete the first verification first")
-    if (!message.content.startsWith(prefix)) return; //message.delete(2000);
-    if (!message.channel === `${vh}`) return;
-    if (!message.channel === `${staffchannel}`) return;
-    if (!message.channel === `${logs}`) return;
-    if (!message.channel === `${configc}`) return;
-    if (!message.content.startsWith(`${prefix}verify`)) return;//.then(message => message.delete(3000)) return;
-    if (message.content === `${prefix}verify TIeVnMF`) return;
-    if (message.content.length === prefix.length) return;
-    message.content = message.content.substr(prefix.length);
-    let args = message.content.split(' ');
-    let cmd = args;
-
-    if (cmd != 'verify TIeVnMF') {
-      message.delete(500)
-      return message.channel.send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`).then(message => message.delete(30000));
-    }
-});
-
-// Verification Succeeded Code 5
-client.on('message', async message => {
-    if (message.author.bot) return;
-    if (message.channel.type === "dm") return;
-    if (!message.content.startsWith(prefix)) return;
-    if (!message.content.startsWith(`${prefix}verify`)) return;
-    if (!message.channel === `${vh}`) return;
-    if (!message.channel === `${staffchannel}`) return;
-    if (!message.channel === `${logs}`) return;
-    if (!message.channel === `${configc}`) return;
-
-    if (message.content === `${prefix}verify anictiu`) {
-      message.delete(500);
-      client.channels.get(`${chat}`).send(`${message.author} just verified! Please welcome them with a warm hacking hug.`)
-      return message.member.addRole('437738324183089154');
-    }
-});
-
-// Verification Failed Code 5
-client.on('message', async message => {
-    if (message.author.bot) return;
-    if (message.channel.type === "dm") return;
-    if(!message.member.roles.has('467428407400202240')) return message.channel.send("You must complete the first verification first")
-    if (!message.content.startsWith(prefix)) return; //message.delete(2000);
-    if (!message.channel === `${vh}`) return;
-    if (!message.channel === `${staffchannel}`) return;
-    if (!message.channel === `${logs}`) return;
-    if (!message.channel === `${configc}`) return;
-    if (!message.content.startsWith(`${prefix}verify`)) return;//.then(message => message.delete(3000)) return;
-    if (message.content === `${prefix}verify anictiu`) return;
-    if (message.content.length === prefix.length) return;
-    message.content = message.content.substr(prefix.length);
-    let args = message.content.split(' ');
-    let cmd = args;
-
-    if (cmd != 'verify anictiu') {
-      message.delete(500)
-      return message.channel.send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`).then(message => message.delete(30000));
-    }
-});
-
-// Verification Succeeded Code 6
-client.on('message', async message => {
-    if (message.author.bot) return;
-    if (message.channel.type === "dm") return;
-    if (!message.content.startsWith(prefix)) return;
-    if (!message.content.startsWith(`${prefix}verify`)) return;
-    if (!message.channel === `${vh}`) return;
-    if (!message.channel === `${staffchannel}`) return;
-    if (!message.channel === `${logs}`) return;
-    if (!message.channel === `${configc}`) return;
-
-    if (message.content === `${prefix}verify 7JpAL5n`) {
-      message.delete(500);
-      client.channels.get(`${chat}`).send(`${message.author} just verified! Please welcome them with a warm hacking hug.`)
-      return message.member.addRole('437738324183089154');
-    }
-});
-
-// Verification Failed Code 6
-client.on('message', async message => {
-    if (message.author.bot) return;
-    if (message.channel.type === "dm") return;
-    if(!message.member.roles.has('467428407400202240')) return message.channel.send("You must complete the first verification first")
-    if (!message.content.startsWith(prefix)) return; //message.delete(2000);
-    if (!message.channel === `${vh}`) return;
-    if (!message.channel === `${staffchannel}`) return;
-    if (!message.channel === `${logs}`) return;
-    if (!message.channel === `${configc}`) return;
-    if (!message.content.startsWith(`${prefix}verify`)) return;//.then(message => message.delete(3000)) return;
-    if (message.content === `${prefix}verify 7JpAL5n`) return;
-    if (message.content.length === prefix.length) return;
-    message.content = message.content.substr(prefix.length);
-    let args = message.content.split(' ');
-    let cmd = args;
-
-    if (cmd != 'verify 7JpAL5n') {
-      message.delete(500)
-      return message.channel.send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`).then(message => message.delete(30000));
-    }
-}); */
-
-// Verification (Easy/Part 1)
+// Verification Code
 client.on('message', async message => {
    // var c_easy = ["aumso", "dati", "sLs8FLwy",]
     const responseObject = {
-      "=verify aumso": `Check your DMs for the Verification Code Part 2!`,
-      "=verify dati": `Check your DMs for the Verification Code Part 2!`,
-      "=verify sLs8FLwy": `Check your DMs for the Verification Code Part 2!`
+      "aumso": `Check your DMs for the Verification Code Part 2!`,
+      "dati": `Check your DMs for the Verification Code Part 2!`,
+      "sLs8FLwy": `Check your DMs for the Verification Code Part 2!`
     };
     const responseObject2 = {
       "=verify TIeVnMF": `${message.author} just verified! Please welcome them with a warm hacking hug.`,
@@ -1024,10 +901,10 @@ client.on('message', async message => {
   //  if (message.content === `${prefix}verify anictiu`) return;
     //if (message.content === `${prefix}verify 7JpAL5n`) return;
   
-    if(responseObject[message.content]) {
+    if(message.content === `${prefix} (responseObject[message.content])`) {
       client.channels.get(`${configc}`).send(responseObject[message.content]);
       return message.member.addRole('467428407400202240');
-    } else if(responseObject2[message.content]) {
+    } else if(message.content === `${prefix} (responseObject2[message.content])`) {
       client.channels.get(`${configc}`).send(responseObject2[message.content]);
       message.member.addRole('437738324183089154');
       return message.member.removeRole('467428407400202240');
@@ -1036,126 +913,6 @@ client.on('message', async message => {
     }
 });
 
-/*
-// Verification Failed Code 1
-client.on('message', async message => {
-    var c_easy = ["aumso", "dati", "sLs8FLwy",]
-    if (message.author.bot) return;
-    if (message.channel.type === "dm") return;
-    if (!message.content.startsWith(prefix)) return; //message.delete(2000);
-    if (!message.channel === `${vh}`) return;
-    if (!message.channel === `${staffchannel}`) return;
-    if (!message.channel === `${logs}`) return;
-    if (!message.channel === `${configc}`) return;
-    if (!message.content.startsWith(`${prefix}verify`)) return;//.then(message => message.delete(3000)) return;
-    if (message.content === `${prefix}verify ${c_easy}`) return;
-    if (message.content.length === prefix.length) return message.channel.send('You must provide numbers/letters of the captcha sent in your DMs').then(message => message.delete(30000));
-    if (message.content === `${prefix}verify TIeVnMF`) return;
-    if (message.content === `${prefix}verify anictiu`) return;
-    if (message.content === `${prefix}verify 7JpAL5n`) return;
-    message.content = message.content.substr(prefix.length);
-    let args = message.content.split(' ');
-    let cmd = args;
-
-    if (cmd != `verify ${c_easy}`) {
-      message.delete(500)
-      return message.channel.send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`).then(message => message.delete(30000));
-    }
-});
-
-
-// Verification Succeeded Code 2
-client.on('message', async message => {
-    if (message.author.bot) return;
-    if (message.channel.type === "dm") return;
-    if (!message.content.startsWith(prefix)) return;
-    if (!message.content.startsWith(`${prefix}verify`)) return;
-    if (!message.channel === `${vh}`) return;
-    if (!message.channel === `${staffchannel}`) return;
-    if (!message.channel === `${logs}`) return;
-    if (!message.channel === `${configc}`) return;
-    if (message.content === `${prefix}verify TIeVnMF`) return;
-    if (message.content === `${prefix}verify anictiu`) return;
-    if (message.content === `${prefix}verify 7JpAL5n`) return;
-
-    if (message.content === `${prefix}verify dati`) {
-      message.delete(500);
-      client.channels.get(`${chat}`).send(`${message.author} just verified! Please welcome them with a warm hacking hug.`)
-      return message.member.addRole('437738324183089154');
-    }
-});
-
-// Verification Failed Code 2
-client.on('message', async message => {
-    if (message.author.bot) return;
-    if (message.channel.type === "dm") return;
-    if (!message.content.startsWith(prefix)) return; //message.delete(2000);
-    if (!message.channel === `${vh}`) return;
-    if (!message.channel === `${staffchannel}`) return;
-    if (!message.channel === `${logs}`) return;
-    if (!message.channel === `${configc}`) return;
-    if (!message.content.startsWith(`${prefix}verify`)) return;//.then(message => message.delete(3000)) return;
-    if (message.content === `${prefix}verify dati`) return;
-    if (message.content.length === prefix.length) return;
-    if (message.content === `${prefix}verify TIeVnMF`) return;
-    if (message.content === `${prefix}verify anictiu`) return;
-    if (message.content === `${prefix}verify 7JpAL5n`) return;
-    message.content = message.content.substr(prefix.length);
-    let args = message.content.split(' ');
-    let cmd = args;
-
-    if (cmd != 'verify dati') {
-      message.delete(500)
-      return message.channel.send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`).then(message => message.delete(30000));
-    }
-});
-
-// Verification Succeeded Code 3
-client.on('message', async message => {
-    if (message.author.bot) return;
-    if (message.channel.type === "dm") return;
-    if (!message.content.startsWith(prefix)) return;
-    if (!message.content.startsWith(`${prefix}verify`)) return;
-    if (!message.channel === `${vh}`) return;
-    if (!message.channel === `${staffchannel}`) return;
-    if (!message.channel === `${logs}`) return;
-    if (!message.channel === `${configc}`) return;
-    if (message.content === `${prefix}verify TIeVnMF`) return;
-    if (message.content === `${prefix}verify anictiu`) return;
-    if (message.content === `${prefix}verify 7JpAL5n`) return;
-
-    if (message.content === `${prefix}verify sLs8FLwy`) {
-      message.delete(500);
-      client.channels.get(`${chat}`).send(`${message.author} just verified! Please welcome them with a warm hacking hug.`)
-      return message.member.addRole('437738324183089154');
-    }
-});
-
-// Verification Failed Code 3
-client.on('message', async message => {
-    if (message.author.bot) return;
-    if (message.channel.type === "dm") return;
-    if (!message.content.startsWith(prefix)) return; //message.delete(2000);
-    if (!message.channel === `${vh}`) return;
-    if (!message.channel === `${staffchannel}`) return;
-    if (!message.channel === `${logs}`) return;
-    if (!message.channel === `${configc}`) return;
-    if (!message.content.startsWith(`${prefix}verify`)) return;//.then(message => message.delete(3000)) return;
-    if (message.content === `${prefix}verify sLs8FLwy`) return;
-    if (message.content.length === prefix.length) return;
-    if (message.content === `${prefix}verify TIeVnMF`) return;
-    if (message.content === `${prefix}verify anictiu`) return;
-    if (message.content === `${prefix}verify 7JpAL5n`) return;
-    message.content = message.content.substr(prefix.length);
-    let args = message.content.split(' ');
-    let cmd = args;
-
-    if (cmd != 'verify sLs8FLwy') {
-      message.delete(500)
-      return message.channel.send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`).then(message => message.delete(30000));
-    }
-});
-*/
 
 // <+-=-+>   Message Events   <+-=-+>
 // Message Edited
