@@ -1015,6 +1015,9 @@ client.on('message', async message => {
     if (!message.channel === `${staffchannel}`) return;
     if (!message.channel === `${logs}`) return;
     if (!message.channel === `${configc}`) return;
+    if (message.content === `${prefix}verify aumso`) return;
+    if (message.content === `${prefix}verify dati`) return;
+    if (message.content === `${prefix}verify sLs8FLwy`) return;
     if (message.content.length === prefix.length) return message.channel.send('You must provide numbers/letters of the captcha sent in your DMs').then(message => message.delete(30000));
   
     if(responseObject[message.content]) {
