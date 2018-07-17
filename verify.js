@@ -999,10 +999,15 @@ client.on('message', async message => {
     }
 }); */
 
-// Verification (Hard/Part 2)
+// Verification (Easy/Part 1)
 client.on('message', async message => {
    // var c_easy = ["aumso", "dati", "sLs8FLwy",]
     const responseObject = {
+      "=verify aumso": `Check your DMs for the Verification Code Part 2!`,
+      "=verify dati": `Check your DMs for the Verification Code Part 2!`,
+      "=verify sLs8FLwy": `Check your DMs for the Verification Code Part 2!`
+    };
+    const responseObject2 = {
       "=verify TIeVnMF": `${message.author} just verified! Please welcome them with a warm hacking hug.`,
       "=verify anictiu": `${message.author} just verified! Please welcome them with a warm hacking hug.`,
       "=verify 7JpAL5n": `${message.author} just verified! Please welcome them with a warm hacking hug.`
@@ -1015,44 +1020,17 @@ client.on('message', async message => {
     if (!message.channel === `${staffchannel}`) return;
     if (!message.channel === `${logs}`) return;
     if (!message.channel === `${configc}`) return;
-    if (message.content === `${prefix}verify aumso`) return;
-    if (message.content === `${prefix}verify dati`) return;
-    if (message.content === `${prefix}verify sLs8FLwy`) return;
-    if (message.content.length === prefix.length) return message.channel.send('You must provide numbers/letters of the captcha sent in your DMs').then(message => message.delete(30000));
-  
-    if(responseObject[message.content]) {
-      client.channels.get(`${configc}`).send(responseObject[message.content]);
-      message.member.addRole('437738324183089154');
-      return message.member.removeRole('467428407400202240');
-    } else {
-      client.channels.get(`${configc}`).send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`)
-    }
-});
-
-// Verification (Easy/Part 1)
-client.on('message', async message => {
-   // var c_easy = ["aumso", "dati", "sLs8FLwy",]
-    const responseObject = {
-      "=verify aumso": `Check your DMs for the Verification Code Part 2!`,
-      "=verify dati": `Check your DMs for the Verification Code Part 2!`,
-      "=verify sLs8FLwy": `Check your DMs for the Verification Code Part 2!`
-    };
-    if (message.author.bot) return;
-    if (message.channel.type === "dm") return;
-    if (!message.content.startsWith(prefix)) return;
-    if (!message.content.startsWith(`${prefix}verify`)) return;
-    if (!message.channel === `${vh}`) return;
-    if (!message.channel === `${staffchannel}`) return;
-    if (!message.channel === `${logs}`) return;
-    if (!message.channel === `${configc}`) return;
-    if (message.content.length === prefix.length) return message.channel.send('You must provide numbers/letters of the captcha sent in your DMs').then(message => message.delete(30000));
-    if (message.content === `${prefix}verify TIeVnMF`) return;
-    if (message.content === `${prefix}verify anictiu`) return;
-    if (message.content === `${prefix}verify 7JpAL5n`) return;
+//    if (message.content === `${prefix}verify TIeVnMF`) return;
+  //  if (message.content === `${prefix}verify anictiu`) return;
+    //if (message.content === `${prefix}verify 7JpAL5n`) return;
   
     if(responseObject[message.content]) {
       client.channels.get(`${configc}`).send(responseObject[message.content]);
       return message.member.addRole('467428407400202240');
+    } else if(responseObject2[message.content]) {
+      client.channels.get(`${configc}`).send(responseObject2[message.content]);
+      message.member.addRole('437738324183089154');
+      return message.member.removeRole('467428407400202240');
     } else {
       client.channels.get(`${configc}`).send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`)
     }
