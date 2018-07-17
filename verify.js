@@ -912,7 +912,7 @@ client.on('message', async message => {
     if(c_easy[message.content]) {
       client.channels.get(`${configc}`).send(c_easy[message.content]);
       message.member.addRole('467428407400202240');
-      return message.user.send('You need this picture in order to verify and gain access to the server!', {
+      return message.author.send('You need this picture in order to verify and gain access to the server!', {
        files: [c_hard2[Math.round(Math.random() * (c_hard2.length - 1))]]
       }).then(message => message.delete(120000));
     } else if(c_hard1[message.content]) {
