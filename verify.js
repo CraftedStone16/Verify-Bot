@@ -889,9 +889,9 @@ client.on('message', async message => {
 client.on('message', async message => {
    // var c_easy = ["aumso", "dati", "sLs8FLwy",]
     const c_easy = {
-      "=verify aumso": `Check your DMs for the Verification Code Part 2!`,
-      "=verify dati": `Check your DMs for the Verification Code Part 2!`,
-      "=verify sLs8FLwy": `Check your DMs for the Verification Code Part 2!`
+      "=verify aumso": `Check your DMs for the Verification Code Part 2! (The code deletes after 5 minutes)`,
+      "=verify dati": `Check your DMs for the Verification Code Part 2! (The code deletes after 5 minutes)`,
+      "=verify sLs8FLwy": `Check your DMs for the Verification Code Part 2! (The code deletes after 5 minutes)`
     };
     const c_hard1 = {
       "=verify TIeVnMF": `${message.author} just verified! Please welcome them with a warm hacking hug.`,
@@ -910,17 +910,19 @@ client.on('message', async message => {
 
   
     if(c_easy[message.content]) {
-      client.channels.get(`${configc}`).send(c_easy[message.content]);
+      message.delete();
+      client.channels.get(`${configc}`).send(c_easy[message.content]).then(message => message.delete(60000));
       message.member.addRole('467428407400202240');
       return message.author.send('You need this picture in order to verify and gain access to the server!', {
        files: [c_hard2[Math.round(Math.random() * (c_hard2.length - 1))]]
-      }).then(message => message.delete(120000));
+      }).then(message => message.delete(300000));
     } else if(c_hard1[message.content]) {
-      client.channels.get(`${configc}`).send(c_hard1[message.content]);
+      message.delete();
+      client.channels.get(`${configc}`).send(c_hard1[message.content]).then(message => message.delete(60000));
       message.member.addRole('437738324183089154');
       return message.member.removeRole('467428407400202240');
     } else {
-      client.channels.get(`${configc}`).send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`)
+      client.channels.get(`${configc}`).send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`).then(message => message.delete(60000));
     }
 });
 
@@ -986,9 +988,9 @@ client.on('guildMemberAdd', member => {
 
   guild.channels.get(`${greetings}`).send(`**${member.user}** has joined the server! To gain access to the server you must enter the captcha sent to your direct messages in <#441663623216103426> by doing '\`=verify (captcha code)\`'`)
   var rando_imgs = ["./captcha-easy/Easy-captcha1.png", "./captcha-easy/Easy-captcha2.png", "./captcha-easy/Easy-captcha3.png",]
-  member.user.send('You need this picture in order to verify and gain access to the server!', {
+  member.user.send('You need this picture in order to verify and gain access to the server! (Disappears in 5 minutes)', {
    files: [rando_imgs[Math.round(Math.random() * (rando_imgs.length - 1))]]
-  })
+  }).then(message => message.delete(300000));
   guild.channels.get(`${logs}`).send(joinlog)
 });
 
