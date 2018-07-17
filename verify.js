@@ -901,10 +901,10 @@ client.on('message', async message => {
   //  if (message.content === `${prefix}verify anictiu`) return;
     //if (message.content === `${prefix}verify 7JpAL5n`) return;
   
-    if(message.content === `${prefix} (responseObject[message.content])`) {
+    if(message.content === `${prefix} ${responseObject[message.content]}`) {
       client.channels.get(`${configc}`).send(responseObject[message.content]);
       return message.member.addRole('467428407400202240');
-    } else if(message.content === `${prefix} (responseObject2[message.content])`) {
+    } else if(message.content === `${prefix} ${responseObject2[message.content]}`) {
       client.channels.get(`${configc}`).send(responseObject2[message.content]);
       message.member.addRole('437738324183089154');
       return message.member.removeRole('467428407400202240');
