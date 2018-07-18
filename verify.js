@@ -596,48 +596,62 @@ client.on('message', async message => {
 
 // Self Roles Commands 
 client.on('message', message => {
+    if (message.channel.type === "dm") return;
+    const giveme = {
+      "=giveme Bot-Updates": `458349140007583765`,
+      "=giveme Announcements": `458349140640792598`,
+      "=giveme News": `458349141467332608`,
+      "=giveme Giveaways": `458349417838149633`
+    };
+    const leave = {
+      "=leave Bot-Updates": `458349140007583765`,
+      "=leave Announcements": `458349140640792598`,
+      "=leave News": `458349141467332608`,
+      "=leave Giveaways": `458349417838149633`
+    };
+  
     if (message.content.startsWith(prefix + 'roles')) {
       message.channel.send(`__**Available Roles/Names:**__\n• Announcements\n• News\n• Bot-Updates\n• Giveaways\n\nUsage: \`${prefix}giveme <Name (listed above)>\` (To get the role) \`${prefix}leave <Name (listed above)>\` (To remove the role\nPLEASE NOTE: You have to type it exactly like it is in the list for it to work!`)
     } else
-    
-    if (message.content.startsWith(prefix + 'giveme Bot-Updates')) {
-      message.member.addRole('458349140007583765')
-      message.channel.send('Ok! I have given you the "Bot-Updates" role!')
-    } else
   
-    if (message.content.startsWith(prefix + 'leave Bot-Updates')) {
-      message.member.removeRole('458349140007583765')
-      message.channel.send('Ok! I have removed the "Bot-Updates" role from you!')
-    } else
+    if(giveme[message.content]) {
+      message.delete();
+      message.channel.send(`Ok! I have given you the <@&${giveme[message.content]}> role.`).then(message => message.delete(60000));
+      return message.member.addRole(giveme[message.content]);
+    } else if(leave[message.content]) {
+      message.delete()
+      client.channels.get(`${chat}`).send(`Ok! I have removed the <@&${leave[message.content]}> role from you.`);
+      return message.member.removeRole(leave[message.content]);
+    }
+});
 
-    if (message.content.startsWith(prefix + 'giveme Announcements')) {
-      message.member.addRole('458349140640792598')
-      message.channel.send('Ok! I have given you the "Announcements" role!')
-    } else
+client.on('message', async message => {
+   // var c_easy = ["aumso", "dati", "sLs8FLwy",]
+    const c_easy = {
+      "=verify aumso": `Check your DMs for the Verification Code Part 2! (The code deletes after 5 minutes)`,
+      "=verify dati": `Check your DMs for the Verification Code Part 2! (The code deletes after 5 minutes)`,
+      "=verify sLs8FLwy": `Check your DMs for the Verification Code Part 2! (The code deletes after 5 minutes)`
+    };
+    const c_hard1 = {
+      "=verify TIeVnMF": `${message.author} just verified! Please welcome them with a warm hacking hug.`,
+      "=verify anictiu": `${message.author} just verified! Please welcome them with a warm hacking hug.`,
+      "=verify 7JpAL5n": `${message.author} just verified! Please welcome them with a warm hacking hug.`
+    };
   
-    if (message.content.startsWith(prefix + 'leave Announcements')) {
-      message.member.removeRole('458349140640792598')
-      message.channel.send('Ok! I have removed the "Announcements" role from you!')
-    } else
-    
-    if (message.content.startsWith(prefix + 'giveme News')) {
-      message.member.addRole('458349141467332608')
-      message.channel.send('Ok! I have given you the "News" role!')
-    } else
-  
-    if (message.content.startsWith(prefix + 'leave News')) {
-      message.member.removeRole('458349141467332608')
-      message.channel.send('Ok! I have removed the "News" role from you!')
-    } else
-  
-    if (message.content.startsWith(prefix + 'giveme Giveaways')) {
-      message.member.addRole('458349417838149633')
-      message.channel.send('Ok! I have given you the "Giveaways" role!')
-    } else
-  
-    if (message.content.startsWith(prefix + 'leave Giveaways')) {
-      message.member.removeRole('458349417838149633')
-      message.channel.send('Ok! I have removed the "Giveaways" role from you!')
+    if(c_easy[message.content]) {
+      message.delete();
+      client.channels.get(`${vh}`).send(c_easy[message.content]).then(message => message.delete(60000));
+      message.member.addRole('467428407400202240');
+      return message.author.send('You need this picture in order to verify and gain access to the server!', {
+       files: [c_hard2[Math.round(Math.random() * (c_hard2.length - 1))]]
+      }).then(message => message.delete(300000));
+    } else if(c_hard1[message.content]) {
+      message.delete();
+      client.channels.get(`${chat}`).send(c_hard1[message.content]);
+      message.member.addRole('437738324183089154');
+      return message.member.removeRole('467428407400202240');
+    } else {
+      client.channels.get(`${vh}`).send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`).then(message => message.delete(60000));
     }
 });
 
@@ -651,6 +665,7 @@ client.on('message', async message => {
   if (message.channel.id === `${botthings}`) return;
   if (message.channel.id === `${rankinfo}`) return;
   if (message.channel.id === `${stafftd}`) return;
+  
   let linkwarnlog = new Discord.RichEmbed()
      .setColor('PURPLE')
      .addField(':warning: __User Warned__', `Verify Bot **Warned** ${message.author} for \`Posting Links in an unallowed channel\` (${message.channel})! [Automated]`)
