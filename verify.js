@@ -24,6 +24,7 @@ var punishments = '442594775368073216' // Punishments channel
 var chat = '437738261150957579' // Main Server Chat
 var roler = '437739768223367168' // Role Request Channel
 var tsupport = '437739674577010688' // Support Channel
+var memed = '437740486091079682' // Meme Dump Channel
 var stafftd = '444604798189305856' // Staff To Do Channel
 var staffchannel = '441718552865800192'// Main Staff Talk Channels
 var sticket = '449654475481808896' // Support Ticket Channel
