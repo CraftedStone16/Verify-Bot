@@ -616,11 +616,11 @@ client.on('message', message => {
   
     if(giveme[message.content]) {
       message.delete();
-      message.channel.send(`Ok! I have given you the <@&${giveme[message.content]}> role.`).then(message => message.delete(60000));
+      message.channel.send(`Ok! I have given you role.`).then(message => message.delete(60000));
       return message.member.addRole(giveme[message.content]);
     } else if(leave[message.content]) {
       message.delete()
-      message.channel.send(`Ok! I have removed the <@&${leave[message.content]}> role from you.`);
+      message.channel.send(`Ok! I have removed that role from you.`);
       return message.member.removeRole(leave[message.content]);
     }
 });
