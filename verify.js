@@ -730,6 +730,7 @@ client.on('message', async message => {
       "=help quit": `\`\`\`Shutsdown the bot and doesn\'t restart with this command\n\nUsage: ${prefix}quit     Alias; ${prefix}shutdown\n<> = Required  [] = Optional\`\`\``,
     };
     if(help[message.content]) {
+      message.delete()
       message.channel.send(help[message.content]).then(message => message.delete(60000));
     }
 });
@@ -745,8 +746,10 @@ client.on('message', async message => {
     .addField('\u200b', `You can do \`${p}help <command>\` or \`${p}h <command>\` for more information for that command.`)
 
     if (message.content === `${prefix}help`) {
+      message.delete()
       return message.channel.send(helpembed).then(message => message.delete(60000));
     } else if (message.content === `${prefix}h`) {
+      message.delete()
       return message.channel.send(helpembed).then(message => message.delete(60000));
     }
 })
