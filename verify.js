@@ -730,7 +730,7 @@ client.on('message', async message => {
       "=help quit": `\`\`\`Shutsdown the bot and doesn\'t restart with this command\n\nUsage: ${prefix}quit     Alias; ${prefix}shutdown\n<> = Required  [] = Optional\`\`\``,
     };
     if(help[message.content]) {
-      message.delete()
+      message.delete(60000)
       message.channel.send(help[message.content]).then(message => message.delete(60000));
     }
 });
