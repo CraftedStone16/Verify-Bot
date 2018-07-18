@@ -597,7 +597,6 @@ client.on('message', async message => {
 // Self Roles Commands 
 client.on('message', message => {
     if (message.channel.type === "dm") return;
-    if (message.channel.id === `${vh}`) return;
     const giveme = {
       "=giveme Bot-Updates": `458349140007583765`,
       "=giveme Announcements": `458349140640792598`,
@@ -623,36 +622,6 @@ client.on('message', message => {
       message.delete()
       message.channel.send(`Ok! I have removed the <@&${leave[message.content]}> role from you.`);
       return message.member.removeRole(leave[message.content]);
-    }
-});
-
-client.on('message', async message => {
-   // var c_easy = ["aumso", "dati", "sLs8FLwy",]
-    const c_easy = {
-      "=verify aumso": `Check your DMs for the Verification Code Part 2! (The code deletes after 5 minutes)`,
-      "=verify dati": `Check your DMs for the Verification Code Part 2! (The code deletes after 5 minutes)`,
-      "=verify sLs8FLwy": `Check your DMs for the Verification Code Part 2! (The code deletes after 5 minutes)`
-    };
-    const c_hard1 = {
-      "=verify TIeVnMF": `${message.author} just verified! Please welcome them with a warm hacking hug.`,
-      "=verify anictiu": `${message.author} just verified! Please welcome them with a warm hacking hug.`,
-      "=verify 7JpAL5n": `${message.author} just verified! Please welcome them with a warm hacking hug.`
-    };
-  
-    if(c_easy[message.content]) {
-      message.delete();
-      client.channels.get(`${vh}`).send(c_easy[message.content]).then(message => message.delete(60000));
-      message.member.addRole('467428407400202240');
-      return message.author.send('You need this picture in order to verify and gain access to the server!', {
-       files: [c_hard2[Math.round(Math.random() * (c_hard2.length - 1))]]
-      }).then(message => message.delete(300000));
-    } else if(c_hard1[message.content]) {
-      message.delete();
-      client.channels.get(`${chat}`).send(c_hard1[message.content]);
-      message.member.addRole('437738324183089154');
-      return message.member.removeRole('467428407400202240');
-    } else {
-      client.channels.get(`${vh}`).send(`Sorry ${message.author}, You have provided the incorrect captcha code! The correct code can be found in your DMs!`).then(message => message.delete(60000));
     }
 });
 
