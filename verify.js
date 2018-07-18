@@ -665,10 +665,9 @@ client.on('message', async message => {
      .addField('Channel:', `${message.channel}`)
      .addField('Reason:', `Posting Links in a unallowed channel`)
   var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(message.cleanContent);
-  if (re != null){
-    message.delete().then(message => {
-      message.channel.send(`${message.author}, You can not include links in your message!`);
-    }).then(message => message.delete(60000));
+  if (re != null) {
+    message.delete()
+    message.channel.send(`${message.author}, You can not include links in your message!`).then(message => message.delete(60000));
     client.channels.get(`${punishments}`).send(linkembedwarn)
     client.channels.get(`${logs}`).send(linkwarnlog)
   }
