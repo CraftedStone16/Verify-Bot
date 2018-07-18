@@ -651,12 +651,27 @@ client.on('message', async message => {
   if (message.channel.id === `${botthings}`) return;
   if (message.channel.id === `${rankinfo}`) return;
   if (message.channel.id === `${stafftd}`) return;
-    var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(message.cleanContent);
-    if(re != null){
-        message.delete().then(message => {
-            message.channel.send('Sorry, you cannot include links in your messages');
-        });
-    }
+  let linkwarnlog = new Discord.RichEmbed()
+     .setColor('PURPLE')
+     .addField(':warning: __User Warned__', `Verify Bot **Warned** ${message.author} for \`Posting Links in an unallowed channel\` (${message.channel})! [Automated]`)
+     .setFooter(`${message.createdAt}`)
+  let linkembedwarn = new Discord.RichEmbed ()
+     .setTitle('')
+     .setThumbnail(`${user.displayAvatarURL}`)
+     .setColor('PURPLE')
+     .addField('Action:', 'Warning')
+     .addField('User:', `${message.author.tag}`)
+     .addField('Moderator:', `Verify Bot [Automated]`)
+     .addField('Channel:', `${message.channel}`)
+     .addField('Reason:', `Posting Links in a unallowed channel`)
+  var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(message.cleanContent);
+  if (re != null){
+    message.delete().then(message => {
+      message.channel.send(`${message.author}, You can not include links in your message!`);
+    }).then(message => message.delete(60000));
+    client.channels.get(`${punishments}`).send(linkembedwarn)
+    client.channels.get(`${logs}`).send(linkwarnlog)
+  }
 });
 
 // Help Commands
