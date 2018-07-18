@@ -597,6 +597,7 @@ client.on('message', async message => {
 // Self Roles Commands 
 client.on('message', message => {
     if (message.channel.type === "dm") return;
+    if (message.channel.id === `${vh}`) return;
     const giveme = {
       "=giveme Bot-Updates": `458349140007583765`,
       "=giveme Announcements": `458349140640792598`,
@@ -620,7 +621,7 @@ client.on('message', message => {
       return message.member.addRole(giveme[message.content]);
     } else if(leave[message.content]) {
       message.delete()
-      client.channels.get(`${chat}`).send(`Ok! I have removed the <@&${leave[message.content]}> role from you.`);
+      message.channel.send(`Ok! I have removed the <@&${leave[message.content]}> role from you.`);
       return message.member.removeRole(leave[message.content]);
     }
 });
