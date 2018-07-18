@@ -34,7 +34,6 @@ var configc = '437756098573893642' // Config Channel
 
 
 /* ==-> Manually Change these Prefixes;   
-+ Roles Commands
 + Help Commands
 + Verification Commands*/
 
@@ -49,7 +48,7 @@ client.on('ready', () => {
   console.log(`Bot Prefix: "${prefix}"`);
   console.log('All commands Loaded!');
   console.log(chalk.bgWhite.black('Your bot is now online (Verify Bot)'));
-  client.channels.get('448873575747944448').send('Im here after restarting');
+  client.channels.get('448873575747944448').send('I have Restarted!');
 });
 
 var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g;
