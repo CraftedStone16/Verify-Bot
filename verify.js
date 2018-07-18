@@ -657,7 +657,7 @@ client.on('message', async message => {
      .setFooter(`${message.createdAt}`)
   let linkembedwarn = new Discord.RichEmbed ()
      .setTitle('')
-     .setThumbnail(`${messgae.author.displayAvatarURL}`)
+     .setThumbnail(`${message.author.displayAvatarURL}`)
      .setColor('PURPLE')
      .addField('Action:', 'Warning')
      .addField('User:', `${message.author.tag}`)
