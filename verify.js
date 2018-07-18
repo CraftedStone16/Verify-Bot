@@ -739,15 +739,15 @@ client.on('message', async message => {
     .setColor('RANDOM')
     .setTitle('__**Help**__')
     .addField('**Main (Informational)**', `${p}help\n${p}h\n${p}userinfo\n${p}sinfo\n${p}ping\n${p}hierarchy\n${p}ranks\n${p}stats\n${p}uptime\n${p}roles\n\u200b`)
-    .addField('**Main (Useful)**', `${p}poll\n${p}\nticket${p}bug\n${p}verify\n${p}giveme\n${p}leave\n\u200b`)
+    .addField('**Main (Useful)**', `${p}ticket${p}bug\n${p}verify\n${p}giveme\n${p}leave\n\u200b`)
     .addField('**Main (Fun)**', `${p}fuckyou\n${p}fy\n${p}8ball\n${p}cat\n${p}dog\n\u200b`)
     .addField('**Permissioned**', `${p}promote (Member Role Needed)\n${mp}poll\n${mp}setgame\n${mp}sg\n${mp}purge\n${mp}prune\n${mp}warn\n${mp}kick\n${mp}mute\n${mp}unmute\n${mp}ban\n${mp}unban\n${mp}quit\n${mp}shutdown\n\u200b`)
     .addField('\u200b', `You can do \`${p}help <command>\` or \`${p}h <command>\` for more information for that command.`)
 
     if (message.content === `${prefix}help`) {
-      message.channel.send(helpembed).then(message => message.delete(60000));
+      return message.channel.send(helpembed).then(message => message.delete(60000));
     } else if (message.content === `${prefix}h`) {
-      message.channel.send(helpembed).then(message => message.delete(60000));
+      return message.channel.send(helpembed).then(message => message.delete(60000));
     }
 })
 
