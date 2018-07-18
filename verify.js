@@ -642,7 +642,14 @@ client.on('message', message => {
 
 // Link Deleter
 client.on('message', async message => {
-  if(message.author.bot) return;
+  if (message.author.bot) return;
+  if (message.channel.type === "dm") return;
+  if (message.channel.id === `${memed}`) return;
+  if (message.channel.id === `${rulesc}`) return;
+  if (message.channel.id === `${announcements}`) return;
+  if (message.channel.id === `${botthings}`) return;
+  if (message.channel.id === `${rankinfo}`) return;
+  if (message.channel.id === `${stafftd}`) return;
     var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(message.cleanContent);
     if(re != null){
         message.delete().then(message => {
