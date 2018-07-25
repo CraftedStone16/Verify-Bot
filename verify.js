@@ -97,6 +97,7 @@ client.on('message', async message => {
     let args = message.content.split(' ').slice(1);
     var result = args.join(' ');
     let botowner = message.guild.roles.find('name', 'Bot Owner');
+    let bypass = message.guild.roles.find('name', 'Advertising');
     let modRole = message.guild.roles.find('name', 'Moderator');
     let supportRole = message.guild.roles.find('name', 'Support Team');
     let premiumRole = message.guild.roles.find('name', 'Premium');
@@ -621,6 +622,9 @@ client.on('message', message => {
 
 // Link Deleter
 client.on('message', async message => {
+  let botowner = message.guild.roles.find('name', 'Bot Owner');
+  let bypass = message.guild.roles.find('name', 'Advertising');
+  
   if (message.author.bot) return;
   if (message.channel.type === "dm") return;
   if (message.channel.id === `${memed}`) return;
@@ -629,6 +633,8 @@ client.on('message', async message => {
   if (message.channel.id === `${botthings}`) return;
   if (message.channel.id === `${rankinfo}`) return;
   if (message.channel.id === `${stafftd}`) return;
+  if (message.author.roles.has(botowner.id)) return;
+  if (message.author.roles.has(bypass.id)) return;
 
   let linkwarnlog = new Discord.RichEmbed()
      .setColor('PURPLE')
