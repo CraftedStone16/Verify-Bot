@@ -622,40 +622,54 @@ client.on('message', message => {
 
 // Link Deleter
 client.on('message', async message => {
-  let botowner = message.guild.roles.find('name', 'Bot Owner');
-  let bypass = message.guild.roles.find('name', 'Advertising');
+    let botowner = message.guild.roles.find('name', 'Bot Owner');
+    let bypass = message.guild.roles.find('name', 'Advertising');
   
-  if (message.author.bot) return;
-  if (message.channel.type === "dm") return;
-  if (message.channel.id === `${memed}`) return;
-  if (message.channel.id === `${rulesc}`) return;
-  if (message.channel.id === `${announcements}`) return;
-  if (message.channel.id === `${botthings}`) return;
-  if (message.channel.id === `${rankinfo}`) return;
-  if (message.channel.id === `${stafftd}`) return;
-  if (message.author.roles.has(botowner.id)) return;
-  if (message.author.roles.has(bypass.id)) return;
+    if (message.author.bot) return;
+    if (message.channel.type === "dm") return;
+    if (message.channel.id === `${memed}`) return;
+    if (message.channel.id === `${rulesc}`) return;
+    if (message.channel.id === `${announcements}`) return;
+    if (message.channel.id === `${botthings}`) return;
+    if (message.channel.id === `${rankinfo}`) return;
+    if (message.channel.id === `${stafftd}`) return;
+    if (message.author.roles.has(botowner.id)) return;
+    if (message.author.roles.has(bypass.id)) return;
 
-  let linkwarnlog = new Discord.RichEmbed()
-     .setColor('PURPLE')
-     .addField(':warning: __User Warned__', `Verify Bot **Warned** ${message.author} for \`Posting Links in an unallowed channel\` (${message.channel})! [Automated]`)
-     .setFooter(`${message.createdAt}`)
-  let linkembedwarn = new Discord.RichEmbed ()
-     .setTitle('')
-     .setThumbnail(`${message.author.displayAvatarURL}`)
-     .setColor('PURPLE')
-     .addField('Action:', 'Warning')
-     .addField('User:', `${message.author.tag}`)
-     .addField('Moderator:', `Verify Bot [Automated]`)
-     .addField('Channel:', `${message.channel}`)
-     .addField('Reason:', `Posting Links in a unallowed channel`)
-  var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(message.cleanContent);
-  if (re != null) {
-    message.delete()
-    message.channel.send(`${message.author}, You can not include links in your message!`).then(message => message.delete(60000));
-    client.channels.get(`${punishments}`).send(linkembedwarn)
-    client.channels.get(`${logs}`).send(linkwarnlog)
-  }
+    let linkwarnlog = new Discord.RichEmbed()
+      .setColor('PURPLE')
+      .addField(':warning: __User Warned__', `Verify Bot **Warned** ${message.author} for \`Posting Links in an unallowed channel\` (${message.channel})! [Automated]`)
+      .setFooter(`${message.createdAt}`)
+    let linkembedwarn = new Discord.RichEmbed ()
+      .setTitle('')
+      .setThumbnail(`${message.author.displayAvatarURL}`)
+      .setColor('PURPLE')
+      .addField('Action:', 'Warning')
+      .addField('User:', `${message.author.tag}`)
+      .addField('Moderator:', `Verify Bot [Automated]`)
+      .addField('Channel:', `${message.channel}`)
+      .addField('Reason:', `Posting Links in a unallowed channel`)
+    var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(message.cleanContent);
+    if (re != null) {
+      message.delete()
+      message.channel.send(`${message.author}, You can not include links in your message!`).then(message => message.delete(60000));
+      client.channels.get(`${punishments}`).send(linkembedwarn)
+      client.channels.get(`${logs}`).send(linkwarnlog)
+    } else
+    
+    if (message.content.startsWith('https://www.')) {
+      message.delete()
+      message.channel.send(`${message.author}, You can not include links in your message!`).then(message => message.delete(60000));
+      client.channels.get(`${punishments}`).send(linkembedwarn)
+      client.channels.get(`${logs}`).send(linkwarnlog)
+    } else
+          
+    if (message.content.startsWith('www.')) {
+      message.delete()
+      message.channel.send(`${message.author}, You can not include links in your message!`).then(message => message.delete(60000));
+      client.channels.get(`${punishments}`).send(linkembedwarn)
+      client.channels.get(`${logs}`).send(linkwarnlog)
+    }
 });
 
 // Help Commands
@@ -730,10 +744,10 @@ client.on('message', async message => {
       "=help giveme": `\`\`\`Get a certain role that you want, this allows you to be notified for certain Announcements instead of all (Check ${prefix}roles for the list)\n\nUsage: ${prefix}giveme <role name>\n<> = Required  [] = Optional\nCheckout ${prefix}h leave or ${prefix}roles\`\`\``,
       "=h leave": `\`\`\`Leave a certain role using this command (Check ${prefix}roles for the list)\n\nUsage: ${prefix}leave <role name>\n<> = Required  [] = Optional\nCheckout ${prefix}h giveme or ${prefix}roles\`\`\``,
       "=help verify": `\`\`\`A command that is used in the verification channel\`\`\``,
-      "=h shutdown": `\`\`\`Shutsdown the bot and doesn\'t restart with this command\n\nUsage: ${prefix}shutdown     Alias; ${prefix}quit\n<> = Required  [] = Optional\`\`\``,
-      "=help shutdown": `\`\`\`Shutsdown the bot and doesn\'t restart with this command\n\nUsage: ${prefix}shutdown     Alias; ${prefix}quit\n<> = Required  [] = Optional\`\`\``,
-      "=h quit": `\`\`\`Shutsdown the bot and doesn\'t restart with this command\n\nUsage: ${prefix}quit     Alias; ${prefix}shutdown\n<> = Required  [] = Optional\`\`\``,
-      "=help quit": `\`\`\`Shutsdown the bot and doesn\'t restart with this command\n\nUsage: ${prefix}quit     Alias; ${prefix}shutdown\n<> = Required  [] = Optional\`\`\``,
+      "=h shutdown": `\`\`\`Shutsdown the bot and doesn\'t restart with this command\n\nUsage: ${mp}shutdown     Alias; ${mp}quit\n<> = Required  [] = Optional\`\`\``,
+      "=help shutdown": `\`\`\`Shutsdown the bot and doesn\'t restart with this command\n\nUsage: ${mp}shutdown     Alias; ${mp}quit\n<> = Required  [] = Optional\`\`\``,
+      "=h quit": `\`\`\`Shutsdown the bot and doesn\'t restart with this command\n\nUsage: ${mp}quit     Alias; ${mp}shutdown\n<> = Required  [] = Optional\`\`\``,
+      "=help quit": `\`\`\`Shutsdown the bot and doesn\'t restart with this command\n\nUsage: ${mp}quit     Alias; ${mp}shutdown\n<> = Required  [] = Optional\`\`\``,
     };
     if(help[message.content]) {
       message.delete(10000)
@@ -746,7 +760,7 @@ client.on('message', async message => {
     .setColor('RANDOM')
     .setTitle('__**Help**__')
     .addField('**Main (Informational)**', `${p}help\n${p}h\n${p}userinfo\n${p}sinfo\n${p}ping\n${p}hierarchy\n${p}ranks\n${p}stats\n${p}uptime\n${p}roles\n\u200b`)
-    .addField('**Main (Useful)**', `${p}ticket${p}bug\n${p}verify\n${p}giveme\n${p}leave\n\u200b`)
+    .addField('**Main (Useful)**', `${p}ticket\n${p}bug\n${p}verify\n${p}giveme\n${p}leave\n\u200b`)
     .addField('**Main (Fun)**', `${p}fuckyou\n${p}fy\n${p}8ball\n${p}cat\n${p}dog\n\u200b`)
     .addField('**Permissioned**', `${p}promote (Member Role Needed)\n${mp}poll\n${mp}setgame\n${mp}sg\n${mp}purge\n${mp}prune\n${mp}warn\n${mp}kick\n${mp}mute\n${mp}unmute\n${mp}ban\n${mp}unban\n${mp}quit\n${mp}shutdown\n\u200b`)
     .addField('\u200b', `You can do \`${p}help <command>\` or \`${p}h <command>\` for more information for that command.`)
@@ -805,6 +819,8 @@ client.on('message', async message => {
 // <+-=-+>   Message Events   <+-=-+>
 // Message Edited
 client.on('messageUpdate', (oldMessage, newMessage) => {
+  var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(message.cleanContent);
+  if (re != null) return;
   if (oldMessage.editedTimestamp === newMessage.editedTimestamp) return;
   if (oldMessage.author.bot) return;
   if (newMessage.author.bot) return;
