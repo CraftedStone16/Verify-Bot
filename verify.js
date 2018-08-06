@@ -14,7 +14,7 @@ client.login(process.env.BOT_TOKEN);
 
 
 // <-=-> Channel Variables
-var vh = '441663623216103426' // Verify Here Channel
+var vh = '441663623216103426' // Verify Here Channel -
 var greetings = '441663494216220682' // Greetings channel
 var rulesc = '437744189455728640' // Rules Channel
 var announcements = '437740937448390657' // Announcements Channel
