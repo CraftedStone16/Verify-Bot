@@ -503,18 +503,6 @@ client.on('message', async message => {
       message.channel.send(catembed)
     } else
 
-    if (message.content.startsWith(prefix + 'fy')) {
-      let fymention = args.join(' ')
-      if (fymention.length < 1) return message.reply('You must mention someone first.');
-      message.channel.send(`${fymention}, Fuck You!`)
-    } else
-
-    if (message.content.startsWith(prefix + 'fuckyou')) {
-      let fymention = args.join(' ')
-      if (fymention.length < 1) return message.reply('You must mention someone first.');
-      message.channel.send(`${fymention}, Fuck You!`)
-    } else
-
     if (message.content.startsWith(prefix + '8ball')) {
       if (!args[2]) return message.channel.send('Please ask a full question!');
       let replies = ["Yes.", "No.", "I don't know", "Ask Again Later"];
