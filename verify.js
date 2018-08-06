@@ -46,14 +46,6 @@ var mp = "=="
 var modprefix = "=="
 var botversion = '3.0.5'
 
-client.on('ready', () => {
-  console.log(`Bot version: ${botversion}`);
-  console.log(`Bot Prefix: "${prefix}"`);
-  console.log('All commands Loaded!');
-  console.log(chalk.bgWhite.black('Your bot is now online (Verify Bot)'));
-  client.channels.get('448873575747944448').send('I have Restarted!');
-});
-
 var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g;
 client.on('debug', e => {
   console.log(chalk.blue(e.replace(regToken, 'that was redacted')));
