@@ -819,7 +819,7 @@ client.on('message', async message => {
 // <+-=-+>   Message Events   <+-=-+>
 // Message Edited
 client.on('messageUpdate', (oldMessage, newMessage) => {
-  var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(message.cleanContent);
+  var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(newMessage.cleanContent);
   if (re != null) return;
   if (oldMessage.editedTimestamp === newMessage.editedTimestamp) return;
   if (oldMessage.author.bot) return;
