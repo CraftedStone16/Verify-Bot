@@ -633,8 +633,8 @@ client.on('message', async message => {
     if (message.channel.id === `${botthings}`) return;
     if (message.channel.id === `${rankinfo}`) return;
     if (message.channel.id === `${stafftd}`) return;
-    if (message.author.roles.has(botowner.id)) return;
-    if (message.author.roles.has(bypass.id)) return;
+    if (message.member.roles.has(botowner.id)) return;
+    if (message.member.roles.has(bypass.id)) return;
 
     let linkwarnlog = new Discord.RichEmbed()
       .setColor('PURPLE')
