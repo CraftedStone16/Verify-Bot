@@ -9,6 +9,7 @@ const superagent = require('superagent');
 const cooldown = new Set();
 const fetch = require("snekfetch");
 const hexcols = [`#4285F4, #2D313C, #ffd700`];
+require('./util/eventLoader')(client);
 client.login(process.env.BOT_TOKEN);
 
 
