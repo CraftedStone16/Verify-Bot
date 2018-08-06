@@ -10,7 +10,6 @@ const cooldown = new Set();
 const fetch = require("snekfetch");
 const hexcols = [`#4285F4, #2D313C, #ffd700`];
 require('./util/eventLoader')(client);
-require('./events');
 client.login(process.env.BOT_TOKEN);
 
 
