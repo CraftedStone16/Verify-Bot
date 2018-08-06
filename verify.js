@@ -889,16 +889,6 @@ client.on('guildMemberRemove', member => {
   guild.channels.get(`${logs}`).send(leavelog)
 });
 
-// User Banned
-client.on('guildBanAdd', (guild, user) => {
-  guild.channels.get(`${greetings}`).send(`**${user.tag}** Was just banned from **${guild.name}**`);
-});
-
-// User Unbanned
-client.on('guildBanRemove', (guild, user) => {
-  guild.channels.get(`${greetings}`).send(`**${user.tag}** Was just unbanned from **${guild.name}**`);
-});
-
 /*
 // =+-+=   Voice Channel Events   =+-+=
 // Channel Join, Leave, Changed
