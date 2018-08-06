@@ -6,4 +6,5 @@ module.exports = client => {
   client.on('guildBanAdd', reqEvent('guildBanAdd'));
   client.on('guildBanRemove', reqEvent('guildBanRemove'));
   client.on('message', reqEvent('hello'));
+  client.on('message', reqEvent('fuckyou'));
 };
