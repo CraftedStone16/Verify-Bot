@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const ms = require('ms');
 const moment = require('moment');
+const client = new Discord.Client();
 var prefix = "="
 var botversion = '3.5.2'
 module.exports = message => {
