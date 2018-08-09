@@ -1,4 +1,7 @@
+const ms = require('ms');
+const moment = require('moment');
 var prefix = "="
+var botversion = '3.5.2'
 module.exports = message => {
     if (message.content.startsWith(prefix + 'userinfo')) {
       message.delete();
