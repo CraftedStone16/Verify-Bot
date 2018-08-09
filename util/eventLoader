@@ -7,4 +7,10 @@ module.exports = client => {
   client.on('guildBanRemove', reqEvent('guildBanRemove'));
   client.on('message', reqEvent('hello'));
   client.on('message', reqEvent('fuckyou'));
+  client.on('message', reqEvent('ranks'));
+  client.on('message', reqEvent('fun'));
+  client.on('message', reqEvent('setgame'));
+  client.on('message', reqEvent('clean'));
+  client.on('message', reqEvent('ping'));
+  client.on('message', reqEvent('info'));
 };
