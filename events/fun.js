@@ -1,7 +1,8 @@
+const superagent = require('superagent');
 var prefix = "="
 module.exports = message => {
     if (message.content === `${prefix}dog`) {
-      let {body} = await superagent
+      let {body} = superagent
       .get(`https://random.dog/woof.json?filter=png,jpg,jpeg,mp4`);
 
       let dogembed = new Discord.RichEmbed()
@@ -10,7 +11,7 @@ module.exports = message => {
     } else
 
     if (message.content === `${prefix}cat`) {
-      let {body} = await superagent
+      let {body} = superagent
       .get(`http://aws.random.cat/meow`);
 
       let catembed = new Discord.RichEmbed()
