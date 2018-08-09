@@ -1,5 +1,7 @@
+var modprefix = "=="
 var prefix = "="
 module.exports = message => {
+let botowner = message.guild.roles.find('name', 'Bot Owner');
     if (message.content.startsWith(modprefix + 'sg')) {
       if(message.member.roles.has(botowner.id)) {
         client.user.setActivity(result);
