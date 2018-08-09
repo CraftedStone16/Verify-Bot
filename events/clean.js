@@ -1,8 +1,9 @@
 var prefix = "="
 var modprefix = "=="
-var result = args.join(' ');
 module.exports = message => {
 let modRole = message.guild.roles.find('name', 'Moderator');
+    let args = message.content.split(' ').slice(1);
+    var result = args.join(' ');
     if (message.content.startsWith(modprefix + 'purge')) {
       if(message.member.roles.has(modRole.id)) {
         let messagecount = parseInt(result);
