@@ -1,3 +1,4 @@
+const client = new Discord.Client();
 var modprefix = "=="
 var prefix = "="
 module.exports = message => {
