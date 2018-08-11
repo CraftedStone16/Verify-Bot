@@ -48,7 +48,7 @@ module.exports = message => {
       .addField('Verification Level', `${message.guild.verificationLevel}\n`)
       .addField('Created on', `${message.guild.createdAt}\n`)
       .addField('You joined at', `${message.member.joinedAt}\n`)
-      .addField('Total Members', `${message.guild.memberCount}\n`)
+      .addField('Total Members', `${message.guild.memberCount}\n${message.guild.iconURL}`)
       return message.channel.send(serverembed).then(message => message.delete(60000));
     } else
 
