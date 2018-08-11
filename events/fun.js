@@ -20,6 +20,7 @@ module.exports = message => {
     } else
 
     if (message.content.startsWith(prefix + '8ball')) {
+      let args = message.content.split(' ').slice(1);1
       if (!args[2]) return message.channel.send('Please ask a full question!');
       let replies = ["Yes.", "No.", "I don't know", "Ask Again Later"];
 
