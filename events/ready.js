@@ -7,7 +7,7 @@ module.exports = client => {
   console.log(`Bot Prefix: "${prefix}"`);
   console.log('All commands Loaded!');
   console.log(chalk.bgWhite.black('Your bot is now online (Verify Bot)'));
-  client.user.setActivity(`'=gamble'`, { type: 'STREAMING', { url: 'opensource.black' });
+  client.user.setActivity(`'=gamble'`, { type: 'STREAMING', url: 'opensource.black' });
   client.user.setStatus('dnd');
   client.channels.get('448873575747944448').send('I have Restarted!');
 };
