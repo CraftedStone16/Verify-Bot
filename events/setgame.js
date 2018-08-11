@@ -4,6 +4,7 @@ module.exports = message => {
 let botowner = message.guild.roles.find('name', 'Bot Owner');
     if (message.content.startsWith(modprefix + 'sg')) {
       if(message.member.roles.has(botowner.id)) {
+        let args = message.content.split(' ').slice(1);
         client.user.setActivity(result);
         let embed2 = new Discord.RichEmbed()
         .setColor('RANDOM')
@@ -17,6 +18,7 @@ let botowner = message.guild.roles.find('name', 'Bot Owner');
 
     if (message.content.startsWith(modprefix + 'setgame')) {
       if(message.member.roles.has(botowner.id)) {
+        let args = message.content.split(' ').slice(1);
         client.user.setActivity(result);
         let embed2 = new Discord.RichEmbed()
         .setColor('RANDOM')
