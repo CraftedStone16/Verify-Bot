@@ -1,6 +1,6 @@
 var pollchannel = '448893894768197632'
 var prefix = "="
-var modprefix "=="
+var modprefix = "=="
 module.exports = message => {
 let modRole = message.guild.roles.find('name', 'Moderator');
     if (message.content.startsWith(modprefix + 'poll')) {
