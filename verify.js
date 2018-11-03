@@ -291,6 +291,20 @@ client.on('message', async message => {
         client.channels.get(`${logs}`).send(`**${message.author.username}** just tried using the \`unban\` command in <#${message.channel.id}>!`)
       }
     } else
+      
+    if (message.content.startsWith(prefix + 'remember')) {
+      message.channel.send('BITCH!! You know nothing!')
+      message.channel.send('NOTHING!')
+      message.channel.send('NOTHING!')
+      message.channel.send('NOTHING!')
+      message.channel.send('NOTHING!')
+      message.channel.send('NOTHING!')
+      message.channel.send('NOTHING!')
+      message.channel.send('NOTHING!')
+      message.channel.send('NOTHING!')
+      message.channel.send('NOTHING!')
+      message.channel.send('NOTHING!')
+    }
 });
 
 // Link Deleter
