@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const chalk = require('chalk');
-let botversion = "3.2.1"
+let botversion = "4.0.0"
 let prefix = "="
 module.exports = client => {
   console.log(`Bot version: ${botversion}`);
