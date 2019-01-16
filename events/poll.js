@@ -5,6 +5,7 @@ module.exports = message => {
 let modRole = message.guild.roles.find(role => role.name === 'Moderator');
     if (message.content.startsWith(modprefix + 'poll')) {
       if(message.member.roles.has(modRole.id)) {
+        let args = message.content.split(' ').slice(1);
         let pollname = args.join(' ')
         message.delete();
         if (pollname.length < 1) return message.channel.send('You must provide a Poll Name!');
