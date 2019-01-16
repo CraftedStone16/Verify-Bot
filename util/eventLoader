@@ -16,6 +16,6 @@ module.exports = client => {
   //client.on('message', reqEvent('poll'));
   client.on('message', reqEvent('role'));
   client.on('message', reqEvent('promote'));
-  client.on('message', reqEvent('ticket'));
+  //client.on('message', reqEvent('ticket'));
   client.on('ready', () => reqEvent('ready')(client));
 };
