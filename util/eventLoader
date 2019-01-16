@@ -12,7 +12,7 @@ module.exports = client => {
   client.on('message', reqEvent('clean'));
   client.on('message', reqEvent('ping'));
   client.on('message', reqEvent('info'));
-  client.on('message', reqEvent('bug'));
+  //client.on('message', reqEvent('bug'));
   client.on('message', reqEvent('poll'));
   client.on('message', reqEvent('role'));
   client.on('message', reqEvent('promote'));
