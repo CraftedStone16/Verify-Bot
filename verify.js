@@ -306,7 +306,7 @@ client.on('message', async message => {
       message.channel.send('NOTHING!')
     } else
     
-    if (message.content.startswith(prefix + 'bug')) {
+    if (message.content.startsWith(prefix + 'bug')) {
       let args = message.content.split(' ').slice(1);
       let bug = args.join(' ')
       if (bug.length < 1) return message.channel.send('You must provide a message');
