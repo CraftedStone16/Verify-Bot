@@ -89,14 +89,14 @@ client.on('message', async message => {
 client.on('message', async message => {
     let args = message.content.split(' ').slice(1);
     var result = args.join(' ');
-    let botowner = message.guild.roles.find('name', 'Bot Owner');
-    let bypass = message.guild.roles.find('name', 'Advertising');
-    let modRole = message.guild.roles.find('name', 'Moderator');
-    let supportRole = message.guild.roles.find('name', 'Support Team');
-    let premiumRole = message.guild.roles.find('name', 'Premium');
-    let memberRole = message.guild.roles.find('name', 'Member');
-    let verified = message.guild.roles.find('name', 'Verified');
-    let muteRole = message.guild.roles.find('name', 'Muted');
+    let botowner = message.guild.roles.find(role => role.name === 'Bot Owner');
+    let bypass = message.guild.roles.find(role => role.name === 'Advertising');
+    let modRole = message.guild.roles.find(role => role.name === 'Moderator');
+    let supportRole = message.guild.roles.find(role => role.name === 'Support Team');
+    let premiumRole = message.guild.roles.find(role => role.name === 'Premium');
+    let memberRole = message.guild.roles.find(role => role.name === 'Member');
+    let verified = message.guild.roles.find(role => role.name === 'Verified');
+    let muteRole = message.guild.roles.find(role => role.name === 'Muted');
     if (!message.content.startsWith(prefix)) return;
 
     // Punishment Commands
