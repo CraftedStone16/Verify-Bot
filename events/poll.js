@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 var pollchannel = '448893894768197632'
 var prefix = "="
 var modprefix = "=="
-module.exports = message.client => {
+module.exports = message => {
 let modRole = message.guild.roles.find(role => role.name === 'Moderator');
     if (message.content.startsWith(modprefix + 'poll')) {
       if(message.member.roles.has(modRole.id)) {
