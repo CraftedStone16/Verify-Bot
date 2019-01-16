@@ -1,7 +1,7 @@
 var prefix = "="
 var modprefix = "=="
 module.exports = message => {
-let modRole = message.guild.roles.find('name', 'Moderator');
+let modRole = message.guild.roles.find(role => role.name === 'Moderator');
     let args = message.content.split(' ').slice(1);
     var result = args.join(' ');
     if (message.content.startsWith(modprefix + 'purge')) {
