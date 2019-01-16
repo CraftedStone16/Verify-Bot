@@ -44,7 +44,7 @@ var prefix = "="
 var p = "="
 var mp = "=="
 var modprefix = "=="
-var botversion = '3.0.5'
+var botversion = '4.0.0'
 
 var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g;
 client.on('debug', e => {
