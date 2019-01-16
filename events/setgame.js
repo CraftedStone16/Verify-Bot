@@ -3,7 +3,7 @@ const client = new Discord.Client();
 var modprefix = "=="
 var prefix = "="
 module.exports = message => {
-let botowner = message.guild.roles.find('name', 'Bot Owner');
+let botowner = message.guild.roles.find(role => role.name === 'Bot Owner');
     if (message.content.startsWith(modprefix + 'sg')) {
       if(message.member.roles.has(botowner.id)) {
         let args = message.content.split(' ').slice(1);
