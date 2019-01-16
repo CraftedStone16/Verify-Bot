@@ -1,3 +1,5 @@
+const client = new Discord.Client();
+const Discord = require('discord.js');
 const moment = require('moment');
 var sticket = '449654475481808896'
 var prefix = "="
