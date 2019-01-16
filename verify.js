@@ -309,8 +309,8 @@ client.on('message', async message => {
 
 // Link Deleter
 client.on('message', async message => {
-    let botowner = message.guild.roles.find('name', 'Bot Owner');
-    let bypass = message.guild.roles.find('name', 'Advertising');
+    let botowner = message.guild.roles.find(role => role.name === 'Bot Owner');
+    let bypass = message.guild.roles.find(role => role.name === 'Advertising');
   
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
@@ -362,13 +362,13 @@ client.on('message', async message => {
 // Help Commands
 client.on('message', async message => {
     if (message.author.bot) return;
-    let botowner = message.guild.roles.find('name', 'Bot Owner');
-    let modRole = message.guild.roles.find('name', 'Moderator');
-    let supportRole = message.guild.roles.find('name', 'Support Team');
-    let premiumRole = message.guild.roles.find('name', 'Premium');
-    let memberRole = message.guild.roles.find('name', 'Member');
-    let verified = message.guild.roles.find('name', 'Verified');
-    let muteRole = message.guild.roles.find('name', 'Muted');
+    let botowner = message.guild.roles.find(role => role.name === 'Bot Owner');
+    let modRole = message.guild.roles.find(role => role.name === 'Moderator');
+    let supportRole = message.guild.roles.find(role => role.name === 'Support Team');
+    let premiumRole = message.guild.roles.find(role => role.name === 'Premium');
+    let memberRole = message.guild.roles.find(role => role.name === 'Member');
+    let verified = message.guild.roles.find(role => role.name === 'Verified');
+    let muteRole = message.guild.roles.find(role => role.name === 'Muted');
     const help = {
       "=help help": `\`\`\`Displays the commands list\n\nUsage: ${prefix}help     Alias; ${prefix}h\`\`\``,
       "=h help": `\`\`\`Displays the commands list\n\nUsage: ${prefix}help     Alias; ${prefix}h\`\`\``,
