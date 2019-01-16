@@ -1,6 +1,7 @@
 var logs = '437757021953982485'
 var prefix = "="
 module.exports = message => {
+    let memberRole = message.guild.roles.find(role => role.name === 'Member');
     if (message.content.startsWith(prefix + 'promote')) {
        if(message.member.roles.has(memberRole.id)) {
          let user = message.mentions.users.first();
