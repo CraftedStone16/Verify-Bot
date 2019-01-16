@@ -1,3 +1,4 @@
+const Discord = require('discord.js');
 var pollchannel = '448893894768197632'
 var prefix = "="
 var modprefix = "=="
