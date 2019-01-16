@@ -62,7 +62,7 @@ client.on('error', e => {
 
 // Bot Shut Down Commands //
 client.on('message', async message => {
-    let botowner = message.guild.roles.find('name', 'Bot Owner');
+    let botowner = message.guild.roles.find(role => role.name === 'Bot Owner');
 
     if (message.content.startsWith(modprefix + 'quit')) {
       if(message.member.roles.has(botowner.id)) {
