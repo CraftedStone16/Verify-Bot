@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
 const moment = require('moment');
 var sticket = '449654475481808896'
 var prefix = "="
@@ -24,6 +23,6 @@ module.exports = message => {
      .addField('Full Report:', `${targs}`)
      .setFooter(`${moment().format('MMMM Do YYYY, h:mm:ss a')}`)
      .setColor(16711728);
-     client.channels.get(`${sticket}`).send(atembed)
+     messsage.client.channels.get(`${sticket}`).send(atembed)
   }
 };
