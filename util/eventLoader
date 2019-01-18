@@ -8,7 +8,7 @@ module.exports = client => {
   client.on('message', reqEvent('fuckyou'));
   client.on('message', reqEvent('ranks'));
   client.on('message', reqEvent('fun'));
-  client.on('message', reqEvent('setgame'));
+  //client.on('message', reqEvent('setgame'));
   client.on('message', reqEvent('clean'));
   client.on('message', reqEvent('ping'));
   client.on('message', reqEvent('info'));
